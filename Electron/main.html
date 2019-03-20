@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+    <form>
+      Ancestry Name:<br>
+      <input type="text" name="groupNum" id="group"><br>
+      <input type="text" name="ancestry" id="input">
+      <input type = "button"
+    value = "click me"
+    onclick = "getName()"/>
+    </form>
+    <script>
+    const axios = require('axios')
+    function getName() {
+    var ancestry = document.getElementById('input').value
+    var groupNum = document.getElementById('group').value
+    // /search to get item ids by name, /universe/types/{type_id} to get info
+    axios.get('https://esi.evetech.net/latest/markets/groups/' + groupNum + '/?datasource=tranquility')
+        .then(response => {
+          console.log(response.data);
+
+              document.write(response.data.description)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+    </script>
+  </body>
+</html>

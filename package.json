@@ -1,0 +1,17 @@
+{
+  "name": "eveshop",
+  "version": "1.0.0",
+  "description": "A shopping cart app for EVE!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ./Electron/main.js"
+  },
+  "author": "GingkathFox",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "electron": "^4.1.0",
+    "electron-localshortcut": "^3.1.0"
+  }
+}
