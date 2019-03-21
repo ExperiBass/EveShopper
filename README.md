@@ -1,6 +1,6 @@
-# EveShop
+# EveShopper
 
-Welcome to EveShop, the app for creating a shopping cart for EVE Online! Currently it gets market groups by ID (as a test), But soon it will:
+Welcome to EveShopper, the app for creating a shopping cart for EVE Online! Currently it gets market groups by ID (as a test), But soon it will:
 
 - Get items by name
 - Display the prices of the item in certain regions (you will be able to select "Caldari" for example to get all prices in Caldari space) and the description of the item
