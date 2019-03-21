@@ -10,27 +10,35 @@
   </head>
   <body>
     <form>
-      Market Group ID:<br>
-      <input type="text" name="groupNum" id="group"><br>
+      Region:<br>
+      <input type="text" name="groupNum" id="Region"><br>
       <input type = "button"
     value = "Fetch"
-    onclick = "getGroup()"/>
+    onclick = "getItem()"/>
     </form>
     <p id="name"></p>
     <p id="desc"></p>
+    <p id="price"></p>
     <script>
     const axios = require('axios')
 
-    function getGroup() {
-    var groupNum = document.getElementById('group').value
+    function getItem() {
+    var region = document.getElementById('Region').value
     // /search to get item ids by name, /universe/types/{type_id} to get info
-    axios.get('https://esi.evetech.net/latest/markets/groups/' + groupNum + '/?datasource=tranquility')
+    axios.get('https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=' + region + '&strict=true')
         .then(response => {
           console.log(response.data)
           const data = response.data
-
-            document.getElementById('name').innerHTML = data.name 
-            document.getElementById('desc').innerHTML = data.description
+          const regID = data.region[0]
+          axios.get('https://esi.evetech.net/latest/markets/' + regID + '/types/?datasource=tranquility&page=1')
+              .then(response => {
+                  //document.getElementById('name').innerHTML = data.name 
+                  document.getElementById('desc').innerHTML = response.data
+                  //document.getElementById('price').innerHTML = data.price
+              })
+              .catch(error => {
+                console.log(error)
+              })
         })
         .catch(error => {
           console.log(error)
