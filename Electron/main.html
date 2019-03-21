@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
     <style>
       body {
         background-color: grey;
@@ -30,8 +29,8 @@
           console.log(response.data)
           const data = response.data
 
-              document.getElementById('name').innerHTML = data.name 
-              document.getElementById('desc').innerHTML = data.description
+            document.getElementById('name').innerHTML = data.name 
+            document.getElementById('desc').innerHTML = data.description
         })
         .catch(error => {
           console.log(error)
