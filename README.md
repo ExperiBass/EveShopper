@@ -6,4 +6,4 @@ Welcome to EveShop, the app for creating a shopping cart for EVE Online! Current
 - Display the prices of the item in certain regions (you will be able to select "Caldari" for ecample to get all prices in Caldari space) and the description of the item
 - Export your list to the clipboard so you can paste it into EVE!
 
-This currently uses Electron `v4.1.0`,and NodeJS `v10.15.3`.
+This currently uses Electron `v4.1.0`, and NodeJS `v10.15.3`.
