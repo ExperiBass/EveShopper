@@ -44,7 +44,7 @@ app.on('ready', createWindow)
 if (process.platform == 'darwin') {
     electronLocalshortcut.register('Command+Q', () => {
         app.quit()
-      });
+      })
   }
   
 // Quit when all windows are closed.

@@ -36,13 +36,16 @@
                   document.getElementById('desc').innerHTML = response.data
                   //document.getElementById('price').innerHTML = data.price
               })
-              .catch(error => {
-                console.log(error)
-              })
         })
         .catch(error => {
           console.log(error)
+          alert(error)
         })
+      }
+      document.onkeyup = function(e) {
+        if (e.which == 13) {
+          getItem()
+        }
       }
     </script>
   </body>
