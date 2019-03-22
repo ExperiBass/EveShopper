@@ -11,7 +11,11 @@
   <body>
     <form>
       Region:<br>
-      <input type="text" name="groupNum" id="Region"><br>
+      <input type="text" name="region" id="Region"><br>
+      Item:<br>
+      <input type="text" name="item" id="Item"><br>
+      <input type="radio" name="bOs" id="buyOrSell" value="buy">Buy<br>
+      <input type="radio" name="bOs" id="buyOrSell" value="sell">Sell<br>
       <input type = "button"
     value = "Fetch"
     onclick = "getItem()"/>
@@ -21,28 +25,59 @@
     <p id="price"></p>
     <script>
     const axios = require('axios')
+    var item;
 
     function getItem() {
-    var region = document.getElementById('Region').value
-    // /search to get item ids by name, /universe/types/{type_id} to get info
-    axios.get('https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=' + region + '&strict=true')
-        .then(response => {
-          console.log(response.data)
-          const data = response.data
-          const regID = data.region[0]
-          axios.get('https://esi.evetech.net/latest/markets/' + regID + '/types/?datasource=tranquility&page=1')
-              .then(response => {
-                  //document.getElementById('name').innerHTML = data.name 
-                  document.getElementById('desc').innerHTML = response.data
-                  //document.getElementById('price').innerHTML = data.price
-              })
-        })
-        .catch(error => {
-          console.log(error)
-          alert(error)
-        })
+      var iSearch = document.getElementById('Item').value
+      var region = document.getElementById('Region').value
+      var item; 
+
+      // getting the item ID
+      axios.get('https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=' 
+                + iSearch + '&strict=true')
+          .then(response => {
+
+            const data = response.data
+
+            item = data.inventory_type[0]
+          })
+      
+          //getting region id
+      axios.get('https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=' + region + 
+                '&strict=true')
+          .then(response => {
+
+            const data = response.data
+            const regID = data.region[0]
+            const bOs = document.getElementsByName('bOs')
+            var buySell;
+            
+            // checking which radio button was selected
+            for (var i = 0, length = bOs.length; i < length; i++) {
+              if (bOs[i].checked) {
+                // do whatever you want with the checked radio
+                buySell = bOs[i].value
+                // only one radio can be logically checked, don't check the rest
+                break;
+              }
+            }
+            
+            // Getting the orders
+            axios.get('https://esi.evetech.net/latest/markets/' + regID + '/orders/?datasource=tranquility&order_type=' + buySell +
+                      '&page=1&type_id=' + item)
+                .then(response => {
+                    //document.getElementById('name').innerHTML = data.name 
+                    document.getElementById('desc').innerHTML = response.data[0].price
+                    console.log(response.data[0].price)
+                    //document.getElementById('price').innerHTML = data.price
+                })
+          })
+          .catch(error => {
+            console.log(error)
+            alert(error)
+          })
       }
-      document.onkeyup = function(e) {
+  document.onkeyup = function(e) {
         if (e.which == 13) {
           getItem()
         }
