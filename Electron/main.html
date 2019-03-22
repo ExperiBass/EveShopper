@@ -25,13 +25,13 @@
     <p id="price"></p>
     <script>
     const axios = require('axios')
-    var item; // Item ID
-    var regID; // Region ID
-    var buySell; // Will be either "buy", "sell", or undefined
 
     function getItem() {
       var iSearch = document.getElementById('Item').value
       var region = document.getElementById('Region').value
+      var item; // Item ID
+      var regID; // Region ID
+      var buySell; // Will be either "buy", "sell", or undefined
 
       // Checking for region and item
       if (region == '') {
@@ -72,7 +72,7 @@
                 break;
               }
             }
-            getOrders()
+            getOrders(regID, buySell, item)
           })
           .catch(error => {
             console.log(error)
@@ -80,23 +80,37 @@
           })
       }
 
-      function getOrders() {
+    function getOrders(regID, buySell, item) {
 
-        // checking if a radio button was pressed
-        if (buySell == undefined) {
-                  document.getElementById('desc').innerHTML = 'Choose either "Buy" or "Sell"!'
-                  return;
-                }
-            // Getting the orders
-            axios.get('https://esi.evetech.net/latest/markets/' + regID + '/orders/?datasource=tranquility&order_type=' + buySell +
-                      '&page=1&type_id=' + item)
-                .then(response => {
-                    //document.getElementById('name').innerHTML = data.name 
-                    document.getElementById('desc').innerHTML = response.data[0].price
-                    console.log(response.data[0].price)
-                    //document.getElementById('price').innerHTML = data.price
-                })
-      }
+      // checking if a radio button was pressed
+      if (buySell == undefined) {
+                document.getElementById('desc').innerHTML = 'Choose either "Buy" or "Sell"!'
+                return;
+              }
+          // Getting the orders
+        axios.get('https://esi.evetech.net/latest/markets/' + regID + '/orders/?datasource=tranquility&order_type=' + buySell +
+                  '&page=1&type_id=' + item)
+            .then(response => {
+                var data = response.data
+                console.log(data[0].location_id)
+                getStations(data)
+                //document.getElementById('price').innerHTML = data.price
+            })
+    }
+
+    function getStations(pData) {
+      console.log(pData[0].location_id)
+      axios.get('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', 
+      [ pData[0].location_id, pData[0].system_id ]) // ERROR: 405
+            .then(response => {
+              var data = response.data
+              console.log(data[0].name + '\n' + data[1].name)
+            })
+            .catch(error => {
+            console.log(error)
+            alert(error)
+          })
+    }
   document.onkeyup = function(e) {
         if (e.which == 13) {
           getItem()
