@@ -11,20 +11,21 @@
   <body>
     <form>
       Region:<br>
-      <input type="text" name="region" id="Region"><br>
+      <input type="text" name="region" id="Region" value="Devoid"><br>
       Item:<br>
-      <input type="text" name="item" id="Item"><br>
+      <input type="text" name="item" id="Item" value="Tritanium"><br>
       <input type="radio" name="bOs" id="buyOrSell" value="buy">Buy<br>
       <input type="radio" name="bOs" id="buyOrSell" value="sell">Sell<br>
-      <input type = "button"
-    value = "Fetch"
-    onclick = "getItem()"/>
+      <input type = "button" value = "Fetch" onclick = "getItem()"/>
     </form>
-    <p id="name"></p>
-    <p id="desc"></p>
-    <p id="price"></p>
+    <p id="info"></p>
+    <p id="warning"></p>
+
     <script>
+
     const axios = require('axios')
+
+    
 
     function getItem() {
       var iSearch = document.getElementById('Item').value
@@ -35,11 +36,11 @@
 
       // Checking for region and item
       if (region == '') {
-        document.getElementById('desc').innerHTML = 'You didn\'t give a region!'
+        document.getElementById('warning').innerHTML = 'You didn\'t give a region!'
         return;
       }
       if (iSearch == '') {
-        document.getElementById('desc').innerHTML = 'You didn\'t give a item to get the prices of!'
+        document.getElementById('warning').innerHTML = 'You didn\'t give a item to get the prices of!'
         return;
       }
 
@@ -84,33 +85,49 @@
 
       // checking if a radio button was pressed
       if (buySell == undefined) {
-                document.getElementById('desc').innerHTML = 'Choose either "Buy" or "Sell"!'
+                document.getElementById('warning').innerHTML = 'Choose either "Buy" or "Sell"!'
                 return;
               }
           // Getting the orders
         axios.get('https://esi.evetech.net/latest/markets/' + regID + '/orders/?datasource=tranquility&order_type=' + buySell +
                   '&page=1&type_id=' + item)
             .then(response => {
-                var data = response.data
-                console.log(data[0].location_id)
-                getStations(data)
-                //document.getElementById('price').innerHTML = data.price
+                const data = response.data
+                var info;
+
+                var s = getStations(data[0].location_id)
+                setTimeout(() => { console.log(s) }, 1000)
+
+                for (var i = 0; i < data.length; i++) {
+                  var stations = setTimeout(() => { getStations(data[i].location_id) }, 100000) //getStations(data[i].location_id)
+                  var prices = data[i].price
+                  info += '\n Station: ' + stations
+                }
+                //console.log(info)
             })
     }
 
-    function getStations(pData) {
-      console.log(pData[0].location_id)
-      axios.get('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', 
-      [ pData[0].location_id, pData[0].system_id ]) // ERROR: 405
+    async function getStations(location) {
+
+      var info;
+      var name;
+      // Get the stations location
+      await axios.get('https://esi.evetech.net/latest/universe/stations/' + location + '/?datasource=tranquility')
             .then(response => {
-              var data = response.data
-              console.log(data[0].name + '\n' + data[1].name)
+              const data = response.data
+
+                console.log(data.name)
+                name = data.name
+
             })
             .catch(error => {
             console.log(error)
             alert(error)
           })
+          console.log(name)
+      return name;
     }
+     
   document.onkeyup = function(e) {
         if (e.which == 13) {
           getItem()
