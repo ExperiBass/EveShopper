@@ -96,7 +96,7 @@
                 var info;
 
                 var s = getStations(data[0].location_id)
-                setTimeout(() => { console.log(s) }, 1000)
+                setTimeout(() => { console.log(s) }, 1000) // this returns a promise instead of the value of `name`
 
                 for (var i = 0; i < data.length; i++) {
                   var stations = setTimeout(() => { getStations(data[i].location_id) }, 100000) //getStations(data[i].location_id)
@@ -124,8 +124,8 @@
             console.log(error)
             alert(error)
           })
-          console.log(name)
-      return name;
+          console.log(name) // this logs the name perfectly
+      return name; // is passed to line 99
     }
      
   document.onkeyup = function(e) {
