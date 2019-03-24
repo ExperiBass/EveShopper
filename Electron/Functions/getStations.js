@@ -11,7 +11,6 @@ async function getStations(location) {
     await axios.get('https://esi.evetech.net/latest/universe/stations/' + location + '/?datasource=tranquility')
                   .then(response => {
                     const data = response.data
-                    console.log(data)
                     promiseName = Promise.resolve(data.name)
 
                   })

@@ -20,20 +20,28 @@ async function getOrders(regID, buySell, item) {
 
                   const data = response.data
                   var info;
-                  
-                  var volRem = data.volume_remain // for remaining volume of items in station (buy option only)
 
-                  for (var i = 0; i < data.length; i++) {
+                  //setTimeout(() => { getStations(data[0].location_id).then(function(value) { info += value; console.log(info) }) }, 1000)
 
-                    var prices = data[i].price
-                    console.log(data[i].location_id)
+                  //var volRem = data.volume_remain // for remaining volume of items in station (buy option only)
+
+                 for (let i of data) {
+
+                    var price = i.price
+                    var volRem = i.volume_remain
                     var stations;
 
-                    setTimeout(() => { getStations(data[i].location_id).then(function(value) { stations += value }) }, 1000)
+                    setTimeout(() => { getStations(i.location_id).then(function(value) { stations += value }) }, 1000)
 
-
-                    setTimeout(() => { info += '\n Station: ' + stations }, 1000)
+                    console.log(price)
+                    setTimeout(() => { info += '\n Station: ' + 
+                    stations + ' Price: ' 
+                    + price + ' Remaining volume: ' 
+                    + volRem }, 1100)
                   }
-                  //console.log(info)
                 })
-  }
+                .catch(error => {
+                  console.log(error)
+                  alert(error)
+                })
+}
