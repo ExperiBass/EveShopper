@@ -20,7 +20,7 @@ async function getOrders(regID, buySell, item) {
 
                   const data = response.data
                   var info;
-                  var volRem = data.volume_remain // for remaining volume of items in station
+                  var volRem = data.volume_remain // for remaining volume of items in station (buy option only)
 
                   var s = getStations(data[0].location_id)
                   var name;
