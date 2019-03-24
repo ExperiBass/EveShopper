@@ -20,11 +20,11 @@ async function getOrders(regID, buySell, item) {
               var s = getStations(data[0].location_id)
               setTimeout(() => { console.log(s) }, 1000) // this returns a promise instead of the value of `name`
 
-              for (var i = 0; i < data.length; i++) {
+              /*for (var i = 0; i < data.length; i++) {
                 var stations = setTimeout(() => { getStations(data[i].location_id) }, 1000)
                 var prices = data[i].price
                 info += '\n Station: ' + stations
-              }
+              }*/
               //console.log(info)
           })
   }
