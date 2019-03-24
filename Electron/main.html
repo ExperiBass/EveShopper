@@ -16,7 +16,9 @@
       <input type="text" name="item" id="Item" value="Tritanium"><br>
       <input type="radio" name="bOs" id="buyOrSell" value="buy">Buy<br>
       <input type="radio" name="bOs" id="buyOrSell" value="sell">Sell<br>
-      <input type = "button" value = "Fetch" onclick = "getItem()"/>
+      <input type = "button" value = "Fetch" onclick = "getItem(document.getElementById('Item').value
+                                                              , document.getElementById('Region').value
+                                                              , document.getElementsByName('bOs'))"/>
     </form>
     <p id="info"></p>
     <p id="warning"></p>
@@ -24,109 +26,39 @@
     <script>
 
     const axios = require('axios')
+    const getItem = require('./Functions/getItem')
 
-    
-
-    function getItem() {
-      var iSearch = document.getElementById('Item').value
-      var region = document.getElementById('Region').value
-      var item; // Item ID
-      var regID; // Region ID
-      var buySell; // Will be either "buy", "sell", or undefined
-
-      // Checking for region and item
-      if (region == '') {
-        document.getElementById('warning').innerHTML = 'You didn\'t give a region!'
-        return;
-      }
-      if (iSearch == '') {
-        document.getElementById('warning').innerHTML = 'You didn\'t give a item to get the prices of!'
-        return;
-      }
-
-      // getting the item ID
-      axios.get('https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=' 
-                + iSearch + '&strict=true')
-          .then(response => {
-
-            const data = response.data
-
-            item = data.inventory_type[0]
-          })
-      
-          //getting region id
-      axios.get('https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=' + region + 
-                '&strict=true')
-          .then(response => {
-
-            const data = response.data
-            regID = data.region[0]
-            const bOs = document.getElementsByName('bOs')
-            
-            // checking which radio button was selected
-            for (var i = 0, length = bOs.length; i < length; i++) {
-              if (bOs[i].checked) {
-                // do whatever you want with the checked radio
-                buySell = bOs[i].value
-                
-                // only one radio can be logically checked, don't check the rest
-                break;
-              }
-            }
-            getOrders(regID, buySell, item)
-          })
-          .catch(error => {
-            console.log(error)
-            alert(error)
-          })
-      }
-
-    function getOrders(regID, buySell, item) {
-
-      // checking if a radio button was pressed
-      if (buySell == undefined) {
-                document.getElementById('warning').innerHTML = 'Choose either "Buy" or "Sell"!'
-                return;
-              }
-          // Getting the orders
-        axios.get('https://esi.evetech.net/latest/markets/' + regID + '/orders/?datasource=tranquility&order_type=' + buySell +
-                  '&page=1&type_id=' + item)
-            .then(response => {
-                const data = response.data
-                var info;
-
-                var s = getStations(data[0].location_id)
-                setTimeout(() => { console.log(s) }, 1000) // this returns a promise instead of the value of `name`
-
-                for (var i = 0; i < data.length; i++) {
-                  var stations = setTimeout(() => { getStations(data[i].location_id) }, 100000) //getStations(data[i].location_id)
-                  var prices = data[i].price
-                  info += '\n Station: ' + stations
-                }
-                //console.log(info)
-            })
-    }
-
-    async function getStations(location) {
-
-      var info;
-      var name;
-      // Get the stations location
-      await axios.get('https://esi.evetech.net/latest/universe/stations/' + location + '/?datasource=tranquility')
-            .then(response => {
-              const data = response.data
-
-                console.log(data.name)
-                name = data.name
-
-            })
-            .catch(error => {
-            console.log(error)
-            alert(error)
-          })
-          console.log(name) // this logs the name perfectly
-      return name; // is passed to line 99
-    }
+    // List of faction regions
+    const amarrRegions = [
+    10000054, // Aridia
+    10000036, // Devoid
+    10000043, // Domain
+    10000067, // Genesis
+    10000052, // Kador
+    10000065, // Kor-Azor
+    10000020, // Tash-Murkon
+    10000038  // The Bleak Lands
+    ]
+    const caldariRegions = [
+    10000016, // Lonetrek
+    10000033, // The Citadel
+    10000002, // The Forge
+    10000069  // Black Rise
+    ]
+    const gallenteRegions = [
+    10000064, // Essence
+    10000037, // Everyshore
+    10000048, // Placid
+    10000032, // Sinq Laison
+    10000044, // Solitude
+    10000068  // Verge Vendor
+    ]
+    const minmatarRegions = [
+    10000042, // Metropolis
+    10000030, // Heimatar
+    10000028  // Molden Heath
+    ]
+    const triglavianRegions = []
      
   document.onkeyup = function(e) {
         if (e.which == 13) {
