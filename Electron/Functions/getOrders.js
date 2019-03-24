@@ -18,7 +18,15 @@ async function getOrders(regID, buySell, item) {
               var info;
 
               var s = getStations(data[0].location_id)
-              setTimeout(() => { console.log(s) }, 1000) // this returns a promise instead of the value of `name`
+              var name;
+              var promiseName = Promise.resolve(s)
+
+              promiseName.then(function(value) {
+                console.log('line 25: ' + value)
+                name = value
+                console.log('Line 27: ' + name)
+              })
+              setTimeout(() => { console.log('From line 29, getOrders: ' + name) }, 1000) // this returns a promise instead of the value of `name`
 
               /*for (var i = 0; i < data.length; i++) {
                 var stations = setTimeout(() => { getStations(data[i].location_id) }, 1000)

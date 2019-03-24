@@ -14,23 +14,24 @@ async function getStations(location) {
 
               //promiseName = data.name
              promiseName = Promise.resolve(data.name)
+             console.log(name)
           })
           .catch(error => {
           console.log(error)
           alert(error)
         })
 
-        promiseName.then(function(value) {
+       /* promiseName.then(function(value) {
           console.log('line 22: ' + value)
           name = value
           console.log('Line 24: ' + name)
-        })
+        })*/
 
-    setTimeout(() => { returnV(name) }, 1000) // this logs the name perfectly
+    setTimeout(() => { return name }, 100) // this logs the name perfectly
 
-    function returnV(a) {
+   /* function returnV(a) {
       console.log('from `returnV`: ' + a)
       return a // is passed back to `getOrders.js`
-    }
+    }*/
 
 }
