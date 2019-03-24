@@ -3,12 +3,20 @@ module.exports = getItem
 const axios = require('axios')
 const getOrders = require('./getOrders')
 
+var click;
+
 function getItem(iSearch, region, bOs) {
   //var iSearch = document.getElementById('Item').value
   //var region = document.getElementById('Region').value
   var item; // Item ID
   var regID; // Region ID
   var buySell; // Will be either "buy", "sell", or undefined
+
+  if (click == 1){
+    document.getElementById('warning').innerHTML = 'I\'m already fetching the orders!'
+    return;
+  }
+  click = 1
 
   // Checking for region and item
   if (region == '') {
