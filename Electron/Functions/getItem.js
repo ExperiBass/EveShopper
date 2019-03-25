@@ -29,8 +29,7 @@ function getItem(iSearch, region, bOs) {
   }
 
   // getting the item ID
-  axios.get('https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=' 
-            + iSearch + '&strict=true')
+  axios.get(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${iSearch}&strict=true`)
           .then(response => {
 
             const data = response.data
@@ -39,9 +38,7 @@ function getItem(iSearch, region, bOs) {
           })
   
       //getting region id
-  axios.get('https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=' + 
-            region + 
-            '&strict=true')
+  axios.get(`https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=${region}&strict=true`)
           .then(response => {
 
             const data = response.data

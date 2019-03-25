@@ -10,38 +10,44 @@ async function getOrders(regID, buySell, item) {
     document.getElementById('warning').innerHTML = 'Choose either "Buy" or "Sell"!'
     return;
   }
-
+  var data;
   // Getting the orders
-  await axios.get('https://esi.evetech.net/latest/markets/' + 
-                  regID + '/orders/?datasource=tranquility&order_type=' + 
-                  buySell +
-                  '&page=1&type_id=' + item)
+  await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${item}`)
                  .then(response => {
 
-                  const data = response.data
-                  var info;
+                  data = response.data
 
-                  //setTimeout(() => { getStations(data[0].location_id).then(function(value) { info += value; console.log(info) }) }, 1000)
-
-                  //var volRem = data.volume_remain // for remaining volume of items in station (buy option only)
-
-                 for (let i of data) {
-
-                    var price = i.price
-                    var volRem = i.volume_remain
-                    var stations;
-
-                    setTimeout(() => { getStations(i.location_id).then(function(value) { stations += value }) }, 1000)
-
-                    console.log(price)
-                    setTimeout(() => { info += '\n Station: ' + 
-                    stations + ' Price: ' 
-                    + price + ' Remaining volume: ' 
-                    + volRem }, 1100)
-                  }
                 })
                 .catch(error => {
-                  console.log(error)
-                  alert(error)
+                  console.log(error.response.data)
                 })
+
+                var j = 0
+
+                var get = setInterval(getStations, 1000, data[j].location_id)
+                var count = setInterval(incr, 1010)
+                
+                async function incr() {
+
+                  if (j > 24) {
+                      clearInterval(get)
+                      clearInterval(count)
+                      return
+                  }
+                  const currentData = data[j];
+                  var station = await getStations(currentData.location_id);
+                  var price = currentData.price, remVol
+
+                  j++
+                  if (buySell == 'buy') {
+                    remVol = currentData.volume_remain
+
+                    console.log(`${j} , Location ID: ${currentData.location_id} Station: ${station}, 
+                                Price: ${price} ISK, Remaining Volume: ${remVol}`)
+                  } else {      
+                    console.log(`${j} , Location ID: ${currentData.location_id} Station: ${station}, 
+                    Price: ${price} ISK`)
+                  }
+                  
+              }
 }
