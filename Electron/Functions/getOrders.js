@@ -6,6 +6,38 @@ const getStations = require('./getStations')
 async function getOrders(regID, buySell, itemID) {
   const fetch = document.getElementById('Fetch')
 
+  // List of faction region IDs
+  const amarrRegions = [
+    10000054, // Aridia
+    10000036, // Devoid
+    10000043, // Domain
+    10000067, // Genesis
+    10000052, // Kador
+    10000065, // Kor-Azor
+    10000020, // Tash-Murkon
+    10000038  // The Bleak Lands
+    ]
+    const caldariRegions = [
+    10000016, // Lonetrek
+    10000033, // The Citadel
+    10000002, // The Forge
+    10000069  // Black Rise
+    ]
+    const gallenteRegions = [
+    10000064, // Essence
+    10000037, // Everyshore
+    10000048, // Placid
+    10000032, // Sinq Laison
+    10000044, // Solitude
+    10000068  // Verge Vendor
+    ]
+    const minmatarRegions = [
+    10000042, // Metropolis
+    10000030, // Heimatar
+    10000028  // Molden Heath
+    ]
+    const triglavianRegions = [] // Empty for now
+
   fetch.disabled = true
 
   // checking if a radio button was pressed
