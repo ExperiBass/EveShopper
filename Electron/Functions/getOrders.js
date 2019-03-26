@@ -2,6 +2,7 @@ module.exports = getOrders
 
 const axios = require('axios')
 const getStations = require('./getStations')
+const err = require('./err')
 
 async function getOrders(regID, buySell, itemID) {
   const fetch = document.getElementById('Fetch')
@@ -49,22 +50,26 @@ async function getOrders(regID, buySell, itemID) {
   var data;
   // Getting the orders
   await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
-                 .then(response => {
-                  if (response.error) {
-                    console.log("Log your error here:", response.error);
-                    return;
-                  } 
+                 .then(response => { 
                   data = response.data
-
                 })
-                .catch(error => {
-                  console.log(error)
+                .catch(error => { 
+                  err(error, 'Function: getOrders()')
+                  fetch.disabled = false
+                  return
                 })
 
                 var j = 0
                 var i = 0
-
+                
+                try {
                 var get = setInterval(getStations, 1000, data[j].location_id)
+                }
+                catch (error) {
+                  err(error, 'Function: getOrders()')
+                  fetch.disabled = false
+                  return
+                }
                 var count = setInterval(incr, 1010)
                 var info;
                 async function incr() {
@@ -96,7 +101,8 @@ async function getOrders(regID, buySell, itemID) {
 
                   document.getElementById('Info').innerText = `Fetching data${dots}`
                   const currentData = data[j];
-                  var station = await getStations(currentData.location_id);
+                  
+                  var station = await getStations(currentData.location_id)
                   var price = currentData.price, remVol, minVol
 
                   //j++

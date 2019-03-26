@@ -2,6 +2,7 @@ module.exports = getItem
 
 const axios = require('axios')
 const getOrders = require('./getOrders')
+const err = require('./err')
 
 var click;
 
@@ -28,6 +29,10 @@ function getItem(iSearch, region, bOs) {
 
             item = data.inventory_type[0]
           })
+          .catch(error => { 
+            err(error, 'Function: getItem()')
+            return
+          })
   
       //getting region id
   axios.get(`https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=${region}&strict=true`)
@@ -49,8 +54,8 @@ function getItem(iSearch, region, bOs) {
             }
             getOrders(regID, buySell, item)
           })
-          .catch(error => {
-            console.log(error)
-            alert('There was an error, please try again!')
+          .catch(error => { 
+            err(error, 'Function: getItem()')
+            return
           })
 }
