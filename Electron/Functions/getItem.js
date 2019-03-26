@@ -9,14 +9,14 @@ function getItem(iSearch, region, bOs) {
   var item; // Item ID
   var regID; // Region ID
   var buySell; // Will be either "buy", "sell", or undefined
-
+  const Info = document.getElementById('Info')
   // Checking for region and item
   if (region == '') {
-    document.getElementById('warning').innerHTML = 'You didn\'t give a region!'
+    Info.innerHTML = 'You didn\'t give a region!'
     return;
   }
   if (iSearch == '') {
-    document.getElementById('warning').innerHTML = 'You didn\'t give a item to get the prices of!'
+    Info.innerHTML = 'You didn\'t give a item to get the prices of!'
     return;
   }
 
@@ -51,6 +51,6 @@ function getItem(iSearch, region, bOs) {
           })
           .catch(error => {
             console.log(error)
-            alert(error)
+            alert('There was an error, please try again!')
           })
 }

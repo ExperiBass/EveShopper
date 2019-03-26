@@ -5,6 +5,7 @@ const getStations = require('./getStations')
 
 async function getOrders(regID, buySell, itemID) {
   const fetch = document.getElementById('Fetch')
+  var content = ''
 
   // List of faction region IDs
   const amarrRegions = [
@@ -39,22 +40,21 @@ async function getOrders(regID, buySell, itemID) {
     const triglavianRegions = [] // Empty for now
 
   fetch.disabled = true
-
-  // checking if a radio button was pressed
   if (buySell == undefined) {
-    document.getElementById('warning').innerHTML = 'Choose either "Buy" or "Sell"!'
+    Info.innerHTML = 'Choose either "Buy" or "Sell"!'
+    fetch.disabled = false
     return;
   }
+  
   var data;
   // Getting the orders
   await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
                  .then(response => {
-
-                  data = response.data
-                  if (data.error) {
-                    console.log("Log your error here:", data.error);
+                  if (response.error) {
+                    console.log("Log your error here:", response.error);
                     return;
-                } 
+                  } 
+                  data = response.data
 
                 })
                 .catch(error => {
@@ -62,33 +62,58 @@ async function getOrders(regID, buySell, itemID) {
                 })
 
                 var j = 0
+                var i = 0
 
                 var get = setInterval(getStations, 1000, data[j].location_id)
                 var count = setInterval(incr, 1010)
-                
+                var info;
                 async function incr() {
                   j++
+                  i++
+                  var dots;
+                  
+                  switch (i) {
+                    case 1: 
+                      dots = '.'
+                      break
+                    case 2:
+                      dots = '..'
+                      break
+                    case 3:
+                      dots = '...'
+                      break
+                    default:
+                      dots = ''
+                      i = 0
+                  }
                   if (j >= data.length) {
                     clearInterval(get)
                     clearInterval(count)
+                    document.getElementById('Info').innerText = content
                     fetch.disabled = false
                     return
-                }
+                  }
+
+                  document.getElementById('Info').innerText = `Fetching data${dots}`
                   const currentData = data[j];
                   var station = await getStations(currentData.location_id);
                   var price = currentData.price, remVol, minVol
 
                   //j++
-                  if (buySell == 'buy') {
-                    remVol = currentData.volume_remain
-
-                    console.log(`${j} , Location ID: ${currentData.location_id} Station: ${station}, 
-                                Price: ${price} ISK, Remaining Items: ${remVol}`)
-                  } else {      
-                    minVol = currentData.min_volume
-                    console.log(`${j} , Location ID: ${currentData.location_id} Station: ${station}, 
-                    Price: ${price} ISK, Minimum Volume: ${minVol}`)
+                  switch (buySell){
+                    case 'buy':
+                      remVol = currentData.volume_remain
+                      info = `${j} , Location ID: ${currentData.location_id} Station: ${station}, 
+                                    Price: ${price} ISK, Remaining Items: ${remVol}`
+                      content += `${info}\n\n`
+                      return
+                    case 'sell':
+                      minVol = currentData.min_volume
+                      info = `${j}: Location ID: ${currentData.location_id} Station: ${station}, 
+                      Price: ${price} ISK, Minimum Volume: ${minVol}`
+                      content += `${info}\n\n`
+                      return
                   }
-                  
-              }
+                    
+                }
 }
