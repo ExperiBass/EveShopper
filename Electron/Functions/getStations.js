@@ -11,12 +11,16 @@ async function getStations(location) {
     await axios.get(`https://esi.evetech.net/latest/universe/stations/${location}/?datasource=tranquility`)
                   .then(response => {
                     const data = response.data
+                    if (data.error) {
+                      console.log("Log your error here:", data.error);
+                      return;
+                  } 
                     promiseName = Promise.resolve(data.name)
 
                   })
                   .catch(error => {
                   console.log(error)
-                  alert(error)
+                  //alert(error)
                   })
 
 return promiseName
