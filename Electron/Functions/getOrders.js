@@ -63,14 +63,14 @@ async function getOrders(regID, buySell, itemID) {
                 var i = 0
                 
                 try {
-                var get = setInterval(getStations, 1000, data[j].location_id)
+                var get = setInterval(getStations, 500, data[j].location_id)
                 }
                 catch (error) {
                   err(error, 'Function: getOrders()')
                   fetch.disabled = false
                   return
                 }
-                var count = setInterval(incr, 1010)
+                var count = setInterval(incr, 510)
                 var info;
                 async function incr() {
                   j++
@@ -105,21 +105,24 @@ async function getOrders(regID, buySell, itemID) {
                   var station = await getStations(currentData.location_id)
                   var price = currentData.price, remVol, minVol
 
+                  if (station == undefined) {
+                    return
+                  }
+
                   //j++
                   switch (buySell){
                     case 'buy':
                       remVol = currentData.volume_remain
-                      info = `${j} , Location ID: ${currentData.location_id} Station: ${station}, 
+                      info = `${j} , Station: ${station}, 
                                     Price: ${price} ISK, Remaining Items: ${remVol}`
                       content += `${info}\n\n`
                       return
                     case 'sell':
                       minVol = currentData.min_volume
-                      info = `${j}: Location ID: ${currentData.location_id} Station: ${station}, 
+                      info = `${j}: Station: ${station}, 
                       Price: ${price} ISK, Minimum Volume: ${minVol}`
                       content += `${info}\n\n`
                       return
                   }
-                    
                 }
 }
