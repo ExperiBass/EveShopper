@@ -50,7 +50,7 @@ async function getOrders(regID, buySell, itemID) {
   var data;
   // Getting the orders
   await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
-                 .then(response => { 
+                .then(response => { 
                   data = response.data
                 })
                 .catch(error => { 
@@ -106,7 +106,7 @@ async function getOrders(regID, buySell, itemID) {
                   var price = currentData.price, remVol, minVol
 
                   if (station == undefined) {
-                    return
+                    return;  
                   }
 
                   //j++
@@ -115,14 +115,14 @@ async function getOrders(regID, buySell, itemID) {
                       remVol = currentData.volume_remain
                       info = `${j} , Station: ${station}, 
                                     Price: ${price} ISK, Remaining Items: ${remVol}`
-                      content += `${info}\n\n`
-                      return
+                      break;
                     case 'sell':
                       minVol = currentData.min_volume
                       info = `${j}: Station: ${station}, 
                       Price: ${price} ISK, Minimum Volume: ${minVol}`
-                      content += `${info}\n\n`
-                      return
+                      break;
                   }
+                  content += `${info}\n\n`
+                  console.log(info)
                 }
 }
