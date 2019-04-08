@@ -9,6 +9,7 @@ let win
 app.setName('EveShopper')
 
 function createWindow () {
+
   // Create the browser window.
   win = new BrowserWindow({
     width: 800,
@@ -18,14 +19,13 @@ function createWindow () {
       webSecurity: false
     }
   })
+
   // and load the index.html of the app.
- // const index = path.resolve('./Electron/main.html')
-  //win.loadFile(index)
   win.loadURL(url.format({
     pathname: path.join(__dirname, './main.html'),
     protocol: 'file:',
     slashes: true
-    }));
+    }))
   // Open the DevTools.
   win.webContents.openDevTools()
 
@@ -63,6 +63,7 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
 app.on('before-quit', () => {
     console.log('emitted before quitting!')
 })

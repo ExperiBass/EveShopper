@@ -5,9 +5,11 @@ const getStations = require('./getStations')
 const err = require('./err')
 
 async function getOrders(regID, buySell, itemID) {
-  const fetch = document.getElementById('Info')
+  const Info = document.getElementById('Info')
+  const Fetch = document.getElementById('Fetch')
   const table = document.getElementById('table')
   var content = ''
+  var data;
 
   // List of faction region IDs
   const amarrRegions = [
@@ -20,35 +22,38 @@ async function getOrders(regID, buySell, itemID) {
     10000020, // Tash-Murkon
     10000038  // The Bleak Lands
     ]
-    const caldariRegions = [
-    10000016, // Lonetrek
-    10000033, // The Citadel
-    10000002, // The Forge
-    10000069  // Black Rise
-    ]
-    const gallenteRegions = [
-    10000064, // Essence
-    10000037, // Everyshore
-    10000048, // Placid
-    10000032, // Sinq Laison
-    10000044, // Solitude
-    10000068  // Verge Vendor
-    ]
-    const minmatarRegions = [
-    10000042, // Metropolis
-    10000030, // Heimatar
-    10000028  // Molden Heath
-    ]
-    const triglavianRegions = [] // Empty for now
+  const caldariRegions = [
+  10000016, // Lonetrek
+  10000033, // The Citadel
+  10000002, // The Forge
+  10000069  // Black Rise
+  ]
+  const gallenteRegions = [
+  10000064, // Essence
+  10000037, // Everyshore
+  10000048, // Placid
+  10000032, // Sinq Laison
+  10000044, // Solitude
+  10000068  // Verge Vendor
+  ]
+  const minmatarRegions = [
+  10000042, // Metropolis
+  10000030, // Heimatar
+  10000028  // Molden Heath
+  ]
+  const triglavianRegions = [] // Empty for now
 
-  fetch.disabled = true
+  Fetch.disabled = true
   if (buySell == undefined) {
     Info.innerHTML = 'Choose either "Buy" or "Sell"!'
-    fetch.disabled = false
-    return;
+    Fetch.disabled = false
+    return
   }
-  
-  var data;
+  if (itemID == undefined) {
+    Fetch.disabled = false
+    throw new Error('itemID is undefined!')
+  }
+
   // Getting the orders
   await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
                 .then(response => { 
@@ -56,7 +61,7 @@ async function getOrders(regID, buySell, itemID) {
                 })
                 .catch(error => { 
                   err(error, 'Function: getOrders()')
-                  fetch.disabled = false
+                  Fetch.disabled = false
                   return
                 })
 
@@ -69,7 +74,7 @@ async function getOrders(regID, buySell, itemID) {
                 }
                 catch (error) {
                   err(error, 'Function: getOrders()')
-                  fetch.disabled = false
+                  Fetch.disabled = false
                   return
                 }
                 var count = setInterval(incr, 510)
@@ -96,18 +101,18 @@ async function getOrders(regID, buySell, itemID) {
                   if (j >= data.length) {
                     clearInterval(get)
                     clearInterval(count)
-                    fetch.innerText = ''
+                    Info.innerText = ''
                     table.innerHTML = `<tr>
                                         <th>Station</th>
-                                        <th>Price</th> 
+                                        <th>Price (ISK)</th> 
                                         <th>${mOr}</th>
                                         </tr>
                                         ${content}`
-                    fetch.disabled = false
+                    Fetch.disabled = false
                     return
                   }
 
-                  fetch.innerText = `Fetching data${dots}`
+                  Info.innerText = `Fetching data${dots}`
                   const currentData = data[j];
                   
                   var station = await getStations(currentData.location_id)
