@@ -5,7 +5,8 @@ const getStations = require('./getStations')
 const err = require('./err')
 
 async function getOrders(regID, buySell, itemID) {
-  const fetch = document.getElementById('Fetch')
+  const fetch = document.getElementById('Info')
+  const table = document.getElementById('table')
   var content = ''
 
   // List of faction region IDs
@@ -61,6 +62,7 @@ async function getOrders(regID, buySell, itemID) {
 
                 var j = 0
                 var i = 0
+                var mOr;
                 
                 try {
                 var get = setInterval(getStations, 500, data[j].location_id)
@@ -94,12 +96,18 @@ async function getOrders(regID, buySell, itemID) {
                   if (j >= data.length) {
                     clearInterval(get)
                     clearInterval(count)
-                    document.getElementById('Info').innerText = content
+                    fetch.innerText = ''
+                    table.innerHTML = `<tr>
+                                        <th>Station</th>
+                                        <th>Price</th> 
+                                        <th>${mOr}</th>
+                                        </tr>
+                                        ${content}`
                     fetch.disabled = false
                     return
                   }
 
-                  document.getElementById('Info').innerText = `Fetching data${dots}`
+                  fetch.innerText = `Fetching data${dots}`
                   const currentData = data[j];
                   
                   var station = await getStations(currentData.location_id)
@@ -112,17 +120,24 @@ async function getOrders(regID, buySell, itemID) {
                   //j++
                   switch (buySell){
                     case 'buy':
+                    mOr = 'Remaining Volume'
                       remVol = currentData.volume_remain
-                      info = `${j} , Station: ${station}, 
-                                    Price: ${price} ISK, Remaining Items: ${remVol}`
+                      info = `<tr>
+                              <td>${station}</td>
+                              <td>${price}</td> 
+                              <td>${remVol}</td>
+                              </tr>`
                       break;
                     case 'sell':
+                      mOr = 'Minimum Volume'
                       minVol = currentData.min_volume
-                      info = `${j}: Station: ${station}, 
-                      Price: ${price} ISK, Minimum Volume: ${minVol}`
+                      info = `<tr>
+                              <td>${station}</td>
+                              <td>${price}</td> 
+                              <td>${minVol}</td>
+                              </tr>`
                       break;
                   }
-                  content += `${info}\n\n`
-                  console.log(info)
+                  content += `${info}`
                 }
 }
