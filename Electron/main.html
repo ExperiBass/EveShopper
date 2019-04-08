@@ -13,14 +13,10 @@
       Region:<br>
       <input type="text" name="region" id="Federation" value="Devoid"><br>
       Item:<br>
-      <input type="text" name="item" id="Item" value="Tritanium"><br><br>
+      <input type="text" name="item" id="Item" value="merlin"><br><br>
       <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Selling?<br>
       <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Buying?<br><br>
-      <input type="button" value="Fetch" id="Fetch" onclick="getItem(document.getElementById('Item').value
-                                                              , document.getElementById('Federation').value
-                                                              , document.getElementsByName('bOs'))" 
-                                                                onclick="spamStop(document.getElementById('Item').value
-                                                              , document.getElementById('Federation').value)"/>
+      <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
     </form>
     <p id="Info"></p>
 
@@ -28,12 +24,16 @@
 
     const axios = require('axios')
     const getItem = require('./Functions/getItem')
+
+    function get() {
+      getItem(document.getElementById('Item').value
+                  , document.getElementById('Federation').value
+                  , document.getElementsByName('bOs'))
+    }
      
   document.onkeyup = function(e) {
         if (e.which == 13) {
-          getItem(document.getElementById('Item').value
-                  , document.getElementById('Federation').value
-                  , document.getElementsByName('bOs'))
+          get()
         }
       }
     </script>

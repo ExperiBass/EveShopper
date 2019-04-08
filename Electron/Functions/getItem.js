@@ -24,10 +24,14 @@ function getItem(iSearch, region, bOs) {
   // getting the item ID
   axios.get(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${iSearch}&strict=true`)
           .then(response => {
-
-            const data = response.data
-
-            item = data.inventory_type[0]
+            try {
+              const data = response.data
+              item = data.inventory_type[0]
+            }
+            catch {
+              console.error('inventory_type doesnt exist!')
+              return
+            }
           })
           .catch(error => { 
             err(error, 'Function: getItem()')
