@@ -106,7 +106,7 @@ async function getOrders(regID, buySell, itemID) {
                   var price = currentData.price, remVol, minVol
 
                   if (station == undefined) {
-                    return
+                    station = `Private Station`
                   }
 
                   //j++
