@@ -5,8 +5,8 @@ function err(error, info) {
         console.log('caught: ', error.message)
         if (info) {
           const msg = `Error: ${error}, Info: ${info}`
-          Error(msg)        
+          new Error(msg)        
         } else {
-          Error(error)
+          new Error(error)
         }
 }

@@ -4,12 +4,12 @@ const axios = require('axios')
 const getOrders = require('./getOrders')
 const err = require('./err')
 
-var click;
+let click;
 
 function getItem(iSearch, region, bOs) {
-  var item; // Item ID
-  var regID; // Region ID
-  var buySell; // Will be either "buy", "sell", or undefined
+  let item; // Item ID
+  let regID; // Region ID
+  let buySell; // Will be either "buy", "sell", or undefined
   const Info = document.getElementById('Info')
   // Checking for region and item
   if (region == '') {
@@ -47,7 +47,7 @@ function getItem(iSearch, region, bOs) {
             //const bOs = document.getElementsByName('bOs')
             
             // checking which radio button was selected
-            for (var i = 0, length = bOs.length; i < length; i++) {
+            for (let i = 0, length = bOs.length; i < length; i++) {
               if (bOs[i].checked) {
                 // assign buySell the value of the checked radio
                 buySell = bOs[i].value

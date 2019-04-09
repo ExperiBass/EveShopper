@@ -8,8 +8,8 @@ async function getOrders(regID, buySell, itemID) {
   const Info = document.getElementById('Info')
   const Fetch = document.getElementById('Fetch')
   const table = document.getElementById('table')
-  var content = ''
-  var data;
+  let content = ''
+  let data;
 
   // List of faction region IDs
   const amarrRegions = [
@@ -51,7 +51,8 @@ async function getOrders(regID, buySell, itemID) {
   }
   if (itemID == undefined) {
     Fetch.disabled = false
-    throw new Error('itemID is undefined!')
+    Error('itemID is undefined!')
+    return
   }
 
   // Getting the orders
@@ -65,24 +66,24 @@ async function getOrders(regID, buySell, itemID) {
                   return
                 })
 
-                var j = 0
-                var i = 0
-                var mOr;
+                let j = 0
+                let i = 0
+                let mOr;
                 
                 try {
-                var get = setInterval(getStations, 500, data[j].location_id)
+                let get = setInterval(getStations, 500, data[j].location_id)
                 }
                 catch (error) {
                   err(error, 'Function: getOrders()')
                   Fetch.disabled = false
                   return
                 }
-                var count = setInterval(incr, 510)
-                var info;
+                let count = setInterval(incr, 510)
+                let info;
                 async function incr() {
                   j++
                   i++
-                  var dots;
+                  let dots;
                   
                   switch (i) {
                     case 1: 
@@ -102,12 +103,28 @@ async function getOrders(regID, buySell, itemID) {
                     clearInterval(get)
                     clearInterval(count)
                     Info.innerText = ''
-                    table.innerHTML = `<tr>
+
+                    if (content == '') {
+                      Info.innerText = `There are no ${buySell} orders for that in 
+                                      ${document.getElementById('Federation').value}!`
+                      Fetch.disabled = false
+                      return
+                    }
+                    if (mOr == undefined) {
+                      table.innerHTML = `<tr>
+                      <th>Station</th>
+                      <th>Price (ISK)</th> 
+                      <th></th>
+                      </tr>
+                      ${content}`
+                    } else {
+                      table.innerHTML = `<tr>
                                         <th>Station</th>
                                         <th>Price (ISK)</th> 
                                         <th>${mOr}</th>
                                         </tr>
                                         ${content}`
+                    }
                     Fetch.disabled = false
                     return
                   }
@@ -115,8 +132,8 @@ async function getOrders(regID, buySell, itemID) {
                   Info.innerText = `Fetching data${dots}`
                   const currentData = data[j];
                   
-                  var station = await getStations(currentData.location_id)
-                  var price = currentData.price, remVol, minVol
+                  let station = await getStations(currentData.location_id)
+                  let price = currentData.price, remVol, minVol
 
                   if (station == undefined) {
                     station = `Private Station`

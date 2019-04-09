@@ -5,8 +5,7 @@ const err = require('./err')
 
 async function getStations(location) {
 
-  var name = 'demo'
-  var promiseName;
+  let promiseName;
 
     // Get the stations location
     await axios.get(`https://esi.evetech.net/latest/universe/stations/${location}/?datasource=tranquility`)
