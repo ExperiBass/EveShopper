@@ -69,16 +69,18 @@ async function getOrders(regID, buySell, itemID) {
                 let j = 0
                 let i = 0
                 let mOr;
+                let d;
                 
                 try {
-                let get = setInterval(getStations, 500, data[j].location_id)
+                  d = data[j].location_id
                 }
                 catch (error) {
                   err(error, 'Function: getOrders()')
                   Fetch.disabled = false
                   return
                 }
-                let count = setInterval(incr, 510)
+                const get = setInterval(getStations, 500, d)
+                const count = setInterval(incr, 510)
                 let info;
                 async function incr() {
                   j++

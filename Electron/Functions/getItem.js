@@ -4,20 +4,19 @@ const axios = require('axios')
 const getOrders = require('./getOrders')
 const err = require('./err')
 
-let click;
-
 function getItem(iSearch, region, bOs) {
   let item; // Item ID
   let regID; // Region ID
   let buySell; // Will be either "buy", "sell", or undefined
   const Info = document.getElementById('Info')
+
   // Checking for region and item
   if (region == '') {
-    Info.innerHTML = 'You didn\'t give a region!'
+    Info.innerText = 'You didn\'t give a region!'
     return;
   }
   if (iSearch == '') {
-    Info.innerHTML = 'You didn\'t give a item to get the prices of!'
+    Info.innerText = 'You didn\'t give a item to get the prices of!'
     return;
   }
 
@@ -27,11 +26,11 @@ function getItem(iSearch, region, bOs) {
             try {
               const data = response.data
               item = data.inventory_type[0]
-            }
-            catch {
-              console.error('inventory_type doesnt exist!')
+            } catch {
+              Info.innerText = 'That\'s not a valid item!'
+              err('Invalid Item')
               return
-            }
+          }
           })
           .catch(error => { 
             err(error, 'Function: getItem()')
@@ -43,8 +42,13 @@ function getItem(iSearch, region, bOs) {
           .then(response => {
 
             const data = response.data
-            regID = data.region[0]
-            //const bOs = document.getElementsByName('bOs')
+            try {
+              regID = data.region[0]
+            } catch {
+              Info.innerText = 'Thats not a valid region!'
+              err('Invalid Region')
+              return
+            }
             
             // checking which radio button was selected
             for (let i = 0, length = bOs.length; i < length; i++) {
