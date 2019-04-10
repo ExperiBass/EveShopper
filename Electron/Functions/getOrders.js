@@ -66,28 +66,41 @@ async function getOrders(regID, buySell, itemID) {
                   return
                 })
 
-                let j = 0
-                let i = 0
+                //let j = 0
+               // let i = 0
                 let mOr;
                 let d;
                 
-                try {
+              /*  try {
                   d = data[j].location_id
                 }
                 catch (error) {
                   err(error, 'Function: getOrders()')
                   Fetch.disabled = false
                   return
+                }*/
+                async function sleep(millis) {
+                  return new Promise(resolve => setTimeout(resolve, millis));
                 }
-                const get = setInterval(getStations, 500, d)
-                const count = setInterval(incr, 510)
-                let info;
-                async function incr() {
-                  j++
-                  i++
-                  let dots;
-                  
-                  switch (i) {
+
+                let dots;
+                let j = 0
+                
+                for (let i = 0; i < data.length; i++, j++) {
+                  let currentData, station, price, remVol, minVol
+                  try {
+                    d = data[i].location_id
+                    currentData = data[i]
+                     station = await getStations(currentData.location_id)
+                     price = currentData.price 
+                  }
+                  catch (error) {
+                    err(error, 'Function: getOrders()')
+                    Fetch.disabled = false
+                    return
+                  }
+
+                  switch (j) {
                     case 1: 
                       dots = '.'
                       break
@@ -99,49 +112,9 @@ async function getOrders(regID, buySell, itemID) {
                       break
                     default:
                       dots = ''
-                      i = 0
-                  }
-                  if (j >= data.length) {
-                    clearInterval(get)
-                    clearInterval(count)
-                    Info.innerText = ''
-
-                    if (content == '') {
-                      Info.innerText = `There are no ${buySell} orders for that in 
-                                      ${document.getElementById('Federation').value}!`
-                      Fetch.disabled = false
-                      return
-                    }
-                    if (mOr == undefined) {
-                      table.innerHTML = `<tr>
-                      <th>Station</th>
-                      <th>Price (ISK)</th> 
-                      <th></th>
-                      </tr>
-                      ${content}`
-                    } else {
-                      table.innerHTML = `<tr>
-                                        <th>Station</th>
-                                        <th>Price (ISK)</th> 
-                                        <th>${mOr}</th>
-                                        </tr>
-                                        ${content}`
-                    }
-                    Fetch.disabled = false
-                    return
+                      j = 0
                   }
 
-                  Info.innerText = `Fetching data${dots}`
-                  const currentData = data[j];
-                  
-                  let station = await getStations(currentData.location_id)
-                  let price = currentData.price, remVol, minVol
-
-                  if (station == undefined) {
-                    station = `Private Station`
-                  }
-
-                  //j++
                   switch (buySell){
                     case 'buy':
                     mOr = 'Remaining Volume'
@@ -155,13 +128,42 @@ async function getOrders(regID, buySell, itemID) {
                     case 'sell':
                       mOr = 'Minimum Volume'
                       minVol = currentData.min_volume
-                      info = `<tr>
-                              <td>${station}</td>
-                              <td>${price}</td> 
+                      info = `<tr><td>${station}</td>
+                              <td>${price}</td>
                               <td>${minVol}</td>
                               </tr>`
                       break;
                   }
-                  content += `${info}`
+
+                  if (station == undefined) {
+                    station = `Private Station`
+                  }
+                  
+                  if (mOr == undefined) {
+                    table.innerHTML = `<tr>
+                    <th>Station</th>
+                    <th>Price (ISK)</th> 
+                    <th></th>
+                    </tr>`
+                  } else {
+                    table.innerHTML = `<tr>
+                                      <th>Station</th>
+                                      <th>Price (ISK)</th> 
+                                      <th>${mOr}</th>
+                                      </tr>`
+                  }
+                  Info.innerText = `Fetching data${dots}`
+                  content += info
+                  await sleep(500)
+                }
+                Info.innerText = ''
+                if (content == '') {
+                  Info.innerText = `There are no ${buySell} orders for that in 
+                                  ${document.getElementById('Federation').value}!`
+                  Fetch.disabled = false
+                  return
+                } else {
+                table.innerHTML += content
+                Fetch.disabled = false
                 }
 }
