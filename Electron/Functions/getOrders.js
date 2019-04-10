@@ -11,6 +11,8 @@ async function getOrders(regID, buySell, itemID, array) {
   let content = ''
   let data;
 
+  console.log('hi')
+
   Fetch.disabled = true
   if (buySell == undefined) {
     Info.innerHTML = 'Choose either "Buy" or "Sell"!'
@@ -23,9 +25,17 @@ async function getOrders(regID, buySell, itemID, array) {
     return
   }
 
+ // async function sleep(millis) {
+ //   return new Promise(resolve => setTimeout(resolve, millis));
+ // }
+
+  console.log('hi')
+
   // Getting the orders (is a function to help clean code)
-  async function get() {
-    await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
+  async function get(regID) {
+    await axios.get(`https://esi.evetech.net/latest/markets/
+                    ${regID}/orders/?datasource=tranquility&order_type=
+                    ${buySell}&page=1&type_id=${itemID}`)
                 .then(response => { 
                   data = response.data
                 })
@@ -36,11 +46,6 @@ async function getOrders(regID, buySell, itemID, array) {
                 })
 
                 let mOr;
-                
-                async function sleep(millis) {
-                  return new Promise(resolve => setTimeout(resolve, millis));
-                }
-
                 let dots;
                 let j = 0
                 
@@ -114,7 +119,7 @@ async function getOrders(regID, buySell, itemID, array) {
                   await sleep(500)
                 }
                 Info.innerText = ''
-                if (content == '') {
+               /* if (content == '') {
                   Info.innerText = `There are no ${buySell} orders for that in 
                                   ${document.getElementById('Federation').value}!`
                   Fetch.disabled = false
@@ -122,9 +127,19 @@ async function getOrders(regID, buySell, itemID, array) {
                 } else {
                 table.innerHTML += content
                 Fetch.disabled = false
-                }
+                }*/
   }
   for (let i = 0; i < array.length; i++) {
-  get()  
-  }            
+    console.log('hi')
+    await get(array[i])
+  }  
+  if (content == '') {
+    Info.innerText = `There are no ${buySell} orders for that in 
+                    ${document.getElementById('Federation').value}!`
+    Fetch.disabled = false
+    return
+  } else {
+  table.innerHTML += content
+  Fetch.disabled = false
+  }          
 }

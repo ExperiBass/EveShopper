@@ -41,7 +41,6 @@ function getItem(iSearch, federation, bOs) {
   ]
   const triglavianRegions = [] // Empty for now
   let array = []
-  console.log(federation)
 
   // Checking for region and item
  /* if (region == '') {
