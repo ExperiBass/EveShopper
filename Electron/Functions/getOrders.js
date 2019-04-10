@@ -25,9 +25,9 @@ async function getOrders(regID, buySell, itemID, array) {
     return
   }
 
- // async function sleep(millis) {
- //   return new Promise(resolve => setTimeout(resolve, millis));
- // }
+  async function sleep(millis) {
+    return new Promise(resolve => setTimeout(resolve, millis));
+  }
 
   console.log('hi')
 
