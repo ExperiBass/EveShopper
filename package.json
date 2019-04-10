@@ -1,17 +1,35 @@
 {
-  "name": "eveshop",
+  "name": "eveshopper",
   "version": "1.0.0",
   "description": "A shopping cart app for EVE!",
-  "main": "index.js",
+  "main": "./Code/Electron/main.js",
+  "build": {
+    "productName": "EveShopper",
+    "appId": "gingkathfox.EveShopper",
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "artifactName": "EveShopper.exe"
+    },
+    "directories": {
+      "output": "./release",
+      "buildResources": "./buildResources"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ./Electron/main.js"
+    "start": "electron ./Electron/main.js",
+    "build": "electron-builder --win",
+    "buildAll": "electron-packager . --all"
   },
   "author": "GingkathFox",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
     "electron": "^4.1.3",
-    "electron-localshortcut": "^3.1.0"
+    "electron-localshortcut": "^3.1.0",
+    "electron-packager": "^13.1.1"
   }
 }

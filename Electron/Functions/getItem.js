@@ -4,9 +4,9 @@ const axios = require('axios')
 const getOrders = require('./getOrders')
 const err = require('./err')
 
-function getItem(iSearch, federation, bOs) {
+function getItem(iSearch, region, bOs) {
   let item; // Item ID
- // let regID; // Region ID
+  let regID; // Region ID
   let buySell; // Will be either "buy", "sell", or undefined
   const Info = document.getElementById('Info')
   // List of faction region IDs
@@ -43,15 +43,15 @@ function getItem(iSearch, federation, bOs) {
   let array = []
 
   // Checking for region and item
- /* if (region == '') {
+  if (region == '') {
     Info.innerText = 'You didn\'t give a region!'
     return;
-  }*/
+  }
   if (iSearch == '') {
     Info.innerText = 'You didn\'t give a item to get the prices of!'
     return;
   }
-  switch (federation) {
+ /* switch (federation) {
     case caldari:
       array = caldariRegions.slice(0)
       break;
@@ -68,7 +68,7 @@ function getItem(iSearch, federation, bOs) {
      // array = triglavianRegions.slice(0)
      Info.innerText = 'There are no Triglavian regions as of right now!'
      break;
-  }
+  }*/
 
   // getting the item ID
   axios.get(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${iSearch}&strict=true`)
@@ -88,7 +88,7 @@ function getItem(iSearch, federation, bOs) {
           })
   
       //getting region id
-  /*axios.get(`https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=${region}&strict=true`)
+  axios.get(`https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=${region}&strict=true`)
           .then(response => {
 
             const data = response.data
@@ -115,9 +115,9 @@ function getItem(iSearch, federation, bOs) {
           .catch(error => { 
             err(error, 'Function: getItem()')
             return
-          })*/
+          })
 
-          for (let i = 0, length = bOs.length; i < length; i++) {
+         /* for (let i = 0, length = bOs.length; i < length; i++) {
             if (bOs[i].checked) {
               // assign buySell the value of the checked radio
               buySell = bOs[i].value
@@ -125,6 +125,6 @@ function getItem(iSearch, federation, bOs) {
               // only one radio can be logically checked, don't check the rest
               break;
             }
-          }
-          getOrders(array, buySell, item)
+          }*/
+         // getOrders(array, buySell, item)
 }
