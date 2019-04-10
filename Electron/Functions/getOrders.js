@@ -4,44 +4,12 @@ const axios = require('axios')
 const getStations = require('./getStations')
 const err = require('./err')
 
-async function getOrders(regID, buySell, itemID) {
+async function getOrders(regID, buySell, itemID, array) {
   const Info = document.getElementById('Info')
   const Fetch = document.getElementById('Fetch')
   const table = document.getElementById('table')
   let content = ''
   let data;
-
-  // List of faction region IDs
-  const amarrRegions = [
-    10000054, // Aridia
-    10000036, // Devoid
-    10000043, // Domain
-    10000067, // Genesis
-    10000052, // Kador
-    10000065, // Kor-Azor
-    10000020, // Tash-Murkon
-    10000038  // The Bleak Lands
-    ]
-  const caldariRegions = [
-  10000016, // Lonetrek
-  10000033, // The Citadel
-  10000002, // The Forge
-  10000069  // Black Rise
-  ]
-  const gallenteRegions = [
-  10000064, // Essence
-  10000037, // Everyshore
-  10000048, // Placid
-  10000032, // Sinq Laison
-  10000044, // Solitude
-  10000068  // Verge Vendor
-  ]
-  const minmatarRegions = [
-  10000042, // Metropolis
-  10000030, // Heimatar
-  10000028  // Molden Heath
-  ]
-  const triglavianRegions = [] // Empty for now
 
   Fetch.disabled = true
   if (buySell == undefined) {
@@ -55,8 +23,9 @@ async function getOrders(regID, buySell, itemID) {
     return
   }
 
-  // Getting the orders
-  await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
+  // Getting the orders (is a function to help clean code)
+  async function get() {
+    await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
                 .then(response => { 
                   data = response.data
                 })
@@ -66,19 +35,8 @@ async function getOrders(regID, buySell, itemID) {
                   return
                 })
 
-                //let j = 0
-               // let i = 0
                 let mOr;
-                let d;
                 
-              /*  try {
-                  d = data[j].location_id
-                }
-                catch (error) {
-                  err(error, 'Function: getOrders()')
-                  Fetch.disabled = false
-                  return
-                }*/
                 async function sleep(millis) {
                   return new Promise(resolve => setTimeout(resolve, millis));
                 }
@@ -89,7 +47,6 @@ async function getOrders(regID, buySell, itemID) {
                 for (let i = 0; i < data.length; i++, j++) {
                   let currentData, station, price, remVol, minVol
                   try {
-                    d = data[i].location_id
                     currentData = data[i]
                      station = await getStations(currentData.location_id)
                      price = currentData.price 
@@ -115,6 +72,10 @@ async function getOrders(regID, buySell, itemID) {
                       j = 0
                   }
 
+                  if (station == undefined) {
+                    station = `Private Station`
+                  }
+
                   switch (buySell){
                     case 'buy':
                     mOr = 'Remaining Volume'
@@ -133,10 +94,6 @@ async function getOrders(regID, buySell, itemID) {
                               <td>${minVol}</td>
                               </tr>`
                       break;
-                  }
-
-                  if (station == undefined) {
-                    station = `Private Station`
                   }
                   
                   if (mOr == undefined) {
@@ -166,4 +123,8 @@ async function getOrders(regID, buySell, itemID) {
                 table.innerHTML += content
                 Fetch.disabled = false
                 }
+  }
+  for (let i = 0; i < array.length; i++) {
+  get()  
+  }            
 }
