@@ -1,6 +1,7 @@
 module.exports = getItem
 
 const axios = require('axios')
+//const getRegion = require('./getRegion')
 const getOrders = require('./getOrders')
 const err = require('./err')
 
@@ -116,15 +117,6 @@ function getItem(iSearch, region, bOs) {
             err(error, 'Function: getItem()')
             return
           })
-
-         /* for (let i = 0, length = bOs.length; i < length; i++) {
-            if (bOs[i].checked) {
-              // assign buySell the value of the checked radio
-              buySell = bOs[i].value
-              
-              // only one radio can be logically checked, don't check the rest
-              break;
-            }
-          }*/
+         // getRegion(region, bOs, item)
          // getOrders(array, buySell, item)
 }

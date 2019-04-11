@@ -10,6 +10,63 @@
         border: 1px solid black;
       }
       </style>
+      <script type="text/javascript">
+      let prompt = require('electron-prompt')
+      let err = require('./Functions/err')
+      let amnt;
+
+        function handleClick(evt) {
+          var node = evt.target || evt.srcElement;
+          console.log(evt)
+        }
+        
+        function addToList(item) {
+          prompt({
+            height: 140,
+            title: 'Item Count',
+            label: 'Please input a value:',
+            value: '',
+            inputAttrs: {
+                type: 'text',
+                required: true
+            }
+          })
+          .then((r) => {
+              if(r === null) {
+                  console.log('user cancelled')
+              } else if (r == '') {
+                document.getElementById('Info').innerText = 'That item wasn\'t added to the order '
+                                                            + 'because you didn\'t give a number!'
+                return
+              } else {
+                  amnt = parseInt(r)
+                  if (Number.isNaN(amnt)) {
+                    console.error('Not a Number! 3:<')
+                    document.getElementById('Info').innerText = 'That\'s not a number!'
+                    setTimeout(2000, document.getElementById('Info').innerText = '')
+                    return
+                  }
+
+                  // getting name of item
+                axios.post('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', [item])
+                      .then(function (response) {
+                        console.log(response)
+                        item = response
+                      })
+                      .catch(function (error) {
+                        console.log(error)
+                      })
+                  document.getElementById('Info').innerText = `Added ${amnt} ${item} to your shopping list!`
+                  setTimeout(2000, document.getElementById('Info').innerHTML = '')
+                  console.log(amnt)
+
+                  console.log('result', r)
+              }
+          })
+          .catch(console.error)
+        }
+        
+        </script>
   </head>
   <body>
     <form>
@@ -29,11 +86,12 @@
       <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
     </form>
     <p id="Info"></p>
-    <table id="table" style="width:100%">
+    <table id="table" style="width:50%">
       <tr>
         <th>Station</th>
         <th>Price (ISK)</th> 
         <th>     </th>
+        <th>Add to List</th>
       </tr>
 </table>
 
