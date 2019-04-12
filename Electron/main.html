@@ -9,96 +9,96 @@
       table, th, td {
         border: 1px solid black;
       }
-      </style>
-      <script type="text/javascript">
-      let prompt = require('electron-prompt')
-      let err = require('./Functions/err')
-      let axios = require('axios')
-      let amnt, name;
-      let list = []
-      let completeList;
+    </style>
+    <script type="text/javascript">
+    let prompt = require('electron-prompt')
+    let err = require('./Functions/err')
+    let axios = require('axios')
+    let amnt, name;
+    let list = []
+    let completeList = ''
 
-        function handleClick(evt) {
-          var node = evt.target || evt.srcElement;
-          console.log(evt)
-        }
-        
-        function addToList(item) {
-          for (let i = 0; i < list.length; i++) {
-            if (list[i].search(name) != -1) {
-              document.getElementById('Info').innerText = `${name} is already in your list!`
+      function handleClick(evt) {
+        var node = evt.target || evt.srcElement;
+        console.log(evt)
+      }
+      
+      function addToList(item) {
+        prompt({
+          height: 150,
+          title: 'Item Count',
+          label: 'Please input the amount that you want:',
+          value: '',
+          inputAttrs: {
+              type: 'text',
+              required: true
+          }
+        })
+        .then((r) => {
+            if(r === null) {
+              document.getElementById('Info').innerText = 'Cancelled.'
+              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+              console.log('user cancelled')
+            } 
+            else if (r == '') {
+              document.getElementById('Info').innerText = 'That item wasn\'t added to the order '
+                                                          + 'because you didn\'t give a number!'
               setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
               return
+            } 
+            else {
+                amnt = parseInt(r)
+                if (Number.isNaN(amnt)) {
+                  console.error('Not a Number! 3:<')
+                  document.getElementById('Info').innerText = 'That\'s not a number!'
+                  setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+                  return
+                }
+                // getting name of item
+                axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
+                      .then(response => { 
+                        data = response.data
+                        name = data.name
+
+                        for (let i = 0; i < list.length; i++) {
+                          if (list[i].search(name) != -1) {
+                            alert(`Wait a second... ${name} is already in your list!`)
+                            return
+                          }
+                        }
+
+                        list.push(`${name} ${amnt} - -`)
+                        completeList = ''
+                        list.forEach(add)
+                        function add(v) {
+                          completeList += `${v}\n`
+                          console.log(completeList)
+                        }
+                        document.getElementById('Info').innerText = `Added ${amnt} ${name} to your shopping list!`
+                        setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+                        return
+                      })
+                      .catch(error => { 
+                        err(error, 'Function: getOrders()')
+                        Fetch.disabled = false
+                        return
+                      })
             }
-          }
-            prompt({
-            height: 150,
-            title: 'Item Count',
-            label: 'Please input the amount that you want:',
-            value: '',
-            inputAttrs: {
-                type: 'text',
-                required: true
-            }
-          })
-          .then((r) => {
-              if(r === null) {
-                document.getElementById('Info').innerText = 'Cancelled.'
-                setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-                console.log('user cancelled')
-              } 
-              else if (r == '') {
-                document.getElementById('Info').innerText = 'That item wasn\'t added to the order '
-                                                            + 'because you didn\'t give a number!'
-                setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-                return
-              } 
-              else {
-                  amnt = parseInt(r)
-                  if (Number.isNaN(amnt)) {
-                    console.error('Not a Number! 3:<')
-                    document.getElementById('Info').innerText = 'That\'s not a number!'
-                    setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-                    return
-                  }
-                  // getting name of item
-                  axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
-                        .then(response => { 
-                          data = response.data
-                          name = data.name
-                          list.push(`${name} ${amnt} - -`)
-                          document.getElementById('Info').innerText = `Added ${amnt} ${name} to your shopping list!`
-                          setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-                          return
-                        })
-                        .catch(error => { 
-                          err(error, 'Function: getOrders()')
-                          Fetch.disabled = false
-                          return
-                        })
-              }
-          })
-          .catch(console.error)
+        })
+        .catch(console.error)
+      }
+      
+      function showList() {
+        console.log(completeList)
+        if (completeList){
+          document.getElementById('List').innerText = completeList
+        } else {
+          document.getElementById('Info').innerText = 'There\'s nothing in your list!'
+          setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+          return
         }
-        
-        function showList() {
-          //document.getElementById('showHide').disabled = true
-          //document.getElementById('List').style.display = (document.getElementById('List').style.display == "table") ? "none" : "table"
-          for (let i = 0; i < list.length; i++) {
-            let info = `<tr>
-                        <td>${list[i]}</td>`
-            completeList += info
-          }
-          if (completeList){
-          document.getElementById('List').innerHTML += completeList
-          } else {
-            document.getElementById('Info').innerText = 'There\'s nothing in your list!'
-            setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-            return
-          }
-        }
-        //document.getElementById('showHide').addEventListener("click", showHideList)
-        </script>
+      }
+    </script>
   </head>
   <body>
     <form>
@@ -119,11 +119,7 @@
     </form>
     <p id="Info"></p>
     <p><input type="button" id="showHide" value="Show Shopping List" onclick="showList()"/></p>
-    <table id="List" style="width:50%">
-      <tr>
-        <th>Shopping List</th>
-      </tr>
-    </table>
+    <p id="List"></p>
     <table id="table" style="width:50%">
       <tr>
         <th>Station</th>
