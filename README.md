@@ -16,6 +16,7 @@ Currently there is no icon for the app.
 5. Highlight and copy the list that appears.
 6. In EVE, open the Multibuy window and click the button in the top left and import from the clipboard. [Multibuy.png](./Images/Multibuy.png)
 
+Example screenshot: [Screenshot.PNG](./Images/Screenshot.PNG)
 Modules are not included, please use `npm install` to install them.
 
 This currently uses Electron `v4.1.0`, Axios `v0.18.0`, and NodeJS `v10.15.3`.
