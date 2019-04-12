@@ -14,9 +14,10 @@ Currently there is no icon for the app.
 3. If you chose "Who's Selling?", you'll have the option to add the item to the list. Click on that button and follow the prompt that will appear.
 4. Click the button that says "Show/Update Shopping List". If you clicked it and added a item, don't worry! Just click it again and it will refresh the list, displaying the new item.
 5. Highlight and copy the list that appears.
-6. In EVE, open the Multibuy window and click the button in the top left and import from the clipboard. [Multibuy.png](./Images/Multibuy.png)
+6. In EVE, open the Multibuy window and click the button in the top left and import from the clipboard. ![Multibuy.png](./Images/Multibuy.png)
 
-Example screenshot: [Screenshot.PNG](./Images/Screenshot.PNG)
+Example screenshot: ![Screenshot.PNG](./Images/Screenshot.PNG)
+
 Modules are not included, please use `npm install` to install them.
 
 This currently uses Electron `v4.1.0`, Axios `v0.18.0`, and NodeJS `v10.15.3`.
