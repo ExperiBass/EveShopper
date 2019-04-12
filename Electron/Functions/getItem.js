@@ -1,7 +1,6 @@
 module.exports = getItem
 
 const axios = require('axios')
-//const getRegion = require('./getRegion')
 const getOrders = require('./getOrders')
 const err = require('./err')
 
@@ -46,10 +45,12 @@ function getItem(iSearch, region, bOs) {
   // Checking for region and item
   if (region == '') {
     Info.innerText = 'You didn\'t give a region!'
+    setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     return;
   }
   if (iSearch == '') {
     Info.innerText = 'You didn\'t give a item to get the prices of!'
+    setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     return;
   }
  /* switch (federation) {
@@ -79,6 +80,7 @@ function getItem(iSearch, region, bOs) {
               item = data.inventory_type[0]
             } catch {
               Info.innerText = 'That\'s not a valid item!'
+              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
               err('Invalid Item')
               return
           }
@@ -97,6 +99,7 @@ function getItem(iSearch, region, bOs) {
               regID = data.region[0]
             } catch {
               Info.innerText = 'Thats not a valid region!'
+              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
               err('Invalid Region')
               return
             }
@@ -117,6 +120,4 @@ function getItem(iSearch, region, bOs) {
             err(error, 'Function: getItem()')
             return
           })
-         // getRegion(region, bOs, item)
-         // getOrders(array, buySell, item)
 }

@@ -13,6 +13,7 @@ async function getOrders(regID, buySell, itemID, array) {
   Fetch.disabled = true
   if (buySell == undefined) {
     Info.innerHTML = 'Choose either "Buy" or "Sell"!'
+    setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     Fetch.disabled = false
     return
   }
@@ -26,12 +27,10 @@ async function getOrders(regID, buySell, itemID, array) {
     return new Promise(resolve => setTimeout(resolve, millis));
   }
 
-  // Getting the orders (is a function to help clean code)
- // async function get(regID) {
+  // Getting the orders
     await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
                 .then(response => { 
                   data = response.data
-                  console.log(data)
                 })
                 .catch(error => { 
                   err(error, 'Function: getOrders()')
@@ -52,6 +51,9 @@ async function getOrders(regID, buySell, itemID, array) {
     }
     catch (error) {
       err(error, 'Function: getOrders()')
+      Info.innerText = 'Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on '
+                        + 'my GitHub page with this error:' + error
+      setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
       Fetch.disabled = false
       return
     }
@@ -83,7 +85,6 @@ async function getOrders(regID, buySell, itemID, array) {
                 <td>${station}</td>
                 <td>${price}</td> 
                 <td>${remVol}</td>
-                <td><input type="button" value="Add" id="Add" onClick="addToList(data[0].item_id)"/></td>
                 </tr>`
         break;
       case 'sell':
@@ -103,12 +104,17 @@ async function getOrders(regID, buySell, itemID, array) {
       <th></th>
       <th>Add to List</th>
       </tr>`
+    } else if (mOr == 'Remaining Volume') {
+        table.innerHTML = `<tr>
+                        <th>Station</th>
+                        <th>Price (ISK)</th> 
+                        <th>${mOr}</th>
+                        </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/>`
     } else {
       table.innerHTML = `<tr>
                         <th>Station</th>
                         <th>Price (ISK)</th> 
                         <th>${mOr}</th>
-                        <th>Add to List</th>
                         </tr>`
     }
     Info.innerText = `Fetching data${dots}`
@@ -119,25 +125,12 @@ async function getOrders(regID, buySell, itemID, array) {
   if (content == '') {
     Info.innerText = `There are no ${buySell} orders for that in 
                     ${document.getElementById('Federation').value}!`
+    setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     Fetch.disabled = false
     return
   } else {
   table.innerHTML += content
   Fetch.disabled = false
-  }
- // }
-  /*for (let i = 0; i < array.length; i++) {
-    console.log('hi')
-    await get(array[i])
+  document.getElementById('showHide').disabled = false
   }  
-  get(array[1])
-  if (content == '') {
-    Info.innerText = `There are no ${buySell} orders for that in 
-                    ${document.getElementById('Federation').value}!`
-    Fetch.disabled = false
-    return
-  } else {
-  table.innerHTML += content
-  Fetch.disabled = false
-  } */         
 }
