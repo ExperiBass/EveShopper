@@ -5,26 +5,49 @@
   "main": "./Electron/main.js",
   "build": {
     "productName": "EveShopper",
-    "appId": "gingkathfox.EveShopper",
+    "appId": "com.gingkathfox.EveShopper",
     "win": {
       "target": [
         "portable"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
       ]
     },
     "portable": {
       "artifactName": "EveShopper.exe"
     },
     "directories": {
-      "output": "./release",
+      "output": "./release/dist",
       "buildResources": "./buildResources"
     }
   },
   "scripts": {
     "start": "electron ./Electron/main.js",
     "build": "electron-builder --win",
-    "buildAll": "electron-packager . --all"
+    "buildMac": "electron-builder --mac",
+    "buildLinux": "electron-builder --linux"
   },
-  "author": "GingkathFox",
+  "author": {
+    "name":"GingkathFox",
+    "email": "thisIsNotARealEmail@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "electron": "^4.1.4",
