@@ -1,6 +1,8 @@
 .rtf
 .DS_Store
-node_modules
 .vscode
 share
 bin
+node_modules
+release
+buildResources
