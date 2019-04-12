@@ -124,7 +124,7 @@ async function getOrders(regID, buySell, itemID, array) {
   Info.innerText = ''
   if (content == '') {
     Info.innerText = `There are no ${buySell} orders for that in 
-                    ${document.getElementById('Federation').value}!`
+                    ${document.getElementById('Region').value}!`
     setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     Fetch.disabled = false
     return
