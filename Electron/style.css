@@ -1,0 +1,135 @@
+body {
+    background-color: #131314;
+    color: #c4c4c4;
+    font-family: "Roboto Condensed", Arial, "sans-serif";
+    display: grid;
+    grid-template: 193px 40px auto / 320px 1fr;
+    width: calc(100vw - 25px);
+    height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input[type="text"] {
+    background-color: #282E33;
+    border: 1px solid #404850;
+    color: #c4c4c4;
+    height: 22px;
+    padding: 0 4px;
+
+    transition: all 500ms ease; 
+}
+
+input[type="text"]:focus {
+    background-color: rgb(44, 50, 55);
+    border: 1px solid #fff;
+}
+
+input:focus {
+    outline: none;
+}
+
+input#Region {
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+input#Item {
+    margin-top: 4px;
+}
+
+input[type="button"] {
+    height: 18px;
+    min-width: 53px;
+
+    background-color: #283440;
+    border: 1px solid #374A5A;
+    color: #889CB0;
+
+    font-size: 12px;
+
+    transition: all 150ms linear;
+}
+
+input[type="button"]:hover {
+    background-color: #374C5E;
+    border-color: #557087;
+    color: white;
+}
+
+input[type="button"]:focus {
+    background-color: #445F78;
+    border-color: #5A7895;
+    color: white;
+}
+
+table {
+    background-color: #202021;
+    border: 1px solid #252729;
+    border-spacing: 0;
+    font-size: 14px;
+    grid-area: 1 / 2 / 4;
+    width: auto!important;
+}
+
+td, th {
+    border: none;
+    border-right: 1px solid #2A3138;
+
+    white-space: nowrap;
+    padding: 3px 4px 3px 4px;
+    
+    text-align: right;
+
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+td:first-child {
+    text-align: left;
+}
+
+td:last-child {
+    border-right: none;
+}
+
+th {
+    text-align: left;
+    padding-right: 15px;
+    border-bottom: 1px solid #2A3138;
+}
+
+#List::before {
+    content: "Shopping List";
+    width: 100%;
+
+    display:block;
+    margin-bottom: 5px;
+    font-size: 16px;
+
+    border-top: 1px solid #2a3138;
+    
+    padding : 3px 0;
+
+}
+
+#List {
+    font-size: 12px
+}
+
+
+p#Info {
+    grid-area: 1 / 2;
+    position: absolute;
+    left: 71px;
+    top: 173px;
+    display: block;
+    height: 0;
+    font-size: 12px;
+}
+
+tbody:first-child {
+    max-height: 23px;
+}
