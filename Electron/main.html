@@ -16,7 +16,20 @@
     let axios = require('axios')
     let amnt, name;
     let list = []
-    let completeList = 'Tritanium 1 - -'
+    let completeList = ''
+      // TODO: Add button that gets fit from clipboard
+      function parseFit(fit) {
+        let array = fit.split('\n')
+
+        for (let i = 0; i < array.length; i++) {
+            if (a[i] == '' || a[i].startsWith('[')) {
+                array.splice(i, 1)
+                i--
+            }
+        }
+
+        return array
+      }
 
       function handleClick(evt) {
         var node = evt.target || evt.srcElement;
