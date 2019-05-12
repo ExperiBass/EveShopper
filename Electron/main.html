@@ -18,22 +18,6 @@
     let amnt, name;
     let list = []
     let completeList = ''
-      // TODO: Add button that gets fit from clipboard
-      // Divide `addToList` into prompt and addition
-      // Get the amount of items from the fit and add them to the list
-      function parseFit(fit) {
-        let array = fit.split('\n')
-
-        for (let i = 0; i < array.length; i++) {
-            if (a[i] == '' || a[i].startsWith('[')) {
-                array.splice(i, 1)
-                i--
-            }
-        }
-        //let string = array.toString()
-        //string.match(/array[0]/i)
-        return array
-      }
 
       function handleClick(evt) {
         var node = evt.target || evt.srcElement;
