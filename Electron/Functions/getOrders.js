@@ -1,5 +1,9 @@
 module.exports = getOrders
-
+/** getOrders
+ * This function uses the arguments passed to it to get the
+ * buy or sell orders for the given item in the given region.
+ * This function has the bulk of the code that powers EveShopper.
+*/
 const axios = require('axios')
 const getStations = require('./getStations')
 const err = require('./err')
@@ -50,8 +54,8 @@ async function getOrders(regID, buySell, itemID, array) {
       let currentData, station, price, remVol, minVol
       try {
         currentData = data[i]
-          station = await getStations(currentData.location_id)
-          price = currentData.price 
+        station = await getStations(currentData.location_id) // get the station name
+        price = currentData.price // get the price of the item at the station
       }
       catch (error) {
         err(error, 'Function: getOrders()')
@@ -90,6 +94,7 @@ async function getOrders(regID, buySell, itemID, array) {
                   <td>${price}</td> 
                   <td>${remVol}</td>
                   </tr>`
+          // `info` is HTML, and generates a table to display the data
           break;
         case 'sell':
           mOr = 'Minimum Volume'
@@ -106,8 +111,7 @@ async function getOrders(regID, buySell, itemID, array) {
         <th>Station</th>
         <th>Price (ISK)</th> 
         <th></th>
-        <th>Add to List</th>
-        </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/>`
+        <th>Add to List</th>`
       } else if (mOr == 'Remaining Volume') {
           table.innerHTML = `<tr>
                           <th>Station</th>
@@ -121,21 +125,21 @@ async function getOrders(regID, buySell, itemID, array) {
                           <th>${mOr}</th>
                           </tr>`
       }
-      Info.innerText = `Fetching data${dots}`
+      Info.innerText = `Fetching orders${dots}`
       content += info
-      await sleep(500)
+      await sleep(500) // pause on each iteration to avoid spamming the ESI Server
     }
     Info.innerText = ''
-    if (content == '') {
+    if (content == '') { // if there are no orders...
       Info.innerText = `There are no ${buySell} orders for that in 
-                      ${document.getElementById('Region').value}!`
+                      ${document.getElementById('Region').value}!` // ...alert the user...
       setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
       Fetch.disabled = false
       return
-    } else {
+    } else { // ...else...
     table.innerHTML += content
     Fetch.disabled = false
-    document.getElementById('showHide').disabled = false
+    document.getElementById('showHide').disabled = false // ...display the data
     }  
 //  }
 }

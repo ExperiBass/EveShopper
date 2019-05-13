@@ -1,5 +1,7 @@
 module.exports = getStations
-
+/** getStations
+ * This function is only used in the try block on line 57 of getOrders.
+ */
 const axios = require('axios')
 const err = require('./err')
 

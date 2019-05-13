@@ -1,4 +1,8 @@
 module.exports = getItem
+/** getItem
+ * This function takes the value of the text fields and the radio buttons and converts them to 
+ * useable values that getOrders can use.
+*/
 
 const axios = require('axios')
 const getOrders = require('./getOrders')
@@ -78,7 +82,7 @@ function getItem(iSearch, region, bOs) {
             try {
               const data = response.data
               item = data.inventory_type[0]
-            } catch {
+            } catch { // if `data.inventory_type[0]` doesnt exist, this block is run
               Info.innerText = 'That\'s not a valid item!'
               setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
               err('Invalid Item')
@@ -97,7 +101,7 @@ function getItem(iSearch, region, bOs) {
             const data = response.data
             try {
               regID = data.region[0]
-            } catch {
+            } catch { // if `data.region[0]` doesnt exist, this is run
               Info.innerText = 'Thats not a valid region!'
               setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
               err('Invalid Region')
@@ -109,12 +113,12 @@ function getItem(iSearch, region, bOs) {
               if (bOs[i].checked) {
                 // assign buySell the value of the checked radio
                 buySell = bOs[i].value
-                
                 // only one radio can be logically checked, don't check the rest
                 break;
               }
             }
-            getOrders(regID, buySell, item)
+            // call getOrders and pass the region ID, the rdio button that was clicked, and the item ID
+            getOrders(regID, buySell, item) 
           })
           .catch(error => { 
             err(error, 'Function: getItem()')
