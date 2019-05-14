@@ -13,6 +13,7 @@ function getItem(iSearch, region, bOs) {
   let regID; // Region ID
   let buySell; // Will be either "buy", "sell", or undefined
   const Info = document.getElementById('Info')
+  let federation = document.getElementById('fedList').value
   // List of faction region IDs
   const amarrRegions = [
     10000054, // Aridia
@@ -44,37 +45,36 @@ function getItem(iSearch, region, bOs) {
   10000028  // Molden Heath
   ]
   const triglavianRegions = [] // Empty for now
-  let array = []
+  let array;
 
-  // Checking for region and item
-  if (region == '') {
-    Info.innerText = 'You didn\'t give a region!'
-    setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-    return;
-  }
+  // Checking for valid item
   if (iSearch == '') {
     Info.innerText = 'You didn\'t give a item to get the prices of!'
     setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     return;
   }
- /* switch (federation) {
-    case caldari:
-      array = caldariRegions.slice(0)
-      break;
-    case amarr:
-      array = amarrRegions.slice(0)
-      break;
-    case gallente:
-      array = gallenteRegions.slice(0)
-      break;
-    case minmatar:
-      array = minmatarRegions.slice(0)
-      break;
-    case triglavian:
-     // array = triglavianRegions.slice(0)
-     Info.innerText = 'There are no Triglavian regions as of right now!'
-     break;
-  }*/
+  if (federation) {
+    console.log(federation)
+    switch (federation) {
+      case 'caldari':
+        array = caldariRegions.slice(0)
+        break;
+      case 'amarr':
+        array = amarrRegions.slice(0)
+        break;
+      case 'gallente':
+        array = gallenteRegions.slice(0)
+        break;
+      case 'minmatar':
+        array = minmatarRegions.slice(0)
+        break;
+      case 'triglavian':
+       // array = triglavianRegions.slice(0)
+       Info.innerText = 'There are no Triglavian regions as of right now!'
+       setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+       break;
+    }
+  }
 
   // getting the item ID
   axios.get(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${iSearch}&strict=true`)
@@ -95,7 +95,7 @@ function getItem(iSearch, region, bOs) {
           })
   
       //getting region id
-  axios.get(`https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=${region}&strict=true`)
+  /*axios.get(`https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=${region}&strict=true`)
           .then(response => {
 
             const data = response.data
@@ -118,11 +118,22 @@ function getItem(iSearch, region, bOs) {
               }
             }
             // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
-           getOrders(regID, buySell, item, caldariRegions) 
+           getOrders(regID, buySell, item, array) 
            
           })
           .catch(error => { 
             err(error, 'Function: getItem()')
             return
-          })
+          })*/
+          // checking which radio button was selected
+          for (let i = 0, length = bOs.length; i < length; i++) {
+            if (bOs[i].checked) {
+              // assign buySell the value of the checked radio
+              buySell = bOs[i].value
+              // only one radio can be logically checked, don't check the rest
+              break;
+            }
+          }
+          // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
+         getOrders(regID, buySell, item, array)
 }

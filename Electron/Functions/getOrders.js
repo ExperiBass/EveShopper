@@ -15,21 +15,26 @@ async function getOrders(regID, buySell, itemID, array) {
   let data;
 
   Fetch.disabled = true
+  console.log('line 18')
   if (buySell == undefined) {
     Info.innerHTML = 'Choose either "Buy" or "Sell"!'
     setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     Fetch.disabled = false
     return
   }
+  console.log('line 25')
   if (itemID == undefined) {
     Fetch.disabled = false
     Error('itemID is undefined!')
     return
   }
+  console.log('line 31')
   if (array) {
+    console.log(array)
     for (let i = 0; i < array.length; i++) {
       regID = array[i]
-      fetch()
+      console.log('fetch')
+      await fetch()
     } 
   } else {
     fetch()

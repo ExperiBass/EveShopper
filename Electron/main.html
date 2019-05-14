@@ -126,13 +126,13 @@
     <form>
       Region:<br>
       <input type="text" name="region" id="Region" value=""><br>
-        <!--<select id = "fedList">
+        <select id = "fedList">
         <option id="caldari" value="caldari">Caldari</option>
         <option id="amarr" value="amarr">Amarr</option>
         <option id="gallente" value="gallente">Gallente</option>
         <option id="minmatar" value="minmatar">Minmatar</option>
         <option id="triglavian" value="triglavian">Triglavian</option>
-      </select><br>-->
+      </select><br>
       Item:<br>
       <input type="text" name="item" id="Item" value=""><br><br>
       <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Selling?<br>
@@ -143,7 +143,6 @@
     <p><input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
       <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/></p>
     <p id="List"></p>
-    <div id="table-scroll">
       <table id="table" style="width:50%">
         <tr>
           <th>Station</th>
@@ -151,7 +150,6 @@
           <th>     </th>
         </tr>
       </table>
-    </div>
     
     <script>
 
