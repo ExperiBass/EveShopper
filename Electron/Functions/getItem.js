@@ -8,9 +8,8 @@ const axios = require('axios')
 const getOrders = require('./getOrders')
 const err = require('./err')
 
-function getItem(iSearch, region, bOs) {
+function getItem(iSearch, bOs) {
   let item; // Item ID
-  let regID; // Region ID
   let buySell; // Will be either "buy", "sell", or undefined
   const Info = document.getElementById('Info')
   let federation = document.getElementById('fedList').value
@@ -53,27 +52,25 @@ function getItem(iSearch, region, bOs) {
     setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     return;
   }
-  if (federation) {
-    console.log(federation)
-    switch (federation) {
-      case 'caldari':
-        array = caldariRegions.slice(0)
-        break;
-      case 'amarr':
-        array = amarrRegions.slice(0)
-        break;
-      case 'gallente':
-        array = gallenteRegions.slice(0)
-        break;
-      case 'minmatar':
-        array = minmatarRegions.slice(0)
-        break;
-      case 'triglavian':
-       // array = triglavianRegions.slice(0)
-       Info.innerText = 'There are no Triglavian regions as of right now!'
-       setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-       break;
-    }
+
+  switch (federation) {
+    case 'caldari':
+      array = caldariRegions.slice(0)
+      break;
+    case 'amarr':
+      array = amarrRegions.slice(0)
+      break;
+    case 'gallente':
+      array = gallenteRegions.slice(0)
+      break;
+    case 'minmatar':
+      array = minmatarRegions.slice(0)
+      break;
+    case 'triglavian':
+      // array = triglavianRegions.slice(0)
+      Info.innerText = 'There are no Triglavian regions as of right now!'
+      setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+      break;
   }
 
   // getting the item ID
@@ -87,27 +84,7 @@ function getItem(iSearch, region, bOs) {
               setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
               err('Invalid Item')
               return
-          }
-          })
-          .catch(error => { 
-            err(error, 'Function: getItem()')
-            return
-          })
-  
-      //getting region id
-  /*axios.get(`https://esi.evetech.net/latest/search/?categories=region&datasource=tranquility&language=en-us&search=${region}&strict=true`)
-          .then(response => {
-
-            const data = response.data
-            try {
-              regID = data.region[0]
-            } catch { // if `data.region[0]` doesnt exist, this is run
-              Info.innerText = 'Thats not a valid region!'
-              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-              err('Invalid Region')
-              return
             }
-            
             // checking which radio button was selected
             for (let i = 0, length = bOs.length; i < length; i++) {
               if (bOs[i].checked) {
@@ -117,23 +94,12 @@ function getItem(iSearch, region, bOs) {
                 break;
               }
             }
+
             // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
-           getOrders(regID, buySell, item, array) 
-           
+            getOrders(buySell, item, array)
           })
           .catch(error => { 
             err(error, 'Function: getItem()')
             return
-          })*/
-          // checking which radio button was selected
-          for (let i = 0, length = bOs.length; i < length; i++) {
-            if (bOs[i].checked) {
-              // assign buySell the value of the checked radio
-              buySell = bOs[i].value
-              // only one radio can be logically checked, don't check the rest
-              break;
-            }
-          }
-          // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
-         getOrders(regID, buySell, item, array)
+          })
 }

@@ -124,9 +124,7 @@
   </head>
   <body>
     <form>
-      Region:<br>
-      <input type="text" name="region" id="Region" value=""><br>
-        <select id = "fedList">
+        <select id="fedList">
         <option id="caldari" value="caldari">Caldari</option>
         <option id="amarr" value="amarr">Amarr</option>
         <option id="gallente" value="gallente">Gallente</option>
@@ -139,7 +137,7 @@
       <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Buying?<br><br>
       <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
     </form>
-    <p id="Info"></p>
+    <p id="Info" style="font-size: 12px"></p>
     <p><input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
       <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/></p>
     <p id="List"></p>
@@ -157,12 +155,8 @@
 
     function get() {
       getItem(document.getElementById('Item').value
-                  , document.getElementById('Region').value
                   , document.getElementsByName('bOs'))
      const info = document.getElementById('Info')
-     // Getting value of selected option in dropdown
-    // let e = document.getElementById('fedList')
-    // let strUser = e.options[e.selectedIndex].value
     }
      
   document.onkeyup = function(e) {

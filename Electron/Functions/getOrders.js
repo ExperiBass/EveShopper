@@ -1,44 +1,49 @@
 module.exports = getOrders
 /** getOrders
  * This function uses the arguments passed to it to get the
- * buy or sell orders for the given item in the given region.
+ * buy or sell orders for the given item in the given federations space.
  * This function has the bulk of the code that powers EveShopper.
 */
 const axios = require('axios')
 const getStations = require('./getStations')
 const err = require('./err')
 
-async function getOrders(regID, buySell, itemID, array) {
+async function getOrders(buySell, itemID, array) {
   const Fetch = document.getElementById('Fetch')
-  const table = document.getElementById('table')
+  const Table = document.getElementById('table')
   let content = ''
-  let data;
+  let data, regID;
 
   Fetch.disabled = true
-  console.log('line 18')
+
   if (buySell == undefined) {
     Info.innerHTML = 'Choose either "Buy" or "Sell"!'
     setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
     Fetch.disabled = false
     return
   }
-  console.log('line 25')
+
   if (itemID == undefined) {
     Fetch.disabled = false
     Error('itemID is undefined!')
     return
   }
-  console.log('line 31')
-  if (array) {
-    console.log(array)
+
     for (let i = 0; i < array.length; i++) {
       regID = array[i]
-      console.log('fetch')
       await fetch()
     } 
-  } else {
-    fetch()
-  }
+    if (content == '') { // if there are no orders...
+      Info.innerText = `There are no ${buySell} orders for that in 
+                      ${document.getElementById('fedList').value} space!` // ...alert the user...
+      setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+      Fetch.disabled = false
+      return // ...and exit...
+    } else { // ...else...
+    Table.innerHTML += content
+    Fetch.disabled = false // ...display the data
+    }
+
   async function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
   }
@@ -100,19 +105,19 @@ async function getOrders(regID, buySell, itemID, array) {
       }
       
       if (mOr == undefined) {
-        table.innerHTML = `<tr>
+        Table.innerHTML = `<tr>
         <th>Station</th>
         <th>Price (ISK)</th> 
         <th></th>
         <th>Add to List</th>`
       } else if (mOr == 'Remaining Volume') {
-          table.innerHTML = `<tr>
+          Table.innerHTML = `<tr>
                           <th>Station</th>
                           <th>Price (ISK)</th> 
                           <th>${mOr}</th>
                           </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/>`
       } else {
-        table.innerHTML = `<tr>
+        Table.innerHTML = `<tr>
                           <th>Station</th>
                           <th>Price (ISK)</th> 
                           <th>${mOr}</th>
@@ -133,25 +138,12 @@ async function getOrders(regID, buySell, itemID, array) {
           dots = ''
           j = 0
       }
-      Info.innerText = `Fetching orders${dots}`
+      Info.innerText = `Fetching orders (this may take a while)${dots}`
       content += info
       
-      await sleep(250) // pause on each iteration to avoid spamming the ESI Server
+      await sleep(150) // pause on each iteration to avoid spamming the ESI Server
     }
     Info.innerText = ''
-   // /*
-    if (content == '') { // if there are no orders...
-      Info.innerText = `There are no ${buySell} orders for that in 
-                      ${document.getElementById('Region').value}!` // ...alert the user...
-      setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-      Fetch.disabled = false
-      return
-    } else { // ...else...
-    table.innerHTML += content
-    Fetch.disabled = false
-    document.getElementById('showHide').disabled = false // ...display the data
-    }
-   // */  
   }
 
 }

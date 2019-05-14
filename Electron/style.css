@@ -31,7 +31,7 @@ input:focus {
     outline: none;
 }
 
-input#Region {
+#fedList {
     margin-top: 4px;
     margin-bottom: 10px;
 }
