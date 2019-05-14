@@ -143,13 +143,15 @@
     <p><input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
       <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/></p>
     <p id="List"></p>
-    <table id="table" style="width:50%">
-      <tr>
-        <th>Station</th>
-        <th>Price (ISK)</th> 
-        <th>     </th>
-      </tr>
-    </table>
+    <div id="table-scroll">
+      <table id="table" style="width:50%">
+        <tr>
+          <th>Station</th>
+          <th>Price (ISK)</th> 
+          <th>     </th>
+        </tr>
+      </table>
+    </div>
     
     <script>
 

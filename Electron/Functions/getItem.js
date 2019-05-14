@@ -118,15 +118,11 @@ function getItem(iSearch, region, bOs) {
               }
             }
             // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
-           getOrders(regID, buySell, item) 
+           getOrders(regID, buySell, item, caldariRegions) 
            
           })
           .catch(error => { 
             err(error, 'Function: getItem()')
             return
           })
-
-         /* for (let i = 0; i < array.length; i++) {
-            getOrders(array[i], buySell, item)
-          }*/
 }

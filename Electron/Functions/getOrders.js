@@ -26,15 +26,18 @@ async function getOrders(regID, buySell, itemID, array) {
     Error('itemID is undefined!')
     return
   }
-
- /* if (array) {
-    array.forEach(fetch)
-  }*/
-
+  if (array) {
+    for (let i = 0; i < array.length; i++) {
+      regID = array[i]
+      fetch()
+    } 
+  } else {
+    fetch()
+  }
   async function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
   }
-
+  async function fetch() {
     // Getting the orders
       await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
                   .then(response => { 
@@ -128,9 +131,10 @@ async function getOrders(regID, buySell, itemID, array) {
       Info.innerText = `Fetching orders${dots}`
       content += info
       
-      await sleep(500) // pause on each iteration to avoid spamming the ESI Server
+      await sleep(250) // pause on each iteration to avoid spamming the ESI Server
     }
     Info.innerText = ''
+   // /*
     if (content == '') { // if there are no orders...
       Info.innerText = `There are no ${buySell} orders for that in 
                       ${document.getElementById('Region').value}!` // ...alert the user...
@@ -141,6 +145,8 @@ async function getOrders(regID, buySell, itemID, array) {
     table.innerHTML += content
     Fetch.disabled = false
     document.getElementById('showHide').disabled = false // ...display the data
-    }  
+    }
+   // */  
+  }
 
 }

@@ -73,7 +73,11 @@ table {
     grid-area: 1 / 2 / 4;
     width: auto!important;
 }
-
+#table-scroll {
+    overflow:auto;
+    height: 355px;
+    width: 824px;
+  }
 td, th {
     border: none;
     border-right: 1px solid #2A3138;
