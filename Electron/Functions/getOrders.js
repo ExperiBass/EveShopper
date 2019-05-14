@@ -34,7 +34,7 @@ async function getOrders(regID, buySell, itemID, array) {
   async function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
   }
- // async function fetch(region) {
+
     // Getting the orders
       await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
                   .then(response => { 
@@ -64,21 +64,6 @@ async function getOrders(regID, buySell, itemID, array) {
         setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
         Fetch.disabled = false
         return
-      }
-
-      switch (j) {
-        case 1: 
-          dots = '.'
-          break
-        case 2:
-          dots = '..'
-          break
-        case 3:
-          dots = '...'
-          break
-        default:
-          dots = ''
-          j = 0
       }
 
       if (station == undefined) {
@@ -125,8 +110,24 @@ async function getOrders(regID, buySell, itemID, array) {
                           <th>${mOr}</th>
                           </tr>`
       }
+
+      switch (j) {
+        case 1: 
+          dots = '.'
+          break
+        case 2:
+          dots = '..'
+          break
+        case 3:
+          dots = '...'
+          break
+        default:
+          dots = ''
+          j = 0
+      }
       Info.innerText = `Fetching orders${dots}`
       content += info
+      
       await sleep(500) // pause on each iteration to avoid spamming the ESI Server
     }
     Info.innerText = ''
@@ -141,5 +142,5 @@ async function getOrders(regID, buySell, itemID, array) {
     Fetch.disabled = false
     document.getElementById('showHide').disabled = false // ...display the data
     }  
-//  }
+
 }

@@ -7,21 +7,17 @@
     "productName": "EveShopper",
     "appId": "com.gingkathfox.EveShopper",
     "win": {
+      "icon": "Images/EveShopper.ico",
       "target": [
         "portable"
       ]
     },
-    "dmg": {
-      "contents": [
-        {
-          "x": 110,
-          "y": 150
-        },
-        {
-          "x": 240,
-          "y": 150,
-          "path": "~/Applications"
-        }
+    "mac": {
+      "category": "public.app-category.utilities",
+      "icon": "Images/EveShopper.icns",
+      "target": [
+        "zip",
+        "dmg"
       ]
     },
     "linux": {

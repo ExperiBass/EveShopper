@@ -117,11 +117,16 @@ function getItem(iSearch, region, bOs) {
                 break;
               }
             }
-            // call getOrders and pass the region ID, the rdio button that was clicked, and the item ID
-            getOrders(regID, buySell, item) 
+            // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
+           getOrders(regID, buySell, item) 
+           
           })
           .catch(error => { 
             err(error, 'Function: getItem()')
             return
           })
+
+         /* for (let i = 0; i < array.length; i++) {
+            getOrders(array[i], buySell, item)
+          }*/
 }
