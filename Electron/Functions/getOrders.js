@@ -28,7 +28,10 @@ async function getOrders(buySell, itemID, array) {
     Error('itemID is undefined!')
     return
   }
-
+    if (!array) {
+      Error('undefined array')
+      return;
+    }
     for (let i = 0; i < array.length; i++) {
       regID = array[i]
       await fetch()
