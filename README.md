@@ -21,4 +21,4 @@ Example screenshot: ![Screenshot.PNG](./Images/image.png)
 
 Modules are not included, please use `npm install` to install them.
 
-This currently uses Electron `v4.1.0`, Axios `v0.18.0`, and NodeJS `v10.15.3`.
+This currently uses [Electron](https://electronjs.org) `v4.1.4`, [Axios](https://github.com/axios/axios) `v0.18.0`, [NumeralJS](http://numeraljs.com) `v2.0.6`, and NodeJS `v10.15.3`.
