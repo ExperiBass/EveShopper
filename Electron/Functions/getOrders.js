@@ -7,6 +7,7 @@ module.exports = getOrders
 const axios = require('axios')
 const getStations = require('./getStations')
 const err = require('./err')
+const numeral = require('numeral')
 
 async function getOrders(buySell, itemID, array) {
   const Fetch = document.getElementById('Fetch')
@@ -71,7 +72,7 @@ async function getOrders(buySell, itemID, array) {
       try {
         currentData = data[i]
         station = await getStations(currentData.location_id) // get the station name
-        price = currentData.price // get the price of the item at the station
+        price = numeral(currentData.price).format('0,0.00') // get the price of the item at the station
       }
       catch (error) {
         err(error, 'Function: getOrders()')
