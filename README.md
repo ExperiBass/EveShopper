@@ -1,12 +1,15 @@
 # EveShopper
 
-Welcome to EveShopper, the app for creating a shopping cart for EVE Online! Currently it gets items by region, but soon I'll add the ability to:
+Welcome to EveShopper, the app for creating a shopping cart for EVE Online!
 
-- [ ] Display the prices of the item in federation space (you will be able to select "Caldari" for example to get all prices in Caldari space) and the description of the item
+# FEATURES
 
-- [x] Export your list to the clipboard so you can paste it into EVE
+EveShopper can:
+- Display the prices of the item in federation space (you can select "Caldari" for example to get all prices in Caldari space)
 
-Currently there is no icon for the app, and is Windows-only (since i have no idea if i can build it for macOS without it breaking something).
+- Export your list to the clipboard so you can paste it into EVE
+
+It's also useful for miners too, since you can see which stations are buying your ore for the highest price!
 
 # HOW TO USE
 
@@ -14,7 +17,7 @@ Currently there is no icon for the app, and is Windows-only (since i have no ide
 2. Click "Fetch".
 3. If you chose "Who's Selling?", you'll have the option to add the item to the list. Click on that button and follow the prompt that will appear.
 4. Click the button that says "Show/Update Shopping List". If you clicked it and added a item, don't worry! Just click it again and it will refresh the list, displaying the new item.
-5. Highlight and copy the list that appears.
+5. Click "Copy List to Clipboard.".
 6. In EVE, open the Multibuy window and click the button in the top left and import from the clipboard. ![Multibuy.png](./Images/Multibuy.png)
 
 Example screenshot: ![Screenshot.PNG](./Images/image.png)
