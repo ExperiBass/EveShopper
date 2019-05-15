@@ -72,7 +72,7 @@ async function getOrders(buySell, itemID, array) {
       try {
         currentData = data[i]
         station = await getStations(currentData.location_id) // get the station name
-        price = numeral(currentData.price).format('0,0.00') // get the price of the item at the station
+        price = numeral(currentData.price).format('0,0.00') + ' ISK' // get the price of the item at the station
       }
       catch (error) {
         err(error, 'Function: getOrders()')
@@ -111,19 +111,19 @@ async function getOrders(buySell, itemID, array) {
       if (mOr == undefined) {
         Table.innerHTML = `<tr>
         <th>Station</th>
-        <th>Price (ISK)</th> 
+        <th>Price</th> 
         <th></th>
         <th>Add to List</th>`
       } else if (mOr == 'Remaining Volume') {
           Table.innerHTML = `<tr>
                           <th>Station</th>
-                          <th>Price (ISK)</th> 
+                          <th>Price</th> 
                           <th>${mOr}</th>
                           </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/>`
       } else {
         Table.innerHTML = `<tr>
                           <th>Station</th>
-                          <th>Price (ISK)</th> 
+                          <th>Price</th> 
                           <th>${mOr}</th>
                           </tr>`
       }
