@@ -8,6 +8,7 @@ const axios = require('axios')
 const getStations = require('./getStations')
 const err = require('./err')
 const numeral = require('numeral')
+const link = 'https://esi.evetech.net/latest/'
 
 async function getOrders(buySell, itemID, array) {
   const Fetch = document.getElementById('Fetch')
@@ -35,6 +36,7 @@ async function getOrders(buySell, itemID, array) {
     }
     for (let i = 0; i < array.length; i++) {
       regID = array[i]
+      console.log(regID)
       await fetch()
     } 
     if (content == '') { // if there are no orders...
@@ -53,7 +55,7 @@ async function getOrders(buySell, itemID, array) {
   }
   async function fetch() {
     // Getting the orders
-      await axios.get(`https://esi.evetech.net/latest/markets/${regID}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
+      await axios.get(`${link}markets/${regID.id}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
                   .then(response => { 
                     data = response.data
                   })
@@ -112,8 +114,7 @@ async function getOrders(buySell, itemID, array) {
         Table.innerHTML = `<tr>
         <th>Station</th>
         <th>Price</th> 
-        <th></th>
-        <th>Add to List</th>`
+        <th>Remaining/minimum Volume</th>`
       } else if (mOr == 'Remaining Volume') {
           Table.innerHTML = `<tr>
                           <th>Station</th>
@@ -142,7 +143,8 @@ async function getOrders(buySell, itemID, array) {
           dots = ''
           j = 0
       }
-      Info.innerText = `Fetching orders (this may take a while)${dots}`
+      Info.innerText = `Fetching orders in ${regID.name} (this may take a while)${dots}` // Display the region 
+                                                                                       // the app is getting orders from
       content += info
       
       await sleep(150) // pause on each iteration to avoid spamming the ESI Server

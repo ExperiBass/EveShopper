@@ -11,6 +11,7 @@
       }
     </style>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./auto-complete.css">
     <script type="text/javascript">
     let prompt = require('electron-prompt')
     let err = require('./Functions/err')
@@ -19,7 +20,7 @@
     let list = []
     let completeList = ''
 
-     function addToList(item) {
+     function addToList(item, price) {
 
        prompt({
           height: 150,
@@ -133,7 +134,7 @@
         <!--<option id="triglavian" value="triglavian">Triglavian</option>-->
       </select><br>
       Item:<br>
-      <input type="text" name="item" id="Item" value=""><br><br>
+      <input type="text" name="item" id="Item" autofocus placeholder="Tritanium" value=""><br><br>
       <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Selling?<br>
       <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Buying?<br><br>
       <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
@@ -150,7 +151,7 @@
       </table>
     
     <script>
-
+    const autoComplete = require('js-autocomplete')
     const getItem = require('./Functions/getItem.js')
 
     function get() {
@@ -164,6 +165,19 @@
           get()
         }
       }
+
+      var demo1 = new autoComplete({
+            selector: '#Item',
+            minChars: 1,
+            source: function(term, suggest){
+                term = term.toLowerCase();
+                var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+                var suggestions = [];
+                for (i=0;i<choices.length;i++)
+                    if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+                suggest(suggestions);
+            }
+        })
     </script>
   </body>
 </html>
