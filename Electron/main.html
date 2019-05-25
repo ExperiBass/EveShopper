@@ -155,29 +155,53 @@
     const getItem = require('./Functions/getItem.js')
 
     function get() {
-      getItem(document.getElementById('Item').value
+		getItem(document.getElementById('Item').value
                   , document.getElementsByName('bOs'))
-     const info = document.getElementById('Info')
+		const info = document.getElementById('Info')
     }
      
-  document.onkeyup = function(e) {
+    document.onkeyup = function(e) {
         if (e.which == 13) {
-          get()
+			get()
         }
-      }
-
-      var demo1 = new autoComplete({
-            selector: '#Item',
-            minChars: 1,
-            source: function(term, suggest){
-                term = term.toLowerCase();
-                var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
-                var suggestions = [];
-                for (i=0;i<choices.length;i++)
-                    if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-                suggest(suggestions);
-            }
-        })
+    }
+	
+    var demo1 = new autoComplete({
+        selector: 'input[id=Item]',
+        minChars: 3,
+		delay: 1000,
+        source: function(term, suggest){
+            term = term.toLowerCase();
+			console.log(term);
+			var choiceIDs = [];
+            var suggestions = [];
+			
+			// Call the ESI endpoint for searching the EVE datatables. We set the 'category' to 'inventory_type' to filter out non-market items, and 'strict' to 'false' because we want to be able to search partials.
+            axios.get('https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search='+term+'&strict=false')
+            .then(response => {
+				// 'response' is an array of item ids
+				choiceIDs = response.data.inventory_type;
+				// Next we call the endpoint that converts ids into names
+				axios.post('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', choiceIDs)
+				.then(response => {
+					// 'response' in this instance is an array full of JSON objects. Each object has 3 variables: 'name', 'id', and 'category'. We already know every category is going to be 'inventory_type', and we don't really care about the 'id' here, so we loop through the array and pull out all of the names.
+					response.data.forEach(e => suggestions.push(e.name));
+					suggest(suggestions);
+					// You could later make use of the 'ids' being return by saving 'response' directly to 'suggestions' and writting your own rendterItem function below. You could potentially add item images to the selector if you wanted to.
+				})
+				.catch(error => {
+					err(error, 'Function: autoComplete-Get item names');
+					Fetch.disabled = false;
+					return;
+				});
+            })
+			.catch(error => {
+				err(error, 'Function: autoComplete-Search for term');
+				Fetch.disabled = false;
+				return;
+			});
+        }
+    })
     </script>
   </body>
 </html>
