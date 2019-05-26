@@ -159,6 +159,8 @@
     const getItem = require('./Functions/getItem.js')
     let fs = require('fs')
 
+     autoCompleteCache = fs.readFileSync(`./Electron/Functions/Cache/itemNames.json`)
+
     function get() {
       getItem(document.getElementById('Item').value
                     , document.getElementsByName('bOs'))
@@ -178,7 +180,6 @@
           source: function(term, suggest){
               term = term.toLowerCase()
               console.log(term)
-              var data = fs.readFileSync(`./Electron/Functions/Cache/itemNames.json`)
             
               // If this search has been done in this session, reload the saved info.
               if (autoCompleteCache[term]) {
