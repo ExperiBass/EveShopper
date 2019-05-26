@@ -151,6 +151,7 @@
       </table>
     
     <script>
+	var autoCompleteCache = {};
     const autoComplete = require('js-autocomplete')
     const getItem = require('./Functions/getItem.js')
 
@@ -169,10 +170,17 @@
     var demo1 = new autoComplete({
         selector: 'input[id=Item]',
         minChars: 3,
-		delay: 1500,
+		delay: 1000,
         source: function(term, suggest){
             term = term.toLowerCase();
 			console.log(term);
+			
+			// If this search has been done in this session, reload the saved info.
+			if (autoCompleteCache[term]) {
+				suggest(autoCompleteCache[term]);
+				return;
+			}
+			
 			var choiceIDs = [];
             var suggestions = [];
 			
@@ -184,10 +192,11 @@
 				// Next we call the endpoint that converts ids into names
 				axios.post('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', choiceIDs)
 				.then(response => {
-					// 'response' in this instance is an array full of JSON objects. Each object has 3 variables: 'name', 'id', and 'category'. We already know every category is going to be 'inventory_type', and we don't really care about the 'id' here, so we loop through the array and pull out all of the names.
-					response.data.forEach(e => suggestions.push(e.name));
+					// 'response' in this instance is an array full of JSON objects. Each object has 3 variables: 'name', 'id', and 'category'. We are going to keep all three so you can play with things at a later date if you want.
+					suggestions = response.data;
+					// Save this search into an array.
+					autoCompleteCache[term] = suggestions;
 					suggest(suggestions);
-					// You could later make use of the 'ids' being return by saving 'response' directly to 'suggestions' and writting your own rendterItem function below. You could potentially add item images to the selector if you wanted to.
 				})
 				.catch(error => {
 					err(error, 'Function: autoComplete-Get item names');
@@ -200,7 +209,14 @@
 				Fetch.disabled = false;
 				return;
 			});
-        }
+        },
+		// In the function below, "item" is the object from the "suggestions" array in the above function, and "search" is the term the client was searching for.
+		renderItem: function(item, search) {
+			search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+			var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+			// Because "item" is the object directly from the API, we need to tweak the render function to use "item.name". Later, you could add a small image to each search if you wanted by using "item.id".
+			return '<div class="autocomplete-suggestion" data-val="' + item.name + '">' + item.name.replace(re, "<b>$1</b>") + '</div>';
+		}
     })
     </script>
   </body>
