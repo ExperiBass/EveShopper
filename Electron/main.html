@@ -215,7 +215,7 @@
 			search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 			var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
 			// Because "item" is the object directly from the API, we need to tweak the render function to use "item.name". Later, you could add a small image to each search if you wanted by using "item.id".
-			return '<div class="autocomplete-suggestion" data-val="' + item.name + '">' + item.name.replace(re, "<b>$1</b>") + '</div>';
+			return '<div class="autocomplete-suggestion" data-val="' + item.name + '">' + item.name.replace(re, "<b style='color:yellow'>$1</b>") + '</div>';
 		}
     })
     </script>
