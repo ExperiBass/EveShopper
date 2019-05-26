@@ -178,15 +178,16 @@
           source: function(term, suggest){
               term = term.toLowerCase()
               console.log(term)
+              var data = fs.readFileSync(`./Electron/Functions/Cache/itemNames.json`)
             
               // If this search has been done in this session, reload the saved info.
               if (autoCompleteCache[term]) {
-                suggest(autoCompleteCache[term]);
+                suggest(autoCompleteCache[term])
                 return;
               }
             
-              var choiceIDs = [];
-              var suggestions = [];
+              var choiceIDs = []
+              var suggestions = []
               
               // Call the ESI endpoint for searching the EVE datatables. 
               // We set the 'category' to 'inventory_type' to filter out non-market items,
@@ -194,31 +195,39 @@
                 axios.get(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${term}&strict=false`)
                     .then(response => {
                       // 'response' is an array of item ids
-                      choiceIDs = response.data.inventory_type;
+                      choiceIDs = response.data.inventory_type
                       // Next we call the endpoint that converts ids into names
                       axios.post('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', choiceIDs)
-                      .then(response => {
-                        // 'response' in this instance is an array full of JSON objects. 
-                        // Each object has 3 variables: 'name', 'id', and 'category'. 
-                        // We are going to keep all three so you can play with things at a later date if you want.
-                        suggestions = response.data;
-                        // Save this search into an array.
-                        autoCompleteCache[term] = suggestions;
-                        suggest(suggestions);
+                          .then(response => {
+                            // 'response' in this instance is an array full of JSON objects. 
+                            // Each object has 3 variables: 'name', 'id', and 'category'. 
+                            // We are going to keep all three so you can play with things at a later date if you want.
+                            suggestions = response.data
+                            // Save this search into an array.
+                            autoCompleteCache[term] = suggestions
+                            fs.writeFile(`./Electron/Functions/Cache/itemNames.json`, JSON.stringify(autoCompleteCache), 
+                              function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
+                                if (err) { //if there is a error
+                                  console.error(err)
+                                  return // chuck it into consle and exit
+                                }
+                                console.log(`Saved! Data: ${autoCompleteCache}`); // logs the save data
+                              })
+                            suggest(suggestions)
+                          })
+                          .catch(error => {
+                            err(error, 'Function: autoComplete-Get item names');
+                            Fetch.disabled = false;
+                            return;
+                          })
                       })
-                      .catch(error => {
-                        err(error, 'Function: autoComplete-Get item names');
-                        Fetch.disabled = false;
-                        return;
-                      })
-                    })
                     .catch(error => {
                       err(error, 'Function: autoComplete-Search for term');
                       Fetch.disabled = false;
                       return;
                     })
             },
-          // In the function below, "item" is the object from the "suggestions" array in the above function,
+          // In the function below, "item" is the object from the "suggestions" array in the above function
           // and "search" is the term the client was searching for.
           renderItem: function(item, search) {
             search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');

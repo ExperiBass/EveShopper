@@ -10,7 +10,7 @@ const err = require('./err')
 const numeral = require('numeral')
 const link = 'https://esi.evetech.net/latest/'
 
-async function getOrders(buySell, itemID, array) {
+async function getOrders(buySell, itemID, array, fedName) {
   const Fetch = document.getElementById('Fetch')
   const Table = document.getElementById('table')
   let content = ''
@@ -41,7 +41,7 @@ async function getOrders(buySell, itemID, array) {
     } 
     if (content == '') { // if there are no orders...
       Info.innerText = `There are no ${buySell} orders for that in 
-                      ${document.getElementById('fedList').value} space!` // ...alert the user...
+                      ${fedName} space!` // ...alert the user...
       setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
       Fetch.disabled = false
       return // ...and exit...

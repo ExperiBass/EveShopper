@@ -11,6 +11,7 @@ const link = 'https://esi.evetech.net/latest/'
 
 function getItem(iSearch, bOs) {
     let item; // Item ID
+    let fedName;
     let buySell; // Will be either "buy", "sell", or undefined
     const Info = document.getElementById('Info')
     let federation = document.getElementById('fedList').value
@@ -59,15 +60,19 @@ function getItem(iSearch, bOs) {
     switch (federation) {
         case 'caldari':
             array = caldariRegions.slice(0)
+            fedName = 'Caldari'
             break;
         case 'amarr':
             array = amarrRegions.slice(0)
+            fedName = 'Amarr'
             break;
         case 'gallente':
             array = gallenteRegions.slice(0)
+            fedName = 'Gallente'
             break;
         case 'minmatar':
             array = minmatarRegions.slice(0)
+            fedName = 'Minmatar'
             break;
         case 'triglavian':
             // array = triglavianRegions.slice(0)
@@ -103,7 +108,7 @@ function getItem(iSearch, bOs) {
             }
 
             // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
-            getOrders(buySell, item, array)
+            getOrders(buySell, item, array, fedName)
         })
         .catch(error => {
             err(error, 'Function: getItem()')
