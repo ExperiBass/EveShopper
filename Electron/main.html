@@ -159,7 +159,7 @@
     const getItem = require('./Functions/getItem.js')
     let fs = require('fs')
 
-     autoCompleteCache = fs.readFileSync(`./Electron/Functions/Cache/itemNames.json`)
+    autoCompleteCache = require(`./Functions/Cache/itemNames.json`)
 
     function get() {
       getItem(document.getElementById('Item').value
@@ -181,10 +181,11 @@
               term = term.toLowerCase()
               console.log(term)
             
-              // If this search has been done in this session, reload the saved info.
+              // If this search has been done, reload the saved info.
               if (autoCompleteCache[term]) {
-                suggest(autoCompleteCache[term])
-                return;
+                  suggest(autoCompleteCache[term]);
+              } else {
+                  suggest([{id:0,name:"Loading..."}]);
               }
             
               var choiceIDs = []
@@ -204,8 +205,16 @@
                             // Each object has 3 variables: 'name', 'id', and 'category'. 
                             // We are going to keep all three so you can play with things at a later date if you want.
                             suggestions = response.data
-                            // Save this search into an array.
-                            autoCompleteCache[term] = suggestions
+
+                            if (!autoCompleteCache[term] || (autoCompleteCache[term] 
+                                && suggestions.length > autoCompleteCache[term].length)) {
+                                suggestions.sort((a,b) => {
+                                    return a.name.length - b.name.length;
+                                })
+                                // Save this search into an array.
+                                autoCompleteCache[term] = suggestions;
+                                suggest(suggestions);
+                            }
                             fs.writeFile(`./Electron/Functions/Cache/itemNames.json`, JSON.stringify(autoCompleteCache), 
                               function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
                                 if (err) { //if there is a error
