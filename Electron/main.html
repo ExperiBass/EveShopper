@@ -166,6 +166,14 @@
                     , document.getElementsByName('bOs'))
       const info = document.getElementById('Info')
     }
+    
+    function hide(e) {
+      console.log(e.class)
+    }
+
+    function show(e) {
+      console.log(e.value)
+    }
      
     document.onkeyup = function(e) {
       if (e.which == 13) {
@@ -245,7 +253,7 @@
             // Because "item" is the object directly from the API, 
             // we need to tweak the render function to use "item.name". 
             // Later, you could add a small image to each search if you wanted by using "item.id".
-            return '<div class="autocomplete-suggestion" data-val="' + item.name + '">' + item.name.replace(re, "<b style='color:yellow'>$1</b>") + '</div>';
+            return `<div class="autocomplete-suggestion" data-val="${item.name}" onmouseenter="show(this)">${item.name.replace(re, "<b style='color:yellow'>$1</b>")}</div>`;
           }
     })
     </script>
