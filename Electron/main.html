@@ -125,7 +125,7 @@
     </script>
   </head>
   <body>
-    <form>
+    <form id="form">
       Federation:
       <br>
         <select id="fedList">
@@ -137,14 +137,14 @@
       </select><br>
       Item:<br>
       <input type="text" name="item" id="Item" autofocus placeholder="Tritanium" value=""><br><br>
-	  <!-- Aren't these backwards? -->
       <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Selling?<br>
       <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Buying?<br><br>
       <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
     </form>
     <p id="Info" style="font-size: 12px"></p>
     <p><input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
-      <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/></p>
+      <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/>
+      <input type="button" id="clear" value="Clear Cache" onclick="clearCache()"/></p>
     <p id="List"></p>
       <table id="table" style="width:50%">
         <tr>
@@ -158,30 +158,43 @@
     const autoComplete = require('js-autocomplete')
     const getItem = require('./Functions/getItem.js')
     let fs = require('fs')
-
-    autoCompleteCache = require(`./Functions/Cache/itemNames.json`)
+    let info = document.getElementById('Info')
+    try {
+      autoCompleteCache = require(`./Functions/Cache/itemNames.json`)
+      autoCompleteCache.sort((a,b) => {
+          return a.name.length - b.name.length;
+      })
+    }
+    catch(e) {
+      console.error('CAUGHT:\n',e)
+    }
 
     function get() {
       getItem(document.getElementById('Item').value
                     , document.getElementsByName('bOs'))
       const info = document.getElementById('Info')
     }
-    
-    function hide(e) {
-      console.log(e.class)
+     
+    function clearCache() {
+      // delete file named 'sample.txt'
+      fs.unlink('./Electron/Functions/Cache/itemNames.json', function (err) {
+          if (err) {
+            info.innerText = 'There is no cache!'
+            console.error('CAUGHT:\n', err)
+            return
+          }
+          // if no error, file has been deleted successfully
+          info.innerText = 'Cache Cleared!'
+          console.log('File deleted!')
+      })
     }
 
-    function show(e) {
-      console.log(e.value)
-    }
-     
-    document.onkeyup = function(e) {
-      if (e.which == 13) {
+    document.getElementById('form').addEventListener("submit", function(e) {
+        e.preventDefault()
         get()
-      }
-    }
+    }, false)
 	
-    var demo1 = new autoComplete({
+    var autoComp = new autoComplete({
         selector: 'input[id=Item]',
         minChars: 3,
         delay: 1000,
@@ -253,7 +266,7 @@
             // Because "item" is the object directly from the API, 
             // we need to tweak the render function to use "item.name". 
             // Later, you could add a small image to each search if you wanted by using "item.id".
-            return `<div class="autocomplete-suggestion" data-val="${item.name}" onmouseenter="show(this)">${item.name.replace(re, "<b style='color:yellow'>$1</b>")}</div>`;
+            return `<div class="autocomplete-suggestion" data-val="${item.name}">${item.name.replace(re, "<b style='color:yellow'>$1</b>")}</div>`;
           }
     })
     </script>

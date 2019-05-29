@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 const electronLocalshortcut = require('electron-localshortcut')
 const path = require('path')
 const url = require('url')
@@ -16,7 +16,7 @@ function createWindow () {
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      webSecurity: false
+      webSecurity: true
     }
   })
 
@@ -26,6 +26,7 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
     }))
+
   // Open the DevTools.
  // win.webContents.openDevTools()
 

@@ -123,11 +123,12 @@ th {
 p#Info {
     grid-area: 1 / 2;
     position: absolute;
-    left: 71px;
+    left: 70px;
     top: 173px;
     display: block;
     height: 0;
     font-size: 12px;
+    width: 250px;
 }
 
 tbody:first-child {
