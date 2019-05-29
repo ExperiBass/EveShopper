@@ -1,0 +1,3185 @@
+{
+  "platinoid": [
+    {
+      "category": "inventory_type",
+      "id": 46684,
+      "name": "Platinoid Omber"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46700,
+      "name": "Compressed Platinoid Omber"
+    }
+  ],
+  "brimful c": [
+    {
+      "category": "inventory_type",
+      "id": 46286,
+      "name": "Brimful Coesite"
+    }
+  ],
+  "compressed": [
+    {
+      "category": "inventory_type",
+      "id": 28416,
+      "name": "Compressed Omber"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28388,
+      "name": "Compressed Bistot"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28406,
+      "name": "Compressed Jaspet"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28397,
+      "name": "Compressed Gneiss"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28391,
+      "name": "Compressed Crokite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28410,
+      "name": "Compressed Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28437,
+      "name": "Compressed Gelidus"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28367,
+      "name": "Compressed Arkonor"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28413,
+      "name": "Compressed Mercoxit"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28429,
+      "name": "Compressed Scordite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28433,
+      "name": "Compressed Blue Ice"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28432,
+      "name": "Compressed Veldspar"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28424,
+      "name": "Compressed Pyroxeres"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46694,
+      "name": "Compressed Jet Ochre"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28420,
+      "name": "Compressed Spodumain"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28440,
+      "name": "Compressed Krystallos"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28401,
+      "name": "Compressed Hedbergite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28403,
+      "name": "Compressed Hemorphite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28396,
+      "name": "Compressed Onyx Ochre"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28394,
+      "name": "Compressed Dark Ochre"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28422,
+      "name": "Compressed Plagioclase"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28444,
+      "name": "Compressed White Glaze"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28439,
+      "name": "Compressed Glare Crust"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28408,
+      "name": "Compressed Pure Jaspet"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28415,
+      "name": "Compressed Golden Omber"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28438,
+      "name": "Compressed Glacial Mass"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28435,
+      "name": "Compressed Dark Glitter"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46692,
+      "name": "Compressed Cubic Bistot"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28434,
+      "name": "Compressed Clear Icicle"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47450,
+      "name": "Compressed Capsule Shell"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28393,
+      "name": "Compressed Sharp Crokite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28387,
+      "name": "Compressed Prime Arkonor"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28409,
+      "name": "Compressed Fiery Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28417,
+      "name": "Compressed Silvery Omber"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28431,
+      "name": "Compressed Dense Veldspar"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28412,
+      "name": "Compressed Magma Mercoxit"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28395,
+      "name": "Compressed Obsidian Ochre"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28443,
+      "name": "Compressed Thick Blue Ice"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28425,
+      "name": "Compressed Solid Pyroxeres"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46700,
+      "name": "Compressed Platinoid Omber"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46703,
+      "name": "Compressed Glossy Scordite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28385,
+      "name": "Compressed Crimson Arkonor"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7253,
+      "name": "75mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46705,
+      "name": "Compressed Stable Veldspar"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28407,
+      "name": "Compressed Pristine Jaspet"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46691,
+      "name": "Compressed Flawless Arkonor"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14284,
+      "name": "350mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14276,
+      "name": "200mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28411,
+      "name": "Compressed Luminous Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46693,
+      "name": "Compressed Pellucid Crokite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7453,
+      "name": "425mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46695,
+      "name": "Compressed Brilliant Gneiss"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28399,
+      "name": "Compressed Prismatic Gneiss"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7293,
+      "name": "150mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 10692,
+      "name": "125mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28418,
+      "name": "Compressed Bright Spodumain"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28405,
+      "name": "Compressed Vivid Hemorphite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28390,
+      "name": "Compressed Triclinic Bistot"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28428,
+      "name": "Compressed Massive Scordite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7373,
+      "name": "250mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28423,
+      "name": "Compressed Rich Plagioclase"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28389,
+      "name": "Compressed Monoclinic Bistot"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28402,
+      "name": "Compressed Vitric Hedbergite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28400,
+      "name": "Compressed Glazed Hedbergite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28421,
+      "name": "Compressed Azure Plagioclase"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28414,
+      "name": "Compressed Vitreous Mercoxit"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46698,
+      "name": "Compressed Immaculate Jaspet"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28398,
+      "name": "Compressed Iridescent Gneiss"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28426,
+      "name": "Compressed Viscous Pyroxeres"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46702,
+      "name": "Compressed Opulent Pyroxeres"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46704,
+      "name": "Compressed Dazzling Spodumain"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28419,
+      "name": "Compressed Gleaming Spodumain"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28427,
+      "name": "Compressed Condensed Scordite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28404,
+      "name": "Compressed Radiant Hemorphite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46699,
+      "name": "Compressed Resplendant Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28392,
+      "name": "Compressed Crystalline Crokite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28442,
+      "name": "Compressed Smooth Glacial Mass"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46696,
+      "name": "Compressed Lustrous Hedbergite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28441,
+      "name": "Compressed Pristine White Glaze"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28430,
+      "name": "Compressed Concentrated Veldspar"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7333,
+      "name": "Dual 150mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46701,
+      "name": "Compressed Sparkling Plagioclase"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7413,
+      "name": "Dual 250mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28436,
+      "name": "Compressed Enriched Clear Icicle"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46697,
+      "name": "Compressed Scintillating Hemorphite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41139,
+      "name": "Compressed Enduring Dual 1000mm Railgun"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41144,
+      "name": "Compressed Enduring Dual 1000mm Railgun Blueprint"
+    }
+  ],
+  "merlin": [
+    {
+      "category": "inventory_type",
+      "id": 603,
+      "name": "Merlin"
+    },
+    {
+      "category": "inventory_type",
+      "id": 950,
+      "name": "Merlin Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35325,
+      "name": "Merlin Wiyrkomi SKIN (7 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35327,
+      "name": "Merlin Wiyrkomi SKIN (90 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35326,
+      "name": "Merlin Wiyrkomi SKIN (30 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35321,
+      "name": "Merlin Nugoeihuvi SKIN (7 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35328,
+      "name": "Merlin Wiyrkomi SKIN (365 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41420,
+      "name": "Merlin Valkyrie SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34735,
+      "name": "Merlin Wiyrkomi SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35323,
+      "name": "Merlin Nugoeihuvi SKIN (90 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40771,
+      "name": "Merlin Guristas SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35322,
+      "name": "Merlin Nugoeihuvi SKIN (30 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 48160,
+      "name": "Merlin Ghostbird SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35324,
+      "name": "Merlin Nugoeihuvi SKIN (365 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36710,
+      "name": "Merlin Blue Tiger SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46712,
+      "name": "Merlin Headhunter SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34734,
+      "name": "Merlin Nugoeihuvi SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44203,
+      "name": "Merlin Sukuuvestaa SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36638,
+      "name": "Merlin Raata Sunset SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44153,
+      "name": "Merlin Glacial Drift SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46094,
+      "name": "Merlin Steel Cardinal SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47500,
+      "name": "Merlin Hunter's Quiver SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40584,
+      "name": "Merlin Matigu Seabeast SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45817,
+      "name": "Merlin Exoplanets Hunter SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 49812,
+      "name": "Merlin Operation Permafrost SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36987,
+      "name": "Merlin Wiyrkomi Serenity Only SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36986,
+      "name": "Merlin Nugoeihuvi Serenity Only SKIN (Permanent)"
+    }
+  ],
+  "merl": [
+    {
+      "category": "inventory_type",
+      "id": 603,
+      "name": "Merlin"
+    },
+    {
+      "category": "inventory_type",
+      "id": 950,
+      "name": "Merlin Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17299,
+      "name": "Draclira Merlonne's Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35325,
+      "name": "Merlin Wiyrkomi SKIN (7 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35327,
+      "name": "Merlin Wiyrkomi SKIN (90 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35326,
+      "name": "Merlin Wiyrkomi SKIN (30 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35321,
+      "name": "Merlin Nugoeihuvi SKIN (7 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35328,
+      "name": "Merlin Wiyrkomi SKIN (365 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41420,
+      "name": "Merlin Valkyrie SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34735,
+      "name": "Merlin Wiyrkomi SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35323,
+      "name": "Merlin Nugoeihuvi SKIN (90 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40771,
+      "name": "Merlin Guristas SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35322,
+      "name": "Merlin Nugoeihuvi SKIN (30 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 48160,
+      "name": "Merlin Ghostbird SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35324,
+      "name": "Merlin Nugoeihuvi SKIN (365 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36710,
+      "name": "Merlin Blue Tiger SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46712,
+      "name": "Merlin Headhunter SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34734,
+      "name": "Merlin Nugoeihuvi SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44203,
+      "name": "Merlin Sukuuvestaa SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36638,
+      "name": "Merlin Raata Sunset SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44153,
+      "name": "Merlin Glacial Drift SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46094,
+      "name": "Merlin Steel Cardinal SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47500,
+      "name": "Merlin Hunter's Quiver SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40584,
+      "name": "Merlin Matigu Seabeast SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45817,
+      "name": "Merlin Exoplanets Hunter SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 49812,
+      "name": "Merlin Operation Permafrost SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36987,
+      "name": "Merlin Wiyrkomi Serenity Only SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36986,
+      "name": "Merlin Nugoeihuvi Serenity Only SKIN (Permanent)"
+    }
+  ],
+  "ree": [
+    {
+      "category": "inventory_type",
+      "id": 23932,
+      "name": "Blood Reel"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44212,
+      "name": "Upwell Consortium Propaganda Reel"
+    }
+  ],
+  "merlin ": [
+    {
+      "category": "inventory_type",
+      "id": 603,
+      "name": "Merlin"
+    },
+    {
+      "category": "inventory_type",
+      "id": 950,
+      "name": "Merlin Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35325,
+      "name": "Merlin Wiyrkomi SKIN (7 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35327,
+      "name": "Merlin Wiyrkomi SKIN (90 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35326,
+      "name": "Merlin Wiyrkomi SKIN (30 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35321,
+      "name": "Merlin Nugoeihuvi SKIN (7 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35328,
+      "name": "Merlin Wiyrkomi SKIN (365 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41420,
+      "name": "Merlin Valkyrie SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34735,
+      "name": "Merlin Wiyrkomi SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35323,
+      "name": "Merlin Nugoeihuvi SKIN (90 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40771,
+      "name": "Merlin Guristas SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35322,
+      "name": "Merlin Nugoeihuvi SKIN (30 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 48160,
+      "name": "Merlin Ghostbird SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 35324,
+      "name": "Merlin Nugoeihuvi SKIN (365 Days)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36710,
+      "name": "Merlin Blue Tiger SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46712,
+      "name": "Merlin Headhunter SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34734,
+      "name": "Merlin Nugoeihuvi SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44203,
+      "name": "Merlin Sukuuvestaa SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36638,
+      "name": "Merlin Raata Sunset SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44153,
+      "name": "Merlin Glacial Drift SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46094,
+      "name": "Merlin Steel Cardinal SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47500,
+      "name": "Merlin Hunter's Quiver SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40584,
+      "name": "Merlin Matigu Seabeast SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45817,
+      "name": "Merlin Exoplanets Hunter SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 49812,
+      "name": "Merlin Operation Permafrost SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36987,
+      "name": "Merlin Wiyrkomi Serenity Only SKIN (Permanent)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 36986,
+      "name": "Merlin Nugoeihuvi Serenity Only SKIN (Permanent)"
+    }
+  ],
+  "compressed kernite": [
+    {
+      "category": "inventory_type",
+      "id": 28410,
+      "name": "Compressed Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28409,
+      "name": "Compressed Fiery Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28411,
+      "name": "Compressed Luminous Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46699,
+      "name": "Compressed Resplendant Kernite"
+    }
+  ],
+  "compressed  kernite": [
+    {
+      "category": "inventory_type",
+      "id": 28410,
+      "name": "Compressed Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28409,
+      "name": "Compressed Fiery Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28411,
+      "name": "Compressed Luminous Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46699,
+      "name": "Compressed Resplendant Kernite"
+    }
+  ],
+  "kernite": [
+    {
+      "category": "inventory_type",
+      "id": 20,
+      "name": "Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17453,
+      "name": "Fiery Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17452,
+      "name": "Luminous Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 12188,
+      "name": "Kernite Processing"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28410,
+      "name": "Compressed Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46683,
+      "name": "Resplendant Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18052,
+      "name": "Kernite Mining Crystal I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28409,
+      "name": "Compressed Fiery Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18606,
+      "name": "Kernite Mining Crystal II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28411,
+      "name": "Compressed Luminous Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46699,
+      "name": "Compressed Resplendant Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18053,
+      "name": "Kernite Mining Crystal I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18607,
+      "name": "Kernite Mining Crystal II Blueprint"
+    }
+  ],
+  "compressed k": [
+    {
+      "category": "inventory_type",
+      "id": 28410,
+      "name": "Compressed Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28440,
+      "name": "Compressed Krystallos"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28409,
+      "name": "Compressed Fiery Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28411,
+      "name": "Compressed Luminous Kernite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46699,
+      "name": "Compressed Resplendant Kernite"
+    }
+  ],
+  "tritanium": [
+    {
+      "category": "inventory_type",
+      "id": 34,
+      "name": "Tritanium"
+    },
+    {
+      "category": "inventory_type",
+      "id": 25595,
+      "name": "Alloyed Tritanium Bar"
+    },
+    {
+      "category": "inventory_type",
+      "id": 2979,
+      "name": "Crate of Industrial-Grade Tritanium-Alloy Scraps"
+    },
+    {
+      "category": "inventory_type",
+      "id": 2980,
+      "name": "Large Crate of Industrial-Grade Tritanium-Alloy Scraps"
+    }
+  ],
+  "compressed i": [
+    {
+      "category": "inventory_type",
+      "id": 28433,
+      "name": "Compressed Blue Ice"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28434,
+      "name": "Compressed Clear Icicle"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28443,
+      "name": "Compressed Thick Blue Ice"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7253,
+      "name": "75mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7373,
+      "name": "250mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 10692,
+      "name": "125mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7293,
+      "name": "150mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14276,
+      "name": "200mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7453,
+      "name": "425mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14284,
+      "name": "350mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28398,
+      "name": "Compressed Iridescent Gneiss"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46698,
+      "name": "Compressed Immaculate Jaspet"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28436,
+      "name": "Compressed Enriched Clear Icicle"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7333,
+      "name": "Dual 150mm Compressed Coil Gun I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 7413,
+      "name": "Dual 250mm Compressed Coil Gun I"
+    }
+  ],
+  "plat": [
+    {
+      "category": "inventory_type",
+      "id": 16644,
+      "name": "Platinum"
+    },
+    {
+      "category": "inventory_type",
+      "id": 25605,
+      "name": "Armor Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1197,
+      "name": "EM Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1198,
+      "name": "EM Plating II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46684,
+      "name": "Platinoid Omber"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1193,
+      "name": "Basic EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16662,
+      "name": "Platinum Technite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1294,
+      "name": "Thermal Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1274,
+      "name": "Layered Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1284,
+      "name": "Kinetic Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1286,
+      "name": "Kinetic Plating II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17196,
+      "name": "Angel Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1276,
+      "name": "Layered Plating II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 12535,
+      "name": "Blood Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1296,
+      "name": "Thermal Plating II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1264,
+      "name": "Explosive Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 25624,
+      "name": "Intact Armor Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 12550,
+      "name": "Sansha Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11299,
+      "name": "800mm Steel Plates I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1266,
+      "name": "Explosive Plating II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11295,
+      "name": "200mm Steel Plates I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11293,
+      "name": "100mm Steel Plates I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16331,
+      "name": "Limited EM Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 21017,
+      "name": "Capital Armor Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11297,
+      "name": "400mm Steel Plates I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20347,
+      "name": "200mm Steel Plates II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1272,
+      "name": "Basic Layered Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20351,
+      "name": "800mm Steel Plates II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16329,
+      "name": "Upgraded EM Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14017,
+      "name": "Domination EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 12545,
+      "name": "Guristas Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20349,
+      "name": "400mm Steel Plates II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1282,
+      "name": "Basic Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14021,
+      "name": "Dark Blood EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20345,
+      "name": "100mm Steel Plates II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11279,
+      "name": "1600mm Steel Plates I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1292,
+      "name": "Basic Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 2972,
+      "name": "Ditanium Metal Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40348,
+      "name": "25000mm Steel Plates I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16335,
+      "name": "'Spiegel' EM Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14019,
+      "name": "True Sansha EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1204,
+      "name": "EM Plating I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20353,
+      "name": "1600mm Steel Plates II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 12540,
+      "name": "Serpentis Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28554,
+      "name": "Khanid Navy EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16333,
+      "name": "'Contour' EM Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17229,
+      "name": "Domination Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17240,
+      "name": "Dark Blood Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17518,
+      "name": "Ammatar Navy EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1304,
+      "name": "Adaptive Nano Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1262,
+      "name": "Basic Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40351,
+      "name": "25000mm Steel Plates II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1205,
+      "name": "EM Plating II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18748,
+      "name": "Corpii B-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18750,
+      "name": "Centii B-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17260,
+      "name": "True Sansha Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18722,
+      "name": "Centii C-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18775,
+      "name": "Coreli C-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18795,
+      "name": "Coreli A-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 21086,
+      "name": "Talocan Partition Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 30464,
+      "name": "Metallofullerene Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18785,
+      "name": "Coreli B-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15687,
+      "name": "Imperial Navy EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18760,
+      "name": "Corpii A-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18762,
+      "name": "Centii A-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1306,
+      "name": "Adaptive Nano Plating II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18720,
+      "name": "Corpii C-Type EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16315,
+      "name": "Limited Kinetic Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15697,
+      "name": "Republic Fleet EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16339,
+      "name": "Limited Thermal Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16351,
+      "name": "'Grail' Layered Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16347,
+      "name": "Limited Layered Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14005,
+      "name": "Domination Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16313,
+      "name": "Upgraded Kinetic Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17555,
+      "name": "Federation Navy EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14009,
+      "name": "Dark Blood Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16345,
+      "name": "Upgraded Layered Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16349,
+      "name": "'Scarab' Layered Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16337,
+      "name": "Upgraded Thermal Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46700,
+      "name": "Compressed Platinoid Omber"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47820,
+      "name": "Large Abyssal Armor Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14023,
+      "name": "Domination Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47812,
+      "name": "Small Abyssal Armor Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14027,
+      "name": "Dark Blood Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16323,
+      "name": "Limited Explosive Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1285,
+      "name": "Kinetic Plating I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 32822,
+      "name": "Unrefined Platinum Technite"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14584,
+      "name": "Gotan's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28547,
+      "name": "Khanid Navy Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23783,
+      "name": "'Abatis' 100mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1295,
+      "name": "Thermal Plating I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1302,
+      "name": "Basic Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17250,
+      "name": "Dread Guristas Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14912,
+      "name": "Vizan's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16343,
+      "name": "Prototype Thermal Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14916,
+      "name": "Chelm's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15180,
+      "name": "Brynn's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16327,
+      "name": "'Element' Kinetic Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14007,
+      "name": "True Sansha Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47817,
+      "name": "Medium Abyssal Armor Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1275,
+      "name": "Layered Plating I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14025,
+      "name": "True Sansha Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15182,
+      "name": "Tuvan's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14055,
+      "name": "Shadow Serpentis EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16319,
+      "name": "'Aegis' Explosive Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28559,
+      "name": "Khanid Navy Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11543,
+      "name": "Tungsten Carbide Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1277,
+      "name": "Layered Plating II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14580,
+      "name": "Mizuro's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15184,
+      "name": "Setele's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14015,
+      "name": "Dark Blood Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17512,
+      "name": "Ammatar Navy Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1287,
+      "name": "Kinetic Plating II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14011,
+      "name": "Domination Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41456,
+      "name": "CONCORD 25000mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28778,
+      "name": "Syndicate 100mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23785,
+      "name": "'Bailey' 1600mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23789,
+      "name": "'Bastion' 400mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28782,
+      "name": "Syndicate 200mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14906,
+      "name": "Tairei's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28784,
+      "name": "Syndicate 400mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1297,
+      "name": "Thermal Plating II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16321,
+      "name": "Upgraded Explosive Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28786,
+      "name": "Syndicate 800mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 32809,
+      "name": "Ammatar Navy Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18752,
+      "name": "Corpii A-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18797,
+      "name": "Coreli A-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 44216,
+      "name": "Armor Plating From TES Seraph"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18781,
+      "name": "Coreli B-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18714,
+      "name": "Centii C-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18724,
+      "name": "Corpii C-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18726,
+      "name": "Centii C-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18712,
+      "name": "Corpii C-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18728,
+      "name": "Corpii B-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18730,
+      "name": "Centii B-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23793,
+      "name": "'Barbican' 800mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14013,
+      "name": "True Sansha Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18740,
+      "name": "Corpii B-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15691,
+      "name": "Imperial Navy Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18791,
+      "name": "Coreli A-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18777,
+      "name": "Coreli C-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 33124,
+      "name": "Platinum Medallion of Freedom"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15685,
+      "name": "Imperial Navy Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18787,
+      "name": "Coreli B-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28552,
+      "name": "Khanid Navy Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18742,
+      "name": "Centii B-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18754,
+      "name": "Centii A-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18764,
+      "name": "Corpii A-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14914,
+      "name": "Ahremen's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14910,
+      "name": "Raysere's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15186,
+      "name": "Cormack's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18766,
+      "name": "Centii A-Type Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14908,
+      "name": "Selynne's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28780,
+      "name": "Syndicate 1600mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1265,
+      "name": "Explosive Plating I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11544,
+      "name": "Titanium Diborite Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14904,
+      "name": "Brokara's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18770,
+      "name": "Coreli C-Type Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17271,
+      "name": "Shadow Serpentis Platinum Tag"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1267,
+      "name": "Explosive Plating II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16341,
+      "name": "Experimental Thermal Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11294,
+      "name": "100mm Steel Plates I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11296,
+      "name": "200mm Steel Plates I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11298,
+      "name": "400mm Steel Plates I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11300,
+      "name": "800mm Steel Plates I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17516,
+      "name": "Ammatar Navy Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14918,
+      "name": "Draclira's Modified EM Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15695,
+      "name": "Republic Fleet Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23791,
+      "name": "'Citadella' 100mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 21018,
+      "name": "Capital Armor Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15701,
+      "name": "Republic Fleet Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23787,
+      "name": "'Chainmail' 200mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16317,
+      "name": "Experimental Kinetic Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11280,
+      "name": "1600mm Steel Plates I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47360,
+      "name": "Standup Layered Armor Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18783,
+      "name": "Coreli B-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16307,
+      "name": "Limited Adaptive Nano Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27979,
+      "name": "Minmatar Outpost Plant Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41457,
+      "name": "Dark Blood 25000mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18758,
+      "name": "Centii A-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20346,
+      "name": "100mm Steel Plates II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18756,
+      "name": "Corpii A-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17551,
+      "name": "Federation Navy Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15689,
+      "name": "Imperial Navy Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20352,
+      "name": "800mm Steel Plates II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17557,
+      "name": "Federation Navy Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 2973,
+      "name": "Pallet of Ditanium Metal Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20348,
+      "name": "200mm Steel Plates II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18793,
+      "name": "Coreli A-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18746,
+      "name": "Centii B-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18772,
+      "name": "Coreli C-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18718,
+      "name": "Centii C-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18716,
+      "name": "Corpii C-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18744,
+      "name": "Corpii B-Type Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20350,
+      "name": "400mm Steel Plates II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27975,
+      "name": "Gallente Outpost Plant Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14880,
+      "name": "Vizan's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 20354,
+      "name": "1600mm Steel Plates II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15174,
+      "name": "Tuvan's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14051,
+      "name": "Shadow Serpentis Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 13999,
+      "name": "Domination Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28055,
+      "name": "Gallente Outpost Office Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14568,
+      "name": "Gotan's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14003,
+      "name": "Dark Blood Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15699,
+      "name": "Republic Fleet Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14928,
+      "name": "Vizan's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31896,
+      "name": "Imperial Navy 100mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47362,
+      "name": "Standup Layered Armor Plating II"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15172,
+      "name": "Brynn's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16325,
+      "name": "Experimental Explosive Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31904,
+      "name": "Imperial Navy 200mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15196,
+      "name": "Brynn's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31908,
+      "name": "Imperial Navy 400mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14884,
+      "name": "Chelm's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14932,
+      "name": "Chelm's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31916,
+      "name": "Imperial Navy 800mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14057,
+      "name": "Shadow Serpentis Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16305,
+      "name": "Upgraded Adaptive Nano Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15198,
+      "name": "Tuvan's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16311,
+      "name": "'Refuge' Adaptive Nano Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14592,
+      "name": "Gotan's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28061,
+      "name": "Minmatar Outpost Office Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28555,
+      "name": "Khanid Navy EM Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41607,
+      "name": "25000mm Steel Plates I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31900,
+      "name": "Imperial Navy 1600mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1305,
+      "name": "Adaptive Nano Plating I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15176,
+      "name": "Setele's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17519,
+      "name": "Ammatar Navy EM Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27971,
+      "name": "Minmatar Outpost Factory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14001,
+      "name": "True Sansha Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15200,
+      "name": "Setele's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14564,
+      "name": "Mizuro's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17553,
+      "name": "Federation Navy Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14922,
+      "name": "Tairei's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34424,
+      "name": "Titanium Plated Cranial Shielding"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41610,
+      "name": "25000mm Steel Plates II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27967,
+      "name": "Gallente Outpost Factory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28520,
+      "name": "Khanid Navy Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11545,
+      "name": "Crystalline Carbonide Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14874,
+      "name": "Tairei's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14588,
+      "name": "Mizuro's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31910,
+      "name": "Federation Navy 400mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15202,
+      "name": "Cormack's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14872,
+      "name": "Brokara's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31898,
+      "name": "Federation Navy 100mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14876,
+      "name": "Selynne's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14878,
+      "name": "Raysere's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14882,
+      "name": "Ahremen's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14896,
+      "name": "Vizan's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14900,
+      "name": "Chelm's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17514,
+      "name": "Ammatar Navy Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46177,
+      "name": "Platinum Technite Reaction Formula"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14920,
+      "name": "Brokara's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14924,
+      "name": "Selynne's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14926,
+      "name": "Raysere's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14930,
+      "name": "Ahremen's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31918,
+      "name": "Federation Navy 800mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28037,
+      "name": "Minmatar Outpost Refinery Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28031,
+      "name": "Gallente Outpost Refinery Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14053,
+      "name": "Shadow Serpentis Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 30465,
+      "name": "Metallofullerene Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31906,
+      "name": "Federation Navy 200mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 1307,
+      "name": "Adaptive Nano Plating II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15190,
+      "name": "Tuvan's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15188,
+      "name": "Brynn's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15178,
+      "name": "Cormack's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14576,
+      "name": "Gotan's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15688,
+      "name": "Imperial Navy EM Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18700,
+      "name": "Corpii C-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14572,
+      "name": "Mizuro's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15698,
+      "name": "Republic Fleet EM Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 31902,
+      "name": "Federation Navy 1600mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18768,
+      "name": "Coreli C-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18779,
+      "name": "Coreli B-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14934,
+      "name": "Draclira's Modified Thermal Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15693,
+      "name": "Imperial Navy Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15192,
+      "name": "Setele's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18702,
+      "name": "Centii C-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14890,
+      "name": "Tairei's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14886,
+      "name": "Draclira's Modified Kinetic Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18704,
+      "name": "Corpii B-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18710,
+      "name": "Centii A-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18706,
+      "name": "Centii B-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18708,
+      "name": "Corpii A-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 18789,
+      "name": "Coreli A-Type Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11317,
+      "name": "800mm Rolled Tungsten Compact Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47819,
+      "name": "Gravid Large Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11349,
+      "name": "200mm Rolled Tungsten Compact Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 16309,
+      "name": "'Collateral' Adaptive Nano Plating I"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14898,
+      "name": "Ahremen's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28007,
+      "name": "Gallente Outpost Laboratory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14894,
+      "name": "Raysere's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14892,
+      "name": "Selynne's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29109,
+      "name": "Capital Tungsten Carbide Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14888,
+      "name": "Brokara's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28013,
+      "name": "Minmatar Outpost Laboratory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47811,
+      "name": "Gravid Small Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 34067,
+      "name": "Women's 'Blades' Headwear (platinum)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17556,
+      "name": "Federation Navy EM Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15194,
+      "name": "Cormack's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15703,
+      "name": "Republic Fleet Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45587,
+      "name": "Legion Defensive - Augmented Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11309,
+      "name": "400mm Rolled Tungsten Compact Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11341,
+      "name": "100mm Rolled Tungsten Compact Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28560,
+      "name": "Khanid Navy Thermal Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28548,
+      "name": "Khanid Navy Kinetic Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47809,
+      "name": "Decayed Small Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47816,
+      "name": "Decayed Large Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27983,
+      "name": "Gallente Basic Outpost Plant Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14902,
+      "name": "Draclira's Modified Explosive Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47815,
+      "name": "Gravid Medium Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45593,
+      "name": "Proteus Defensive - Augmented Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11542,
+      "name": "Fernite Carbide Composite Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29107,
+      "name": "Capital Titanium Diborite Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41458,
+      "name": "Shadow Serpentis 25000mm Steel Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17549,
+      "name": "Federation Navy Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11325,
+      "name": "1600mm Rolled Tungsten Compact Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27985,
+      "name": "Minmatar Basic Outpost Plant Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47810,
+      "name": "Unstable Small Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 32810,
+      "name": "Ammatar Navy Thermal Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15166,
+      "name": "Tuvan's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28053,
+      "name": "Gallente Basic Outpost Office Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47813,
+      "name": "Decayed Medium Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41611,
+      "name": "CONCORD 25000mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28059,
+      "name": "Minmatar Basic Outpost Office Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14560,
+      "name": "Gotan's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47818,
+      "name": "Unstable Large Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40350,
+      "name": "25000mm Rolled Tungsten Compact Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14868,
+      "name": "Chelm's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17350,
+      "name": "Tungsten Carbide Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14864,
+      "name": "Vizan's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23786,
+      "name": "'Bailey' 1600mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14049,
+      "name": "Shadow Serpentis Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15164,
+      "name": "Brynn's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23790,
+      "name": "'Bastion' 400mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17513,
+      "name": "Ammatar Navy Kinetic Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23784,
+      "name": "'Abatis' 100mm Steel Plates I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14858,
+      "name": "Tairei's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23794,
+      "name": "'Barbican' 800mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15686,
+      "name": "Imperial Navy Thermal Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15168,
+      "name": "Setele's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17328,
+      "name": "Titanium Diborite Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45062,
+      "name": "Replica Gold Magnate Decorative Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14556,
+      "name": "Mizuro's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47814,
+      "name": "Unstable Medium Armor Plate Mutaplasmid"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15692,
+      "name": "Imperial Navy Kinetic Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27939,
+      "name": "Gallente Basic Outpost Factory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27941,
+      "name": "Minmatar Basic Outpost Factory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28553,
+      "name": "Khanid Navy Explosive Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15702,
+      "name": "Republic Fleet Kinetic Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23792,
+      "name": "'Citadella' 100mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28035,
+      "name": "Minmatar Basic Outpost Refinery Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14862,
+      "name": "Raysere's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28029,
+      "name": "Gallente Basic Outpost Refinery Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14860,
+      "name": "Selynne's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14856,
+      "name": "Brokara's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14866,
+      "name": "Ahremen's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15170,
+      "name": "Cormack's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15696,
+      "name": "Republic Fleet Thermal Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27977,
+      "name": "Gallente Advanced Outpost Plant Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27981,
+      "name": "Minmatar Advanced Outpost Plant Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 23788,
+      "name": "'Chainmail' 200mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17517,
+      "name": "Ammatar Navy Explosive Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 14870,
+      "name": "Draclira's Modified Adaptive Nano Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15690,
+      "name": "Imperial Navy Explosive Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28063,
+      "name": "Minmatar Advanced Outpost Office Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41612,
+      "name": "Dark Blood 25000mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29041,
+      "name": "Capital Crystalline Carbonide Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28057,
+      "name": "Gallente Advanced Outpost Office Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47361,
+      "name": "Standup Layered Armor Plating I Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17552,
+      "name": "Federation Navy Kinetic Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17558,
+      "name": "Federation Navy Thermal Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 47363,
+      "name": "Standup Layered Armor Plating II Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28011,
+      "name": "Minmatar Basic Outpost Laboratory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28005,
+      "name": "Gallente Basic Outpost Laboratory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27969,
+      "name": "Gallente Advanced Outpost Factory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 4065,
+      "name": "Women's 'Sterling' Dress Blouse (platinum)"
+    },
+    {
+      "category": "inventory_type",
+      "id": 27973,
+      "name": "Minmatar Advanced Outpost Factory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15700,
+      "name": "Republic Fleet Explosive Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 2967,
+      "name": "Crate of Target Painter Deflection Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17554,
+      "name": "Federation Navy Explosive Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28521,
+      "name": "Khanid Navy Adaptive Nano Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17323,
+      "name": "Crystalline Carbonide Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28033,
+      "name": "Gallente Advanced Outpost Refinery Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28039,
+      "name": "Minmatar Advanced Outpost Refinery Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45604,
+      "name": "Proteus Offensive - Hybrid Encoding Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 46188,
+      "name": "Unrefined Platinum Technite Reaction Formula"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17515,
+      "name": "Ammatar Navy Adaptive Nano Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11311,
+      "name": "400mm Crystalline Carbonide Restrained Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29049,
+      "name": "Capital Fernite Carbide Composite Armor Plate"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28009,
+      "name": "Gallente Advanced Outpost Laboratory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 28015,
+      "name": "Minmatar Advanced Outpost Laboratory Platform"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11351,
+      "name": "200mm Crystalline Carbonide Restrained Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15694,
+      "name": "Imperial Navy Adaptive Nano Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11343,
+      "name": "100mm Crystalline Carbonide Restrained Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11319,
+      "name": "800mm Crystalline Carbonide Restrained Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45682,
+      "name": "Legion Defensive - Augmented Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 15704,
+      "name": "Republic Fleet Adaptive Nano Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 11327,
+      "name": "1600mm Crystalline Carbonide Restrained Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29110,
+      "name": "Capital Tungsten Carbide Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 40349,
+      "name": "25000mm Crystalline Carbonide Restrained Plates"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29108,
+      "name": "Capital Titanium Diborite Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45688,
+      "name": "Proteus Defensive - Augmented Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17550,
+      "name": "Federation Navy Adaptive Nano Plating Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 17355,
+      "name": "Fernite Carbide Composite Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41613,
+      "name": "Shadow Serpentis 25000mm Steel Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 2968,
+      "name": "Large Crate of Target Painter Deflection Plating"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41608,
+      "name": "25000mm Rolled Tungsten Compact Plates Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29042,
+      "name": "Capital Crystalline Carbonide Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 45699,
+      "name": "Proteus Offensive - Hybrid Encoding Platform Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 29050,
+      "name": "Capital Fernite Carbide Composite Armor Plate Blueprint"
+    },
+    {
+      "category": "inventory_type",
+      "id": 41609,
+      "name": "25000mm Crystalline Carbonide Restrained Plates Blueprint"
+    }
+  ]
+}
