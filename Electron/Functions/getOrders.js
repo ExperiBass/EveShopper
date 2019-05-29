@@ -74,13 +74,13 @@ async function getOrders(buySell, itemID, array, fedName) {
       try {
         currentData = data[i]
         station = await getStations(currentData.location_id) // get the station name
-        price = numeral(currentData.price).format('0,0.00') + ' ISK' // get the price of the item at the station
+        price = `${numeral(currentData.price).format('0,0.00')} ISK` // get the price of the item at the station
       }
       catch (error) {
         err(error, 'Function: getOrders()')
         Info.innerText = 'Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on '
                           + 'my GitHub page with this error:' + error
-        setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+        setTimeout(function () {document.getElementById('Info').innerText = ''}, 80000)
         Fetch.disabled = false
         return
       }
@@ -91,21 +91,21 @@ async function getOrders(buySell, itemID, array, fedName) {
 
       switch (buySell){
         case 'buy':
-        mOr = 'Remaining Volume'
-          remVol = currentData.volume_remain
+        mOr = 'Minimum Volume'
+          minVol = currentData.min_volume
           info = `<tr>
                   <td>${station}</td>
                   <td>${price}</td> 
-                  <td>${remVol}</td>
+                  <td>${minVol}</td>
                   </tr>`
           // `info` is HTML, and generates a table to display the data
           break;
         case 'sell':
-          mOr = 'Minimum Volume'
-          minVol = currentData.min_volume
+          mOr = 'Remaining Volume'
+          remVol = currentData.volume_remain 
           info = `<tr><td>${station}</td>
                   <td>${price}</td>
-                  <td>${minVol}</td>
+                  <td>${remVol}</td>
                   </tr>`
           break;
       }
@@ -114,13 +114,13 @@ async function getOrders(buySell, itemID, array, fedName) {
         Table.innerHTML = `<tr>
         <th>Station</th>
         <th>Price</th> 
-        <th>Remaining/minimum Volume</th>`
+        <th>Remaining/Minimum Volume</th>`
       } else if (mOr == 'Remaining Volume') {
           Table.innerHTML = `<tr>
                           <th>Station</th>
                           <th>Price</th> 
                           <th>${mOr}</th>
-                          </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/>`
+                          </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/><hr />`
       } else {
         Table.innerHTML = `<tr>
                           <th>Station</th>

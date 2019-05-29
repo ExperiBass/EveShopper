@@ -223,7 +223,7 @@
                                 autoCompleteCache[term] = suggestions;
                                 suggest(suggestions);
                             }
-                            fs.writeFile(`./Electron/Functions/Cache/itemNames.json`, JSON.stringify(autoCompleteCache), 
+                            fs.writeFile(`./Electron/Functions/Cache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2), 
                               function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
                                 if (err) { //if there is a error
                                   console.error(err)
