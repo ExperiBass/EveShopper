@@ -15,6 +15,7 @@ async function getOrders(buySell, itemID, array, fedName) {
   const Table = document.getElementById('table')
   let content = ''
   let data, regID;
+  let regionNum;
 
   Fetch.disabled = true
 
@@ -36,6 +37,7 @@ async function getOrders(buySell, itemID, array, fedName) {
     }
     for (let i = 0; i < array.length; i++) {
       regID = array[i]
+      regionNum = ++i
       console.log(regID)
       await fetch()
     } 
@@ -86,7 +88,7 @@ async function getOrders(buySell, itemID, array, fedName) {
       }
 
       if (station == undefined) {
-        station = `Private Station`
+        station = `Upwell Structure`
       }
 
       switch (buySell){
@@ -143,7 +145,7 @@ async function getOrders(buySell, itemID, array, fedName) {
           dots = ''
           j = 0
       }
-      Info.innerText = `Fetching orders in ${regID.name} (this may take a while)${dots}` // Display the region 
+      Info.innerText = `Fetching orders in ${regID.name} (this may take a while (Region ${regionNum} of ${array.length}))${dots}` // Display the region 
                                                                                        // the app is getting orders from
       content += info
       
