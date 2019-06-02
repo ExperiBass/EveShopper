@@ -21,90 +21,90 @@
     let alertUser = require('./Functions/info')
     let completeList = ''
 
-     function addToList(item, price) {
+    function addToList(item, price) {
 
-       prompt({
-          height: 150,
-          title: 'Item Amount',
-          label: `Please input the amount that you want:`,
-          value: '',
-          customStylesheet: './Electron/style.css',
-          inputAttrs: {
-              type: 'text',
-              required: true
+      prompt({
+        height: 150,
+        title: 'Item Amount',
+        label: `Please input the amount that you want:`,
+        value: '',
+        customStylesheet: './Electron/style.css',
+        inputAttrs: {
+            type: 'text',
+            required: true
+        }
+      })
+      .then((r) => {
+          if(r === null) {
+            alertUser('Cancelled.')
+            console.log('user cancelled')
+          } 
+          else if (r == '') {
+            alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
+            return
+          } 
+          else {
+              amnt = parseInt(r)
+              if (amnt != amnt) {
+                console.error('Not a Number! 3:<')
+                alertUser('That\'s not a number!')
+                return
+              }
+              // getting name of item
+              axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
+                    .then(response => { 
+                      data = response.data
+                      name = data.name
+
+                      for (let i = 0; i < list.length; i++) {
+                        if (list[i].search(name) == -1) {
+                          alert(`Wait a second... ${name} is already in your list!`)
+                          return
+                        }
+                      }
+
+                      list.push(`${name} ${amnt} - -`)
+                      completeList = ''
+                      list.forEach(add)
+                      function add(v) {
+                        completeList += `${v}\n`
+                        console.log(completeList)
+                      }
+                      alertUser(`Added ${amnt} ${name} to your shopping list!`)
+                      return
+                    })
+                    .catch(error => { 
+                      err(error, 'Function: getOrders()')
+                      Fetch.disabled = false
+                      return
+                    })
           }
-        })
-        .then((r) => {
-            if(r === null) {
-              alertUser('Cancelled.')
-              console.log('user cancelled')
-            } 
-            else if (r == '') {
-              alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
-              return
-            } 
-            else {
-                amnt = parseInt(r)
-                if (amnt != amnt) {
-                  console.error('Not a Number! 3:<')
-                  alertUser('That\'s not a number!')
-                  return
-                }
-                // getting name of item
-                axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
-                      .then(response => { 
-                        data = response.data
-                        name = data.name
-
-                        for (let i = 0; i < list.length; i++) {
-                          if (list[i].search(name) == -1) {
-                            alert(`Wait a second... ${name} is already in your list!`)
-                            return
-                          }
-                        }
-
-                        list.push(`${name} ${amnt} - -`)
-                        completeList = ''
-                        list.forEach(add)
-                        function add(v) {
-                          completeList += `${v}\n`
-                          console.log(completeList)
-                        }
-                        alertUser(`Added ${amnt} ${name} to your shopping list!`)
-                        return
-                      })
-                      .catch(error => { 
-                        err(error, 'Function: getOrders()')
-                        Fetch.disabled = false
-                        return
-                      })
-            }
-        })
-        .catch(console.error)
+      })
+      .catch(console.error)
       
-      }
+    }
       
-      function showList() {
-        console.log(completeList)
-        if (completeList){
-          document.getElementById('List').innerText = completeList
-        } else {
-          alertUser(`There's nothing in your list!`)
-          return
-        }
+    function showList() {
+      console.log(completeList)
+      if (completeList){
+        document.getElementById('List').innerText = completeList
+      } else {
+        alertUser(`There's nothing in your list!`)
+        return
       }
+    }
 
-      function copyList() {
-        let { clipboard } = require('electron')
-        let List = document.getElementById('List')
-        if (completeList) {
-          clipboard.writeText(`${completeList}`)
-        } else {
-          alertUser(`There's nothing in your list!`)
-          return
-        }
-        alertUser(`List copied!`)
+    function copyList() {
+      let { clipboard } = require('electron')
+      let List = document.getElementById('List')
+      if (completeList) {
+        clipboard.writeText(`${completeList}`)
+      } else {
+        alertUser(`There's nothing in your list!`)
+        return
       }
+      alertUser(`List copied!`)
+    }
     </script>
   </head>
   <body>
@@ -120,8 +120,10 @@
       </select><br>
       Item:<br>
       <input type="text" name="item" id="Item" autofocus placeholder="Tritanium" value=""><br><br>
-      <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Selling?<br>
-      <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Buying?<br><br>
+
+      <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Buying?<br>
+      <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Selling?<br><br>
+
       <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
     </form>
     <p id="Info" style="font-size: 12px"></p>
@@ -135,6 +137,7 @@
         <tr>
           <th>Station</th>
           <th>Price</th>
+          <th>Minimum/Remaining Volume</th>
         </tr>
       </table>
     

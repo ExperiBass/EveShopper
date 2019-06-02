@@ -14,6 +14,7 @@ function getItem(iSearch, bOs) {
     let fedName;
     let buySell; // Will be either "buy", "sell", or undefined
     const Info = document.getElementById('Info')
+    const alertUser = require('./info')
     let federation = document.getElementById('fedList').value
     // List of faction region IDs
     const amarrRegions = [
@@ -50,11 +51,8 @@ function getItem(iSearch, bOs) {
 
     // Checking for valid item
     if (iSearch == '') {
-        Info.innerText = 'You didn\'t give a item to get the prices of!'
-        setTimeout(function() {
-            document.getElementById('Info').innerText = ''
-        }, 4000)
-        return;
+        alertUser(`You didn't give a item to get the prices of!`)
+        return
     }
 
     switch (federation) {
@@ -90,10 +88,7 @@ function getItem(iSearch, bOs) {
                 const data = response.data
                 item = data.inventory_type[0]
             } catch { // if `data.inventory_type[0]` doesnt exist, this block is run
-                Info.innerText = 'That\'s not a valid item!'
-                setTimeout(function() {
-                    document.getElementById('Info').innerText = ''
-                }, 4000)
+                alertUser(`That's not a valid item!`)
                 err('Invalid Item')
                 return
             }

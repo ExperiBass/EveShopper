@@ -4,24 +4,19 @@ module.exports = getOrders
  * buy or sell orders for the given item in the given federations space.
  * This function has the bulk of the code that powers EveShopper.
 */
-const axios = require('axios')
-const getStations = require('./getStations')
-const err = require('./err')
-const numeral = require('numeral')
+const axios = require('axios'); const numeral = require('numeral')
+const getStations = require('./getStations'); const err = require('./err'); const alertUser = require('./info')
 const link = 'https://esi.evetech.net/latest/'
 
 async function getOrders(buySell, itemID, array, fedName) {
-  const Fetch = document.getElementById('Fetch')
-  const Table = document.getElementById('table')
+  const Fetch = document.getElementById('Fetch'); const Table = document.getElementById('table')
   let content = ''
-  let data, regID;
-  let regionNum;
+  let data, regID, regionNum
 
   Fetch.disabled = true
 
   if (buySell == undefined) {
-    Info.innerHTML = 'Choose either "Buy" or "Sell"!'
-    setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+    alertUser(`Choose either "Buy" or "Sell"!`)
     Fetch.disabled = false
     return
   }
@@ -37,17 +32,14 @@ async function getOrders(buySell, itemID, array, fedName) {
     }
     for (let i = 0; i < array.length; i++) {
       regID = array[i]
-      regionNum = ++i
-      console.log(regID)
+      regionNum = i + 1
       await fetch()
     } 
     if (content == '') { // if there are no orders...
-      Info.innerText = `There are no ${buySell} orders for that in 
-                      ${fedName} space!` // ...alert the user...
-      setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+      alertUser(`There are no ${buySell} orders for that in ${fedName} space!`)  // ...alert the user...
       Fetch.disabled = false
-      return // ...and exit...
-    } else { // ...else...
+      return // ...and exit.
+    } else { // Else...
     Table.innerHTML += content
     Fetch.disabled = false // ...display the data
     }
@@ -80,8 +72,7 @@ async function getOrders(buySell, itemID, array, fedName) {
       }
       catch (error) {
         err(error, 'Function: getOrders()')
-        Info.innerText = 'Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on '
-                          + 'my GitHub page with this error:' + error
+        alertUser(`Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on my GitHub page with this error:${error}`)
         setTimeout(function () {document.getElementById('Info').innerText = ''}, 80000)
         Fetch.disabled = false
         return
@@ -145,12 +136,14 @@ async function getOrders(buySell, itemID, array, fedName) {
           dots = ''
           j = 0
       }
+
       Info.innerText = `Fetching orders in ${regID.name} (this may take a while (Region ${regionNum} of ${array.length}))${dots}` // Display the region 
                                                                                        // the app is getting orders from
       content += info
       
       await sleep(50) // pause on each iteration to avoid spamming the ESI Server
     }
+
     Info.innerText = ''
   }
 
