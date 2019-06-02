@@ -212,24 +212,24 @@
                             // We are going to keep all three so you can play with things at a later date if you want.
                             suggestions = response.data
 
-                            if (!autoCompleteCache[term] || (autoCompleteCache[term] 
-                                && suggestions.length > autoCompleteCache[term].length)) {
-                                suggestions.sort((a,b) => {
-                                    return a.name.length - b.name.length;
-                                })
-                                // Save this search into an array.
-                                autoCompleteCache[term] = suggestions;
-                                suggest(suggestions);
-                            }
-                            fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2), 
-                              function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
-                                if (err) { //if there is a error
-                                  console.error(err)
-                                  return // chuck it into consle and exit
-                                }
-                                console.log(`Saved! Data: ${autoCompleteCache}`); // logs the save data
+                            if (!autoCompleteCache[term] || (autoCompleteCache[term] &&
+                                suggestions.length > autoCompleteCache[term].length)) {
+
+                              suggestions.sort((a, b) => {
+                                return a.name.length - b.name.length
                               })
-                            suggest(suggestions)
+                              // Save this search into an array.
+                              autoCompleteCache[term] = suggestions
+                              suggest(suggestions)
+                              fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2),
+                                function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
+                                  if (err) { //if there is a error
+                                    console.error(err)
+                                    return // chuck it into consle and exit
+                                  }
+                                  console.log(`Saved! Data: ${autoCompleteCache}`) // logs the save data
+                                })
+                            }
                           })
                           .catch(error => {
                             err(error, 'Function: autoComplete-Get item names');
