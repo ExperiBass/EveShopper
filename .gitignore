@@ -7,4 +7,4 @@ node_modules
 release
 buildResources
 Images/iconbuilder.iconset
-Electron/Functions/Cache
+Electron/Functions/itemCache/itemNames.json

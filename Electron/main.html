@@ -160,7 +160,7 @@
     let fs = require('fs')
     let info = document.getElementById('Info')
     try {
-      autoCompleteCache = require(`./Functions/Cache/itemNames.json`)
+      autoCompleteCache = require(`./Functions/itemCache/itemNames.json`)
       autoCompleteCache.sort((a,b) => {
           return a.name.length - b.name.length;
       })
@@ -177,7 +177,7 @@
      
     function clearCache() {
       // delete file named 'sample.txt'
-      fs.unlink('./Electron/Functions/Cache/itemNames.json', function (err) {
+      fs.unlink('./Electron/Functions/itemCache/itemNames.json', function (err) {
           if (err) {
             info.innerText = 'There is no cache!'
             console.error('CAUGHT:\n', err)
@@ -236,7 +236,7 @@
                                 autoCompleteCache[term] = suggestions;
                                 suggest(suggestions);
                             }
-                            fs.writeFile(`./Electron/Functions/Cache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2), 
+                            fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2), 
                               function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
                                 if (err) { //if there is a error
                                   console.error(err)
