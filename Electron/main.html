@@ -13,12 +13,10 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./auto-complete.css">
     <script type="text/javascript">
-    let prompt = require('electron-prompt')
-    let err = require('./Functions/err')
-    let axios = require('axios')
+    let prompt = require('electron-prompt'); let axios = require('axios')
+    let err = require('./Functions/err'); let alertUser = require('./Functions/info')
     let amnt, name;
     let list = []
-    let alertUser = require('./Functions/info')
     let completeList = ''
 
     function addToList(item, price) {
@@ -143,9 +141,9 @@
     
     <script>
     let autoCompleteCache = {}
-    const autoComplete = require('js-autocomplete')
+    const autoComplete = require('js-autocomplete'); let fs = require('fs')
     const getItem = require('./Functions/getItem.js')
-    let fs = require('fs')
+    
     try {
       autoCompleteCache = require(`./Functions/itemCache/itemNames.json`)
       autoCompleteCache.sort((a,b) => {

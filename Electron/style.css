@@ -40,7 +40,7 @@ input#Item {
     margin-top: 4px;
 }
 
-input[type="button"] {
+input[type="button"],#buttons > button {
     height: 18px;
     min-width: 53px;
 
@@ -53,13 +53,13 @@ input[type="button"] {
     transition: all 150ms linear;
 }
 
-input[type="button"]:hover {
+input[type="button"]:hover,#buttons > button:hover {
     background-color: #374C5E;
     border-color: #557087;
     color: white;
 }
 
-input[type="button"]:focus {
+input[type="button"]:focus,#buttons > button:focus {
     background-color: #445F78;
     border-color: #5A7895;
     color: white;
@@ -133,4 +133,10 @@ p#Info {
 
 tbody:first-child {
     max-height: 23px;
+}
+/* Prompt window buttons */
+
+#buttons > button {
+    height: 25px;
+    text-align: center;
 }
