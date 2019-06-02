@@ -18,6 +18,7 @@
     let axios = require('axios')
     let amnt, name;
     let list = []
+    let alertUser = require('./Functions/info')
     let completeList = ''
 
      function addToList(item, price) {
@@ -27,6 +28,7 @@
           title: 'Item Amount',
           label: `Please input the amount that you want:`,
           value: '',
+          customStylesheet: './Electron/style.css',
           inputAttrs: {
               type: 'text',
               required: true
@@ -34,22 +36,18 @@
         })
         .then((r) => {
             if(r === null) {
-              document.getElementById('Info').innerText = 'Cancelled.'
-              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+              alertUser('Cancelled.')
               console.log('user cancelled')
             } 
             else if (r == '') {
-              document.getElementById('Info').innerText = 'That item wasn\'t added to the order '
-                                                          + 'because you didn\'t give a number!'
-              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+              alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
               return
             } 
             else {
                 amnt = parseInt(r)
-                if (Number.isNaN(amnt)) {
+                if (amnt != amnt) {
                   console.error('Not a Number! 3:<')
-                  document.getElementById('Info').innerText = 'That\'s not a number!'
-                  setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+                  alertUser('That\'s not a number!')
                   return
                 }
                 // getting name of item
@@ -59,7 +57,7 @@
                         name = data.name
 
                         for (let i = 0; i < list.length; i++) {
-                          if (list[i].search(name) != -1) {
+                          if (list[i].search(name) == -1) {
                             alert(`Wait a second... ${name} is already in your list!`)
                             return
                           }
@@ -72,8 +70,7 @@
                           completeList += `${v}\n`
                           console.log(completeList)
                         }
-                        document.getElementById('Info').innerText = `Added ${amnt} ${name} to your shopping list!`
-                        setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+                        alertUser(`Added ${amnt} ${name} to your shopping list!`)
                         return
                       })
                       .catch(error => { 
@@ -84,6 +81,7 @@
             }
         })
         .catch(console.error)
+      
       }
       
       function showList() {
@@ -91,36 +89,21 @@
         if (completeList){
           document.getElementById('List').innerText = completeList
         } else {
-          document.getElementById('Info').innerText = 'There\'s nothing in your list!'
-          setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+          alertUser(`There's nothing in your list!`)
           return
         }
       }
 
       function copyList() {
+        let { clipboard } = require('electron')
         let List = document.getElementById('List')
         if (completeList) {
-          // Create new element
-          var el = document.createElement('textarea')
-          // Set value (string to be copied)
-          el.value = completeList
-          // Set non-editable to avoid focus and move outside of view
-          el.setAttribute('readonly', '')
-          el.style = {position: 'absolute', left: '-9999px'}
-          document.body.appendChild(el)
-          // Select text inside element
-          el.select()
-          // Copy text to clipboard
-          document.execCommand('copy')
-          // Remove temporary element
-          document.body.removeChild(el)
+          clipboard.writeText(`${completeList}`)
         } else {
-          document.getElementById('Info').innerText = 'There\'s nothing in your list!'
-          setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+          alertUser(`There's nothing in your list!`)
           return
         }
-        document.getElementById('Info').innerText = 'List copied!'
-        setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+        alertUser(`List copied!`)
       }
     </script>
   </head>
@@ -142,9 +125,11 @@
       <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
     </form>
     <p id="Info" style="font-size: 12px"></p>
-    <p><input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
+    <p>
+      <input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
       <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/>
-      <input type="button" id="clear" value="Clear Cache" onclick="clearCache()"/></p>
+      <input type="button" id="clear" value="Clear Cache" onclick="clearCache()"/>
+    </p>
     <p id="List"></p>
       <table id="table" style="width:50%">
         <tr>
@@ -158,7 +143,6 @@
     const autoComplete = require('js-autocomplete')
     const getItem = require('./Functions/getItem.js')
     let fs = require('fs')
-    let info = document.getElementById('Info')
     try {
       autoCompleteCache = require(`./Functions/itemCache/itemNames.json`)
       autoCompleteCache.sort((a,b) => {
@@ -179,12 +163,12 @@
       // delete file named 'sample.txt'
       fs.unlink('./Electron/Functions/itemCache/itemNames.json', function (err) {
           if (err) {
-            info.innerText = 'There is no cache!'
+            alertUser('There is no cache!') // alertUser is defined up in <HEAD>
             console.error('CAUGHT:\n', err)
             return
           }
           // if no error, file has been deleted successfully
-          info.innerText = 'Cache Cleared!'
+          alertUser('Cache cleared!')
           console.log('File deleted!')
       })
     }
