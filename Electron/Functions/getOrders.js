@@ -149,7 +149,7 @@ async function getOrders(buySell, itemID, array, fedName) {
                                                                                        // the app is getting orders from
       content += info
       
-      await sleep(150) // pause on each iteration to avoid spamming the ESI Server
+      await sleep(50) // pause on each iteration to avoid spamming the ESI Server
     }
     Info.innerText = ''
   }
