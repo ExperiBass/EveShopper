@@ -10,11 +10,13 @@
         border: 1px solid black;
       }
     </style>
+    
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./auto-complete.css">
+
     <script type="text/javascript">
     let prompt = require('electron-prompt'); let axios = require('axios')
-    let err = require('./Functions/err'); let alertUser = require('./Functions/info')
+    let err = require('./Functions/err'); let alertUser = require('./Functions/alertUser')
     let amnt, name;
     let list = []
     let completeList = ''
@@ -104,7 +106,9 @@
       alertUser(`List copied!`)
     }
     </script>
+
   </head>
+
   <body>
     <form id="form">
       Federation:
@@ -256,4 +260,5 @@
     })
     </script>
   </body>
+
 </html>

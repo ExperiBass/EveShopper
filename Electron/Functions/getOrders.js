@@ -6,7 +6,7 @@ module.exports = getOrders
 */
 
 const axios = require('axios'); const numeral = require('numeral')
-const getStations = require('./getStations'); const err = require('./err'); const alertUser = require('./info')
+const getStations = require('./getStations'); const err = require('./err'); const alertUser = require('./alertUser')
 const link = 'https://esi.evetech.net/latest/'
 
 async function getOrders(buySell, itemID, array, fedName) {
@@ -24,7 +24,7 @@ async function getOrders(buySell, itemID, array, fedName) {
 
   if (itemID == undefined) {
     Fetch.disabled = false
-    alert(`There was a error! Please report the error below on the GitHub page! \n ERROR:\n"itemID is undefined."\nFunction: getItem\nLine: 89`)
+    alert(`There was a error! Please report the error below on the GitHub page! \n ERROR:\n"itemID is undefined."\nFunction: getItem\nLine: 89`, 8000)
     Error('itemID is undefined!')
     return
   }
