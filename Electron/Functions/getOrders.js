@@ -4,6 +4,7 @@ module.exports = getOrders
  * buy or sell orders for the given item in the given federations space.
  * This function has the bulk of the code that powers EveShopper.
 */
+
 const axios = require('axios'); const numeral = require('numeral')
 const getStations = require('./getStations'); const err = require('./err'); const alertUser = require('./info')
 const link = 'https://esi.evetech.net/latest/'
@@ -23,6 +24,7 @@ async function getOrders(buySell, itemID, array, fedName) {
 
   if (itemID == undefined) {
     Fetch.disabled = false
+    alert(`There was a error! Please report the error below on the GitHub page! \n ERROR:\n"itemID is undefined."\nFunction: getItem\nLine: 89`)
     Error('itemID is undefined!')
     return
   }
@@ -47,6 +49,7 @@ async function getOrders(buySell, itemID, array, fedName) {
   async function sleep(millis) {
     return new Promise(resolve => setTimeout(resolve, millis));
   }
+
   async function fetch() {
     // Getting the orders
       await axios.get(`${link}markets/${regID.id}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
@@ -72,8 +75,7 @@ async function getOrders(buySell, itemID, array, fedName) {
       }
       catch (error) {
         err(error, 'Function: getOrders()')
-        alertUser(`Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on my GitHub page with this error:${error}`)
-        setTimeout(function () {document.getElementById('Info').innerText = ''}, 80000)
+        alert(`Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on my GitHub page with this error:\n ${error}`)
         Fetch.disabled = false
         return
       }
@@ -137,11 +139,11 @@ async function getOrders(buySell, itemID, array, fedName) {
           j = 0
       }
 
-      Info.innerText = `Fetching orders in ${regID.name} (this may take a while (Region ${regionNum} of ${array.length}))${dots}` // Display the region 
-                                                                                       // the app is getting orders from
+      Info.innerText = `Fetching orders in ${regID.name} (this may take a while (Region ${regionNum} of ${array.length}))${dots}` 
+                        // Display the region the app is getting orders from
       content += info
       
-      await sleep(50) // pause on each iteration to avoid spamming the ESI Server
+      await sleep(50) // pause on each iteration to avoid spamming the ESI Server (and getting ratelimited)
     }
 
     Info.innerText = ''
