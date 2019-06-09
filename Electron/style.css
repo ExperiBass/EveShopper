@@ -12,17 +12,17 @@ body {
     box-sizing: border-box;
 }
 
-input[type="text"] {
+input[type="text"],#data {
     background-color: #282E33;
     border: 1px solid #404850;
     color: #c4c4c4;
     height: 22px;
     padding: 0 4px;
-
+	width: 300px;
     transition: all 500ms ease; 
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,#data:focus {
     background-color: rgb(44, 50, 55);
     border: 1px solid #fff;
 }
@@ -40,7 +40,7 @@ input#Item {
     margin-top: 4px;
 }
 
-input[type="button"] {
+input[type="button"],#buttons > button {
     height: 18px;
     min-width: 53px;
 
@@ -53,13 +53,13 @@ input[type="button"] {
     transition: all 150ms linear;
 }
 
-input[type="button"]:hover {
+input[type="button"]:hover,#buttons > button:hover {
     background-color: #374C5E;
     border-color: #557087;
     color: white;
 }
 
-input[type="button"]:focus {
+input[type="button"]:focus,#buttons > button:focus {
     background-color: #445F78;
     border-color: #5A7895;
     color: white;
@@ -123,13 +123,20 @@ th {
 p#Info {
     grid-area: 1 / 2;
     position: absolute;
-    left: 71px;
+    left: 70px;
     top: 173px;
     display: block;
     height: 0;
     font-size: 12px;
+    width: 250px;
 }
 
 tbody:first-child {
     max-height: 23px;
+}
+/* Prompt window buttons */
+
+#buttons > button {
+    height: 25px;
+    text-align: center;
 }

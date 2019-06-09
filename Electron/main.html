@@ -10,121 +10,109 @@
         border: 1px solid black;
       }
     </style>
+    
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./auto-complete.css">
+
     <script type="text/javascript">
-    let prompt = require('electron-prompt')
-    let err = require('./Functions/err')
-    let axios = require('axios')
+    let prompt = require('electron-prompt'); let axios = require('axios')
+    let err = require('./Functions/err'); let alertUser = require('./Functions/alertUser')
     let amnt, name;
     let list = []
     let completeList = ''
 
-     function addToList(item) {
+    function addToList(item, price) {
 
-       prompt({
-          height: 150,
-          title: 'Item Amount',
-          label: `Please input the amount that you want:`,
-          value: '',
-          inputAttrs: {
-              type: 'text',
-              required: true
+      prompt({
+        height: 150,
+        title: 'Item Amount',
+        label: `Please input the amount that you want:`,
+        value: '',
+        customStylesheet: './Electron/style.css',
+        inputAttrs: {
+            type: 'text',
+            required: true
+        }
+      })
+      .then((r) => {
+          if(r === null) {
+            alertUser('Cancelled.')
+            console.log('user cancelled')
+          } 
+          else if (r == '') {
+            alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
+            return
+          } 
+          else {
+              amnt = parseInt(r)
+              if (amnt != amnt) {
+                console.error('Not a Number! 3:<')
+                alertUser('That\'s not a number!')
+                return
+              }
+              // getting name of item
+              axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
+                    .then(response => { 
+                      data = response.data
+                      name = data.name
+
+                      for (let i = 0; i < list.length; i++) {
+                        if (list[i].search(name) == -1) {
+                          alert(`Wait a second... ${name} is already in your list!`)
+                          return
+                        }
+                      }
+
+                      list.push(`${name} ${amnt} - -`)
+                      completeList = ''
+                      list.forEach(add)
+                      function add(v) {
+                        completeList += `${v}\n`
+                        console.log(completeList)
+                      }
+                      alertUser(`Added ${amnt} ${name} to your shopping list!`)
+                      return
+                    })
+                    .catch(error => { 
+                      err(error, 'Function: getOrders()')
+                      Fetch.disabled = false
+                      return
+                    })
           }
-        })
-        .then((r) => {
-            if(r === null) {
-              document.getElementById('Info').innerText = 'Cancelled.'
-              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-              console.log('user cancelled')
-            } 
-            else if (r == '') {
-              document.getElementById('Info').innerText = 'That item wasn\'t added to the order '
-                                                          + 'because you didn\'t give a number!'
-              setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-              return
-            } 
-            else {
-                amnt = parseInt(r)
-                if (Number.isNaN(amnt)) {
-                  console.error('Not a Number! 3:<')
-                  document.getElementById('Info').innerText = 'That\'s not a number!'
-                  setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-                  return
-                }
-                // getting name of item
-                axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
-                      .then(response => { 
-                        data = response.data
-                        name = data.name
-
-                        for (let i = 0; i < list.length; i++) {
-                          if (list[i].search(name) != -1) {
-                            alert(`Wait a second... ${name} is already in your list!`)
-                            return
-                          }
-                        }
-
-                        list.push(`${name} ${amnt} - -`)
-                        completeList = ''
-                        list.forEach(add)
-                        function add(v) {
-                          completeList += `${v}\n`
-                          console.log(completeList)
-                        }
-                        document.getElementById('Info').innerText = `Added ${amnt} ${name} to your shopping list!`
-                        setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-                        return
-                      })
-                      .catch(error => { 
-                        err(error, 'Function: getOrders()')
-                        Fetch.disabled = false
-                        return
-                      })
-            }
-        })
-        .catch(console.error)
-      }
+      })
+      .catch(console.error)
       
-      function showList() {
-        console.log(completeList)
-        if (completeList){
-          document.getElementById('List').innerText = completeList
-        } else {
-          document.getElementById('Info').innerText = 'There\'s nothing in your list!'
-          setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-          return
-        }
+    }
+      
+    function showList() {
+      console.log(completeList)
+      if (completeList){
+        document.getElementById('List').innerText = completeList
+      } else {
+        alertUser(`There's nothing in your list!`)
+        return
       }
+    }
 
-      function copyList() {
-        let List = document.getElementById('List')
-        if (completeList) {
-          // Create new element
-          var el = document.createElement('textarea')
-          // Set value (string to be copied)
-          el.value = completeList
-          // Set non-editable to avoid focus and move outside of view
-          el.setAttribute('readonly', '')
-          el.style = {position: 'absolute', left: '-9999px'}
-          document.body.appendChild(el)
-          // Select text inside element
-          el.select()
-          // Copy text to clipboard
-          document.execCommand('copy')
-          // Remove temporary element
-          document.body.removeChild(el)
-        } else {
-          document.getElementById('Info').innerText = 'There\'s nothing in your list!'
-          setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
-          return
-        }
-        document.getElementById('Info').innerText = 'List copied!'
-        setTimeout(function () {document.getElementById('Info').innerText = ''}, 4000)
+    function copyList() {
+      let { clipboard } = require('electron')
+      let List = document.getElementById('List')
+      if (completeList) {
+        clipboard.writeText(`${completeList}`)
+      } else {
+        alertUser(`There's nothing in your list!`)
+        return
       }
+      alertUser(`List copied!`)
+    }
     </script>
+
   </head>
+
   <body>
-    <form>
+    <form id="form">
+      Federation:
+      <br>
         <select id="fedList">
         <option id="caldari" value="caldari">Caldari</option>
         <option id="amarr" value="amarr">Amarr</option>
@@ -133,37 +121,144 @@
         <!--<option id="triglavian" value="triglavian">Triglavian</option>-->
       </select><br>
       Item:<br>
-      <input type="text" name="item" id="Item" value=""><br><br>
-      <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Selling?<br>
-      <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Buying?<br><br>
+      <input type="text" name="item" id="Item" autofocus placeholder="Tritanium" value=""><br><br>
+
+      <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Buying?<br>
+      <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Selling?<br><br>
+
       <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
     </form>
     <p id="Info" style="font-size: 12px"></p>
-    <p><input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
-      <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/></p>
+    <p>
+      <input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
+      <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/>
+      <input type="button" id="clear" value="Clear Cache" onclick="clearCache()"/>
+    </p>
     <p id="List"></p>
       <table id="table" style="width:50%">
         <tr>
           <th>Station</th>
           <th>Price</th>
+          <th>Minimum/Remaining Volume</th>
         </tr>
       </table>
     
     <script>
-
+    let autoCompleteCache = {}
+    const autoComplete = require('js-autocomplete'); let fs = require('fs')
     const getItem = require('./Functions/getItem.js')
+    
+    try {
+      autoCompleteCache = require(`./Functions/itemCache/itemNames.json`)
+      autoCompleteCache.sort((a,b) => {
+          return a.name.length - b.name.length;
+      })
+    }
+    catch(e) {
+      console.error('CAUGHT:\n',e)
+    }
 
     function get() {
       getItem(document.getElementById('Item').value
-                  , document.getElementsByName('bOs'))
-     const info = document.getElementById('Info')
+                    , document.getElementsByName('bOs'))
+      const info = document.getElementById('Info')
     }
      
-  document.onkeyup = function(e) {
-        if (e.which == 13) {
-          get()
-        }
-      }
+    function clearCache() {
+      // delete file named 'sample.txt'
+      fs.unlink('./Electron/Functions/itemCache/itemNames.json', function (err) {
+          if (err) {
+            alertUser('There is no cache!') // alertUser is defined up in <HEAD>
+            console.error('CAUGHT:\n', err)
+            return
+          }
+          // if no error, file has been deleted successfully
+          alertUser('Cache cleared!')
+          console.log('File deleted!')
+      })
+    }
+
+    document.getElementById('form').addEventListener("submit", function(e) {
+        e.preventDefault()
+        get()
+    }, false)
+	
+    var autoComp = new autoComplete({
+        selector: 'input[id=Item]',
+        minChars: 3,
+        delay: 1000,
+          source: function(term, suggest){
+              term = term.toLowerCase()
+              console.log(term)
+            
+              // If this search has been done, reload the saved info.
+              if (autoCompleteCache[term]) {
+                  suggest(autoCompleteCache[term]);
+              } else {
+                  suggest([{id:0,name:"Loading..."}]);
+              }
+            
+              var choiceIDs = []
+              var suggestions = []
+              
+              // Call the ESI endpoint for searching the EVE datatables. 
+              // We set the 'category' to 'inventory_type' to filter out non-market items,
+              // and 'strict' to 'false' because we want to be able to search partials.
+                axios.get(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${term}&strict=false`)
+                    .then(response => {
+                      // 'response' is an array of item ids
+                      choiceIDs = response.data.inventory_type
+                      // Next we call the endpoint that converts ids into names
+                      axios.post('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', choiceIDs)
+                          .then(response => {
+                            // 'response' in this instance is an array full of JSON objects. 
+                            // Each object has 3 variables: 'name', 'id', and 'category'. 
+                            // We are going to keep all three so you can play with things at a later date if you want.
+                            suggestions = response.data
+
+                            if (!autoCompleteCache[term] || (autoCompleteCache[term] &&
+                                suggestions.length > autoCompleteCache[term].length)) {
+
+                              suggestions.sort((a, b) => {
+                                return a.name.length - b.name.length
+                              })
+                              // Save this search into an array.
+                              autoCompleteCache[term] = suggestions
+                              suggest(suggestions)
+                              fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2),
+                                function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
+                                  if (err) { //if there is a error
+                                    console.error(err)
+                                    return // chuck it into consle and exit
+                                  }
+                                  console.log(`Saved! Data: ${autoCompleteCache}`) // logs the save data
+                                })
+                            }
+                          })
+                          .catch(error => {
+                            err(error, 'Function: autoComplete-Get item names');
+                            Fetch.disabled = false;
+                            return;
+                          })
+                      })
+                    .catch(error => {
+                      err(error, 'Function: autoComplete-Search for term');
+                      Fetch.disabled = false;
+                      return;
+                    })
+            },
+          // In the function below, "item" is the object from the "suggestions" array in the above function
+          // and "search" is the term the client was searching for.
+          renderItem: function(item, search) {
+            search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+            // Because "item" is the object directly from the API, 
+            // we need to tweak the render function to use "item.name". 
+            // Later, you could add a small image to each search if you wanted by using "item.id".
+            return `<div class="autocomplete-suggestion" data-val="${item.name}">${item.name.replace(re, "<b style='color:yellow'>$1</b>")}</div>`;
+          }
+    })
     </script>
   </body>
+
 </html>

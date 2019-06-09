@@ -1,9 +1,13 @@
 {
   "name": "eveshopper",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "description": "A shopping cart app for EVE!",
   "main": "./Electron/main.js",
   "build": {
+    "directories": {
+      "output": "./release/dist",
+      "buildResources": "./buildResources"
+    },
     "productName": "EveShopper",
     "appId": "com.gingkathfox.EveShopper",
     "win": {
@@ -18,7 +22,8 @@
       "target": [
         "zip",
         "dmg"
-      ]
+      ],
+      "darkModeSupport": true
     },
     "linux": {
       "target": [
@@ -28,10 +33,6 @@
     },
     "portable": {
       "artifactName": "EveShopper.exe"
-    },
-    "directories": {
-      "output": "./release/dist",
-      "buildResources": "./buildResources"
     }
   },
   "scripts": {
@@ -40,11 +41,8 @@
     "buildMac": "electron-builder --mac",
     "buildDeb": "electron-builder --linux"
   },
-  "author": {
-    "name": "GingkathFox",
-    "email": "thisIsNotARealEmail@gmail.com"
-  },
-  "license": "ISC",
+  "author": "GingkathFox <thisIsNotARealEmail@gmail.com>",
+  "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^4.1.4",
     "electron-builder": "^20.39.0",
@@ -54,6 +52,7 @@
     "axios": "^0.18.1",
     "electron-localshortcut": "^3.1.0",
     "electron-prompt": "^1.3.0",
+    "js-autocomplete": "^1.0.4",
     "numeral": "^2.0.6"
   },
   "repository": {
