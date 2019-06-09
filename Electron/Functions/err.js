@@ -1,12 +1,1 @@
-module.exports = err
-
-function err(error, info) {
-
-        console.log('caught: ', error)
-        if (info) {
-          const msg = `Error: ${error}, Info: ${info}`
-          new Error(msg)        
-        } else {
-          new Error(error)
-        }
-}
+function err(r,o){if(console.log("caught: ",r),o){new Error(`Error: ${r}, Info: ${o}`)}else new Error(r)}module.exports=err;
