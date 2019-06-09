@@ -165,17 +165,20 @@
     }
      
     function clearCache() {
-      // delete file named 'sample.txt'
-      fs.unlink('./Electron/Functions/itemCache/itemNames.json', function (err) {
-          if (err) {
-            alertUser('There is no cache!') // alertUser is defined up in <HEAD>
-            console.error('CAUGHT:\n', err)
-            return
+      let cache = fs.readFileSync(`./Electron/Functions/itemCache/itemNames.json`,'Utf8')
+      if (cache == 'null') {
+        alertUser(`The cache was already cleared!`)
+        return
+      }
+      // delete cache
+      fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, 'null',
+        function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
+          if (err) { //if there is a error
+            console.error(err)
+            return // chuck it into consle and exit
           }
-          // if no error, file has been deleted successfully
-          alertUser('Cache cleared!')
-          console.log('File deleted!')
-      })
+        })
+        alertUser('Cache cleared!')
     }
 
     document.getElementById('form').addEventListener("submit", function(e) {
@@ -247,7 +250,7 @@
                       return;
                     })
             },
-          // In the function below, "item" is the object from the "suggestions" array in the above function
+          // In the function below, "item" is the object from the "suggestions" array in the above function 
           // and "search" is the term the client was searching for.
           renderItem: function(item, search) {
             search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');

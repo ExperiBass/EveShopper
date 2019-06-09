@@ -14,7 +14,7 @@ function getItem(iSearch, bOs) {
     let fedName;
     let buySell; // Will be either "buy", "sell", or undefined
     const Info = document.getElementById('Info')
-    const alertUser = require('./info')
+    const alertUser = require('./alertUser')
     let federation = document.getElementById('fedList').value
     // List of faction region IDs
     const amarrRegions = [
