@@ -166,12 +166,12 @@
      
     function clearCache() {
       let cache = fs.readFileSync(`./Electron/Functions/itemCache/itemNames.json`,'Utf8')
-      if (cache == 'null') {
+      if (cache == '{}') {
         alertUser(`The cache was already cleared!`)
         return
       }
       // delete cache
-      fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, 'null',
+      fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, '{}',
         function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
           if (err) { //if there is a error
             console.error(err)

@@ -27,8 +27,8 @@
     },
     "linux": {
       "target": [
-        "AppImage",
-        "deb"
+        "deb",
+        "pacman"
       ]
     },
     "portable": {
@@ -39,14 +39,13 @@
     "start": "electron ./Electron/main.js",
     "buildWin": "electron-builder --win",
     "buildMac": "electron-builder --mac",
-    "buildDeb": "electron-builder --linux"
+    "buildLinux": "electron-builder --linux"
   },
   "author": "GingkathFox <thisIsNotARealEmail@gmail.com>",
   "license": "GPL-3.0",
   "devDependencies": {
     "electron": "^4.1.4",
-    "electron-builder": "^20.39.0",
-    "electron-packager": "^13.1.1"
+    "electron-builder": "^20.39.0"
   },
   "dependencies": {
     "axios": "^0.18.1",
