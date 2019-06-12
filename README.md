@@ -1,6 +1,6 @@
 # EveShopper
 
-Welcome to EveShopper, the app for creating a shopping cart for EVE Online!
+Welcome to EveShopper, the app for creating a shopping list for EVE Online!
 
 # FEATURES
 
