@@ -2,6 +2,8 @@
 
 Welcome to EveShopper, the app for creating a shopping list for EVE Online!
 
+Current Version: [1.2.1](https://github.com/GingkathFox/EveShopper/releases/tag/v1.2.1)
+
 # FEATURES
 
 EveShopper can:
@@ -24,4 +26,4 @@ Example screenshot: ![Screenshot.PNG](./Images/image.png)
 
 Modules are not included, please use `npm install` to install them.
 
-This currently uses [Electron](https://electronjs.org) `v4.1.4`, [Axios](https://github.com/axios/axios) `v0.18.0`, [NumeralJS](http://numeraljs.com) `v2.0.6`, and NodeJS `v10.15.3`.
+This currently uses [Electron](https://electronjs.org) `v4.1.4`, [Axios](https://github.com/axios/axios) `v0.18.1`, [Numeral](http://numeraljs.com) `v2.0.6`, [electron-localshortcut](https://github.com/parro-it/electron-localshortcut) `v3.1.0`, [electron-prompt](https://github.com/p-sam/electron-prompt) `v1.3.0`, [js-autocomplete](https://github.com/Pixabay/JavaScript-autoComplete) `v1.0.4`, and NodeJS `v10.15.3`.
