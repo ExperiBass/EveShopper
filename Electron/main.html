@@ -35,7 +35,58 @@
         }
       })
       .then((r) => {
-          if(r === null) {
+
+        switch (r) {
+          case null:
+            alertUser('Cancelled.')
+            console.log('user cancelled')
+          case '': 
+            alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
+            return
+          default:
+            amnt = parseInt(r)
+
+            if (amnt != amnt) {
+
+              console.error('Not a Number! 3:<')
+              alertUser('That\'s not a number!')
+              return
+            }
+            // getting name of item
+            axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
+                  .then(response => { 
+
+                    data = response.data
+                    name = data.name
+
+                    for (let i = 0; i < list.length; i++) {
+                      if (list[i].search(name) == -1) {
+                        alert(`Wait a second... ${name} is already in your list!`)
+                        return
+                      }
+                    }
+
+                    list.push(`${name} ${amnt} - -`)
+                    completeList = ''
+
+                    list.forEach(add)
+
+                    function add(v) {
+                      completeList += `${v}\n`
+                      console.log(completeList)
+                    }
+
+                    alertUser(`Added ${amnt} ${name} to your shopping list!`)
+                    return
+                  })
+                  .catch(error => { 
+                    err(error, 'Function: getOrders()')
+                    Fetch.disabled = false
+                    return
+                  })
+        }
+
+         /* if (r === null) {
             alertUser('Cancelled.')
             console.log('user cancelled')
           } 
@@ -44,8 +95,11 @@
             return
           } 
           else {
+
               amnt = parseInt(r)
+
               if (amnt != amnt) {
+
                 console.error('Not a Number! 3:<')
                 alertUser('That\'s not a number!')
                 return
@@ -53,6 +107,7 @@
               // getting name of item
               axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
                     .then(response => { 
+
                       data = response.data
                       name = data.name
 
@@ -65,11 +120,14 @@
 
                       list.push(`${name} ${amnt} - -`)
                       completeList = ''
+
                       list.forEach(add)
+
                       function add(v) {
                         completeList += `${v}\n`
                         console.log(completeList)
                       }
+
                       alertUser(`Added ${amnt} ${name} to your shopping list!`)
                       return
                     })
@@ -78,7 +136,7 @@
                       Fetch.disabled = false
                       return
                     })
-          }
+          }*/
       })
       .catch(console.error)
       
@@ -119,7 +177,7 @@
         <option id="gallente" value="gallente">Gallente</option>
         <option id="minmatar" value="minmatar">Minmatar</option>
         <!--<option id="triglavian" value="triglavian">Triglavian</option>-->
-      </select><br>
+        </select><br>
       Item:<br>
       <input type="text" name="item" id="Item" autofocus placeholder="Tritanium" value=""><br><br>
 
@@ -250,8 +308,8 @@
                       return;
                     })
             },
-          // In the function below, "item" is the object from the "suggestions" array in the above function 
-          // and "search" is the term the client was searching for.
+            // In the function below, "item" is the object from the "suggestions" array in the above function 
+            // and "search" is the term the client was searching for.
           renderItem: function(item, search) {
             search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
             var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
@@ -261,7 +319,9 @@
             return `<div class="autocomplete-suggestion" data-val="${item.name}">${item.name.replace(re, "<b style='color:yellow'>$1</b>")}</div>`;
           }
     })
+
     </script>
+
   </body>
 
 </html>
