@@ -15,13 +15,15 @@
     <link rel="stylesheet" href="./auto-complete.css">
 
     <script type="text/javascript">
-    let prompt = require('electron-prompt'); let axios = require('axios')
-    let err = require('./Functions/err'); let alertUser = require('./Functions/alertUser')
+    let prompt = require('electron-prompt')
+    let esiJS = require('esiJS')
+    let err = require('./Functions/err')
+    let alertUser = require('./Functions/alertUser')
     let amnt, name;
     let list = []
     let completeList = ''
 
-    function addToList(item, price) {
+   function addToList(item) {
 
       prompt({
         height: 150,
@@ -34,7 +36,7 @@
             required: true
         }
       })
-      .then((r) => {
+      .then(async (r) => {
 
         switch (r) {
           case null:
@@ -53,93 +55,32 @@
               return
             }
             // getting name of item
-            axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
-                  .then(response => { 
+            let data = await esiJS.universe.bulk.idsToNames([item])
 
-                    data = response.data
-                    name = data.name
+            name = data[0].name
 
-                    for (let i = 0; i < list.length; i++) {
-                      if (list[i].search(name) == -1) {
-                        alert(`Wait a second... ${name} is already in your list!`)
-                        return
-                      }
-                    }
-
-                    list.push(`${name} ${amnt} - -`)
-                    completeList = ''
-
-                    list.forEach(add)
-
-                    function add(v) {
-                      completeList += `${v}\n`
-                      console.log(completeList)
-                    }
-
-                    alertUser(`Added ${amnt} ${name} to your shopping list!`)
-                    return
-                  })
-                  .catch(error => { 
-                    err(error, 'Function: getOrders()')
-                    Fetch.disabled = false
-                    return
-                  })
-        }
-
-         /* if (r === null) {
-            alertUser('Cancelled.')
-            console.log('user cancelled')
-          } 
-          else if (r == '') {
-            alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
-            return
-          } 
-          else {
-
-              amnt = parseInt(r)
-
-              if (amnt != amnt) {
-
-                console.error('Not a Number! 3:<')
-                alertUser('That\'s not a number!')
+            for (let i = 0; i < list.length; i++) {
+              if (list[i].search(name) == -1) {
+                alert(`Wait a second... ${name} is already in your list!`)
                 return
               }
-              // getting name of item
-              axios.get(`https://esi.evetech.net/latest/universe/types/${item}/?datasource=tranquility&language=en-us`)
-                    .then(response => { 
+            }
 
-                      data = response.data
-                      name = data.name
+            list.push(`${name} ${amnt} - -`)
+            completeList = ''
 
-                      for (let i = 0; i < list.length; i++) {
-                        if (list[i].search(name) == -1) {
-                          alert(`Wait a second... ${name} is already in your list!`)
-                          return
-                        }
-                      }
+            list.forEach(add)
 
-                      list.push(`${name} ${amnt} - -`)
-                      completeList = ''
+            function add(v) {
+              completeList += `${v}\n`
+              console.log(completeList)
+            }
 
-                      list.forEach(add)
-
-                      function add(v) {
-                        completeList += `${v}\n`
-                        console.log(completeList)
-                      }
-
-                      alertUser(`Added ${amnt} ${name} to your shopping list!`)
-                      return
-                    })
-                    .catch(error => { 
-                      err(error, 'Function: getOrders()')
-                      Fetch.disabled = false
-                      return
-                    })
-          }*/
+            alertUser(`Added ${amnt} ${name} to your shopping list!`)
+        }
       })
       .catch(console.error)
-      
+      return
     }
       
     function showList() {
@@ -224,6 +165,7 @@
      
     function clearCache() {
       let cache = fs.readFileSync(`./Electron/Functions/itemCache/itemNames.json`,'Utf8')
+      
       if (cache == '{}') {
         alertUser(`The cache was already cleared!`)
         return
@@ -236,6 +178,7 @@
             return // chuck it into consle and exit
           }
         })
+        autoCompleteCache = { }
         alertUser('Cache cleared!')
     }
 
@@ -244,11 +187,11 @@
         get()
     }, false)
 	
-    var autoComp = new autoComplete({
+    let autoComp = new autoComplete({
         selector: 'input[id=Item]',
         minChars: 3,
         delay: 1000,
-          source: function(term, suggest){
+          source: async function(term, suggest){
               term = term.toLowerCase()
               console.log(term)
             
@@ -259,60 +202,46 @@
                   suggest([{id:0,name:"Loading..."}]);
               }
             
-              var choiceIDs = []
-              var suggestions = []
+              let choiceIDs = []
+              let suggestions = []
               
               // Call the ESI endpoint for searching the EVE datatables. 
               // We set the 'category' to 'inventory_type' to filter out non-market items,
               // and 'strict' to 'false' because we want to be able to search partials.
-                axios.get(`https://esi.evetech.net/latest/search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${term}&strict=false`)
-                    .then(response => {
-                      // 'response' is an array of item ids
-                      choiceIDs = response.data.inventory_type
-                      // Next we call the endpoint that converts ids into names
-                      axios.post('https://esi.evetech.net/latest/universe/names/?datasource=tranquility', choiceIDs)
-                          .then(response => {
-                            // 'response' in this instance is an array full of JSON objects. 
-                            // Each object has 3 variables: 'name', 'id', and 'category'. 
-                            // We are going to keep all three so you can play with things at a later date if you want.
-                            suggestions = response.data
 
-                            if (!autoCompleteCache[term] || (autoCompleteCache[term] &&
-                                suggestions.length > autoCompleteCache[term].length)) {
+             let response = await esiJS.search.search(`${term}`, 'inventory_type', false)
+             // 'response' is an array of item ids
+             choiceIDs = response.inventory_type
+             // Next we call the endpoint that converts ids into names
+             // 'response' in this instance is an array full of JSON objects. 
+             // Each object has 3 variables: 'name', 'id', and 'category'. 
+             // We are going to keep all three so you can play with things at a later date if you want.
+             suggestions = await esiJS.universe.bulk.idsToNames(choiceIDs)
 
-                              suggestions.sort((a, b) => {
-                                return a.name.length - b.name.length
-                              })
-                              // Save this search into an array.
-                              autoCompleteCache[term] = suggestions
-                              suggest(suggestions)
-                              fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2),
-                                function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
-                                  if (err) { //if there is a error
-                                    console.error(err)
-                                    return // chuck it into consle and exit
-                                  }
-                                  console.log(`Saved! Data: ${autoCompleteCache}`) // logs the save data
-                                })
-                            }
-                          })
-                          .catch(error => {
-                            err(error, 'Function: autoComplete-Get item names');
-                            Fetch.disabled = false;
-                            return;
-                          })
-                      })
-                    .catch(error => {
-                      err(error, 'Function: autoComplete-Search for term');
-                      Fetch.disabled = false;
-                      return;
-                    })
+             if (!autoCompleteCache[term] || (autoCompleteCache[term] && suggestions.length > autoCompleteCache[term].length)) {
+
+                suggestions.sort((a, b) => {
+                  return a.name.length - b.name.length
+                })
+
+                // Save this search into an array.
+                autoCompleteCache[term] = suggestions
+                suggest(suggestions)
+                fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2),
+                  function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
+                    if (err) { //if there is a error
+                      console.error(err)
+                      return // chuck it into consle and exit
+                    }
+                    console.log(`Saved! Data: ${autoCompleteCache}`) // logs the save data
+                  })
+              }
             },
             // In the function below, "item" is the object from the "suggestions" array in the above function 
             // and "search" is the term the client was searching for.
           renderItem: function(item, search) {
             search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-            var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+            let re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
             // Because "item" is the object directly from the API, 
             // we need to tweak the render function to use "item.name". 
             // Later, you could add a small image to each search if you wanted by using "item.id".

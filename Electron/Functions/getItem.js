@@ -4,12 +4,11 @@ module.exports = getItem
  * useable values that getOrders can use.
  */
 
-const axios = require('axios')
+const esiJS = require('esijs')
 const getOrders = require('./getOrders')
 const err = require('./err')
-const link = 'https://esi.evetech.net/latest/'
 
-function getItem(iSearch, bOs) {
+async function getItem(iSearch, bOs) {
     let item; // Item ID
     let fedName;
     let buySell; // Will be either "buy", "sell", or undefined
@@ -46,7 +45,7 @@ function getItem(iSearch, bOs) {
         {id: 10000030, name: 'Heimatar'}, // Heimatar
         {id: 10000028, name: 'Molden Heath'} // Molden Heath
     ]
-    const triglavianRegions = [] // Empty for now
+    const triglavianRegions = [] // Empty, maybe forever
     let array;
 
     // Checking for valid item
@@ -82,31 +81,26 @@ function getItem(iSearch, bOs) {
     }
 
     // getting the item ID
-    axios.get(`${link}search/?categories=inventory_type&datasource=tranquility&language=en-us&search=${iSearch}&strict=true`)
-        .then(response => {
-            try {
-                const data = response.data
-                item = data.inventory_type[0]
-            } catch { // if `data.inventory_type[0]` doesnt exist, this block is run
-                alertUser(`That's not a valid item!`)
-                err('Invalid Item')
-                return
-            }
-            // checking which radio button was selected
-            for (let i = 0, length = bOs.length; i < length; i++) {
-                if (bOs[i].checked) {
-                    // assign buySell the value of the checked radio
-                    buySell = bOs[i].value
-                    // only one radio can be logically checked, don't check the rest
-                    break;
-                }
-            }
+    let data = await esiJS.search.search(`${iSearch}`, 'inventory_type', true)
 
-            // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
-            getOrders(buySell, item, array, fedName)
-        })
-        .catch(error => {
-            err(error, 'Function: getItem()')
-            return
-        })
+    try {
+        item = data.inventory_type[0]
+    } catch { // if `data.inventory_type[0]` doesnt exist, this block is run
+        alertUser(`That's not a valid item!`)
+        err('Invalid Item')
+        return
+    }
+
+    // checking which radio button was selected
+    for (let i = 0, length = bOs.length; i < length; i++) {
+        if (bOs[i].checked) {
+            // assign buySell the value of the checked radio
+            buySell = bOs[i].value
+            // only one radio can be logically checked, don't check the rest
+            break;
+        }
+    }
+
+    // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
+    getOrders(buySell, item, array, fedName)
 }

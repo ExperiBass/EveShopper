@@ -4,13 +4,14 @@ module.exports = getOrders
  * buy or sell orders for the given item in the given federations space.
  * This function has the bulk of the code that powers EveShopper.
 */
-
-const axios = require('axios'); const numeral = require('numeral')
-const getStations = require('./getStations'); const err = require('./err'); const alertUser = require('./alertUser')
-const link = 'https://esi.evetech.net/latest/'
+const esiJS = require('esijs')
+const numeral = require('numeral')
+const err = require('./err')
+const alertUser = require('./alertUser')
 
 async function getOrders(buySell, itemID, array, fedName) {
-  const Fetch = document.getElementById('Fetch'); const Table = document.getElementById('table')
+  const Fetch = document.getElementById('Fetch')
+  const Table = document.getElementById('table')
   let content = ''
   let data, regID, regionNum
 
@@ -44,23 +45,13 @@ async function getOrders(buySell, itemID, array, fedName) {
     } else { // Else...
     Table.innerHTML += content
     Fetch.disabled = false // ...display the data
+
     }
-
-  async function sleep(millis) {
-    return new Promise(resolve => setTimeout(resolve, millis));
-  }
-
+    await esiJS.util.sleep(50)
+    alert('Orders are ready!')
   async function fetch() {
     // Getting the orders
-      await axios.get(`${link}markets/${regID.id}/orders/?datasource=tranquility&order_type=${buySell}&page=1&type_id=${itemID}`)
-                  .then(response => { 
-                    data = response.data
-                  })
-                  .catch(error => { 
-                    err(error, 'Function: getOrders()')
-                    Fetch.disabled = false
-                    return
-                  })
+    let data = await esiJS.market.orders(regID.id, 1, buySell, itemID)
 
     let mOr;
     let dots;
@@ -70,7 +61,8 @@ async function getOrders(buySell, itemID, array, fedName) {
       let currentData, station, price, remVol, minVol
       try {
         currentData = data[i]
-        station = await getStations(currentData.location_id) // get the station name
+        let search = await esiJS.universe.stations.stationInfo(currentData.location_id)
+        station = search.name // get the station name
         price = `${numeral(currentData.price).format('0,0.00')} ISK` // get the price of the item at the station
       }
       catch (error) {
@@ -86,7 +78,7 @@ async function getOrders(buySell, itemID, array, fedName) {
 
       switch (buySell){
         case 'buy':
-        mOr = 'Minimum Volume'
+          mOr = 'Minimum Volume'
           minVol = currentData.min_volume
           info = `<tr>
                   <td>${station}</td>
@@ -105,23 +97,26 @@ async function getOrders(buySell, itemID, array, fedName) {
           break;
       }
       
-      if (mOr == undefined) {
-        Table.innerHTML = `<tr>
-        <th>Station</th>
-        <th>Price</th> 
-        <th>Remaining/Minimum Volume</th>`
-      } else if (mOr == 'Remaining Volume') {
+      switch (mOr) {
+        case undefined: 
           Table.innerHTML = `<tr>
-                          <th>Station</th>
-                          <th>Price</th> 
-                          <th>${mOr}</th>
-                          </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/><hr />`
-      } else {
-        Table.innerHTML = `<tr>
-                          <th>Station</th>
-                          <th>Price</th> 
-                          <th>${mOr}</th>
-                          </tr>`
+          <th>Station</th>
+          <th>Price</th> 
+          <th>Remaining/Minimum Volume</th>`
+          break;
+        case 'Remaining Volume':
+            Table.innerHTML = `<tr>
+            <th>Station</th>
+            <th>Price</th> 
+            <th>${mOr}</th>
+            </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/><hr />`
+            break;
+        default:
+            Table.innerHTML = `<tr>
+            <th>Station</th>
+            <th>Price</th> 
+            <th>${mOr}</th>
+            </tr>`
       }
 
       switch (j) {
@@ -143,7 +138,7 @@ async function getOrders(buySell, itemID, array, fedName) {
                         // Display the region the app is getting orders from
       content += info
       
-      await sleep(50) // pause on each iteration to avoid spamming the ESI Server (and getting ratelimited)
+      await esiJS.util.sleep(50) // pause on each iteration to avoid spamming the ESI Server
     }
 
     Info.innerText = ''
