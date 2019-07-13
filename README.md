@@ -2,7 +2,7 @@
 
 Welcome to EveShopper, the app for creating a shopping list for EVE Online!
 
-Current Version: [1.2.1](https://github.com/GingkathFox/EveShopper/releases/tag/v1.2.1)
+Current Version: [1.3.0](https://github.com/GingkathFox/EveShopper/releases/tag/v1.3.0)
 
 # FEATURES
 
