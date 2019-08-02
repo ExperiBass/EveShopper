@@ -56,6 +56,10 @@
             }
             // getting name of item
             let data = await esiJS.universe.bulk.idsToNames([item])
+                              .catch(function(e) {
+                                console.error(e)
+                                return false
+                              })
 
             name = data[0].name
 
@@ -210,6 +214,10 @@
               // and 'strict' to 'false' because we want to be able to search partials.
 
              let response = await esiJS.search.search(`${term}`, 'inventory_type', false)
+                              .catch(function(e) {
+                                console.error(e)
+                                return false
+                              })
              // 'response' is an array of item ids
              choiceIDs = response.inventory_type
              // Next we call the endpoint that converts ids into names

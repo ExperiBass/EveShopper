@@ -82,7 +82,10 @@ async function getItem(iSearch, bOs) {
 
     // getting the item ID
     let data = await esiJS.search.search(`${iSearch}`, 'inventory_type', true)
-
+                        .catch(function(e) {
+                            console.error(e)
+                            return false
+                        })
     try {
         item = data.inventory_type[0]
     } catch { // if `data.inventory_type[0]` doesnt exist, this block is run

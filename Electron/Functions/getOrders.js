@@ -52,6 +52,10 @@ async function getOrders(buySell, itemID, array, fedName) {
   async function fetch() {
     // Getting the orders
     let data = await esiJS.market.orders(regID.id, 1, buySell, itemID)
+                        .catch(function(e) {
+                          console.error(e)
+                          return false
+                        })
 
     let mOr;
     let dots;
@@ -62,6 +66,10 @@ async function getOrders(buySell, itemID, array, fedName) {
       try {
         currentData = data[i]
         let search = await esiJS.universe.stations.stationInfo(currentData.location_id)
+                              .catch(function(e) {
+                                console.error(e)
+                                return false
+                              })
         station = search.name // get the station name
         price = `${numeral(currentData.price).format('0,0.00')} ISK` // get the price of the item at the station
       }
