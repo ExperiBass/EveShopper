@@ -1,14 +1,14 @@
 module.exports = getOrders
+
+const esiJS = require('esijs')
+const numeral = require('numeral')
+const err = require('./err')
+const alertUser = require('./alertUser')
 /** getOrders
  * This function uses the arguments passed to it to get the
  * buy or sell orders for the given item in the given federations space.
  * This function has the bulk of the code that powers EveShopper.
 */
-const esiJS = require('esijs')
-const numeral = require('numeral')
-const err = require('./err')
-const alertUser = require('./alertUser')
-
 async function getOrders(buySell, itemID, array, fedName) {
   const Fetch = document.getElementById('Fetch')
   const Table = document.getElementById('table')
@@ -51,7 +51,7 @@ async function getOrders(buySell, itemID, array, fedName) {
     alert('Orders are ready!')
   async function fetch() {
     // Getting the orders
-    let data = await esiJS.market.orders(regID.id, 1, buySell, itemID)
+    let data = await esiJS.market.orders(regID.id, itemID, buySell, 1)
                         .catch(function(e) {
                           console.error(e)
                           return false
