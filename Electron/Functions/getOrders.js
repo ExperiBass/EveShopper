@@ -29,26 +29,35 @@ async function getOrders(buySell, itemID, array, fedName) {
     Error('itemID is undefined!')
     return
   }
-    if (!array) {
-      Error('undefined array')
-      return;
-    }
-    for (let i = 0; i < array.length; i++) {
-      regID = array[i]
-      regionNum = i + 1
-      await fetch()
-    } 
-    if (content == '') { // if there are no orders...
-      alertUser(`There are no ${buySell} orders for that in ${fedName} space!`)  // ...alert the user...
-      Fetch.disabled = false
-      return // ...and exit.
-    } else { // Else...
-    Table.innerHTML += content
-    Fetch.disabled = false // ...display the data
+  if (!array) {
+    Error('undefined array')
+    return;
+  }
+  for (let i = 0; i < array.length; i++) {
+    regID = array[i]
+    regionNum = i + 1
+    await fetch()
+  } 
+  if (content == '') { // if there are no orders...
+    alertUser(`There are no ${buySell} orders for that in ${fedName} space!`)  // ...alert the user...
+    Fetch.disabled = false
+    return // ...and exit.
+  } else { // Else...
+  Table.innerHTML += content
+  Fetch.disabled = false // ...display the data
 
-    }
-    await esiJS.util.sleep(50)
-    alert('Orders are ready!')
+  }
+  await esiJS.util.sleep(50)
+
+  let notif = new Notification('EveShopper', {
+    body: `The ${buySell} orders you have requested are ready!`
+  })
+
+  notif.onclick = () => {
+    console.log('Notification clicked')
+  }
+
+  
   async function fetch() {
     // Getting the orders
     let data = await esiJS.market.orders(regID.id, 1, buySell, itemID)

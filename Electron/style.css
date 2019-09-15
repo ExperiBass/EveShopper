@@ -94,7 +94,9 @@ td:first-child {
 td:last-child {
     border-right: none;
 }
-
+tr:hover {
+    background-color: #2A3138;
+}
 th {
     text-align: left;
     padding-right: 15px;
@@ -134,8 +136,8 @@ p#Info {
 tbody:first-child {
     max-height: 23px;
 }
-/* Prompt window buttons */
 
+/* Prompt window buttons */
 #buttons > button {
     height: 25px;
     text-align: center;
