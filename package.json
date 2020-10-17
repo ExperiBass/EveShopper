@@ -28,7 +28,8 @@
     "linux": {
       "target": [
         "deb",
-        "pacman"
+        "rpm",
+        "appimage"
       ]
     },
     "portable": {
