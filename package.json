@@ -50,7 +50,7 @@
     "electron": "^7.3.3",
     "electron-localshortcut": "^3.2.1",
     "electron-prompt": "^1.6.0",
-    "esijs": "^4.0.0-rc5-2",
+    "esijs": "^4.0.0-rc5-3",
     "js-autocomplete": "^1.0.4",
     "numeral": "^2.0.6"
   },

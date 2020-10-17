@@ -84,16 +84,10 @@ async function getOrders(esiClient, buySell, itemID, array, fedName) {
                 station = search.name // get the station name
                 price = `${numeral(currentData.price).format('0,0.00')} ISK` // get the price of the item at the station
             } catch (error) {
-                if (!error.code || error.code !== `ESI_ERROR`) {
-                    err(error, 'Function: getOrders()')
-                    alert(`Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on my GitHub page with this error:\n ${error.stack}`)
-                    Fetch.disabled = false
-                    return false
-                }
-            }
-
-            if (station == undefined) {
-                station = `Upwell Structure`
+                err(error, 'Function: getOrders()')
+                alert(`Uh oh, there was a error! Please try again, and if it continues to happen, open a issue on my GitHub page with this error:\n ${error.stack}`)
+                Fetch.disabled = false
+                return false
             }
 
             switch (buySell) {
