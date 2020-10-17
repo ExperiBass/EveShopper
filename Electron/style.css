@@ -72,6 +72,8 @@ table {
     font-size: 14px;
     grid-area: 1 / 2 / 4;
     width: auto!important;
+    height: 5%;
+    overflow-y:scroll
 }
 
 td, th {

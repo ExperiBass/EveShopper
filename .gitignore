@@ -8,3 +8,4 @@ release
 buildResources
 Images/iconbuilder.iconset
 Electron/Functions/itemCache/itemNames.json
+data/

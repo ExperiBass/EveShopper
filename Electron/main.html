@@ -1,264 +1,269 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <style>
-      body {
-        background-color: grey;
-      }
-      table, th, td {
-        border: 1px solid black;
-      }
+        body {
+            background-color: grey;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
     </style>
-    
+
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./auto-complete.css">
 
     <script type="text/javascript">
-    let prompt = require('electron-prompt')
-    let esiJS = require('esiJS')
-    let err = require('./Functions/err')
-    let alertUser = require('./Functions/alertUser')
-    let amnt, name;
-    let list = []
-    let completeList = ''
+        let prompt = require('electron-prompt')
+        let esiJS = require('esiJS')
+        let esiClient = new esiJS({
+            logging: false
+        })
+        let err = require('./Functions/err')
+        let alertUser = require('./Functions/alertUser')
+        let amnt, name;
+        let list = []
+        let completeList = ''
 
-   function addToList(item) {
+        function addToList(item) {
 
-      prompt({
-        height: 150,
-        title: 'Item Amount',
-        label: `Please input the amount that you want:`,
-        value: '',
-        customStylesheet: './Electron/style.css',
-        inputAttrs: {
-            type: 'text',
-            required: true
-        }
-      })
-      .then(async (r) => {
+            prompt({
+                    height: 150,
+                    title: 'Item Amount',
+                    label: `Please input the amount that you want:`,
+                    value: '',
+                    customStylesheet: './Electron/style.css',
+                    inputAttrs: {
+                        type: 'text',
+                        required: true
+                    }
+                })
+                .then(async (r) => {
 
-        switch (r) {
-          case null:
-            alertUser('Cancelled.')
-            console.log('user cancelled')
-          case '': 
-            alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
+                    switch (r) {
+                        case null:
+                            alertUser('Cancelled.')
+                            console.log('user cancelled')
+                        case '':
+                            alertUser('That item wasn\'t added to the order because you didn\'t give a number!')
+                            return
+                        default:
+                            amnt = parseInt(r)
+
+                            if (amnt != amnt) {
+
+                                console.error('Not a Number! 3:<')
+                                alertUser('That\'s not a number!')
+                                return
+                            }
+                            // getting name of item
+                            let data = await esiClient.universe.bulk.idsToNames([item])
+                            name = data.data[0].name
+
+                            for (let i = 0; i < list.length; i++) {
+                                if (list[i].search(name) == -1) {
+                                    alert(`Wait a second... ${name} is already in your list!`)
+                                    return
+                                }
+                            }
+
+                            list.push(`${name} ${amnt} - -`)
+                            completeList = ''
+
+                            list.forEach(add)
+
+                            function add(v) {
+                                completeList += `${v}\n`
+                                console.log(completeList)
+                            }
+
+                            alertUser(`Added ${amnt} ${name} to your shopping list!`)
+                    }
+                })
+                .catch(console.error)
             return
-          default:
-            amnt = parseInt(r)
-
-            if (amnt != amnt) {
-
-              console.error('Not a Number! 3:<')
-              alertUser('That\'s not a number!')
-              return
-            }
-            // getting name of item
-            let data = await esiJS.universe.bulk.idsToNames([item])
-                              .catch(function(e) {
-                                console.error(e)
-                                return false
-                              })
-
-            name = data[0].name
-
-            for (let i = 0; i < list.length; i++) {
-              if (list[i].search(name) == -1) {
-                alert(`Wait a second... ${name} is already in your list!`)
-                return
-              }
-            }
-
-            list.push(`${name} ${amnt} - -`)
-            completeList = ''
-
-            list.forEach(add)
-
-            function add(v) {
-              completeList += `${v}\n`
-              console.log(completeList)
-            }
-
-            alertUser(`Added ${amnt} ${name} to your shopping list!`)
         }
-      })
-      .catch(console.error)
-      return
-    }
-      
-    function showList() {
-      console.log(completeList)
-      if (completeList){
-        document.getElementById('List').innerText = completeList
-      } else {
-        alertUser(`There's nothing in your list!`)
-        return
-      }
-    }
 
-    function copyList() {
-      let { clipboard } = require('electron')
-      let List = document.getElementById('List')
-      if (completeList) {
-        clipboard.writeText(`${completeList}`)
-      } else {
-        alertUser(`There's nothing in your list!`)
-        return
-      }
-      alertUser(`List copied!`)
-    }
+        function showList() {
+            console.log(completeList)
+            if (completeList) {
+                document.getElementById('List').innerText = completeList
+            } else {
+                alertUser(`There's nothing in your list!`)
+                return
+            }
+        }
+
+        function copyList() {
+            let {
+                clipboard
+            } = require('electron')
+            let List = document.getElementById('List')
+            if (completeList) {
+                clipboard.writeText(`${completeList}`)
+            } else {
+                alertUser(`There's nothing in your list!`)
+                return
+            }
+            alertUser(`List copied!`)
+        }
     </script>
 
-  </head>
+</head>
 
-  <body>
+<body>
     <form id="form">
-      Federation:
-      <br>
+        Federation:
+        <br>
         <select id="fedList">
-        <option id="caldari" value="caldari">Caldari</option>
-        <option id="amarr" value="amarr">Amarr</option>
-        <option id="gallente" value="gallente">Gallente</option>
-        <option id="minmatar" value="minmatar">Minmatar</option>
-        <!--<option id="triglavian" value="triglavian">Triglavian</option>-->
+            <option id="caldari" value="caldari">Caldari</option>
+            <option id="amarr" value="amarr">Amarr</option>
+            <option id="gallente" value="gallente">Gallente</option>
+            <option id="minmatar" value="minmatar">Minmatar</option>
+            <!--<option id="triglavian" value="triglavian">Triglavian</option>-->
         </select><br>
-      Item:<br>
-      <input type="text" name="item" id="Item" autofocus placeholder="Tritanium" value=""><br><br>
+        Item:<br>
+        <input type="text" name="item" id="Item" autofocus placeholder="Tritanium" value=""><br><br>
 
-      <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Buying?<br>
-      <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Selling?<br><br>
+        <input type="radio" name="bOs" id="buyOrSell" value="buy">Who's Buying?<br>
+        <input type="radio" name="bOs" id="buyOrSell" value="sell">Who's Selling?<br><br>
 
-      <input type="button" value="Fetch" id="Fetch" onclick="get()"/>
+        <input type="button" value="Fetch" id="Fetch" onclick="get()" />
     </form>
-    <p id="Info" style="font-size: 12px"></p>
+    <p id="Info" style="font-size: 12px;"></p>
     <p>
-      <input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()"/>
-      <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()"/>
-      <input type="button" id="clear" value="Clear Cache" onclick="clearCache()"/>
+        <input type="button" id="showHide" value="Show/Update Shopping List" onclick="showList()" />
+        <input type="button" id="copy" value="Copy List to Clipboard" onclick="copyList()" />
+        <input type="button" id="clear" value="Clear Cache" onclick="clearCache()" />
     </p>
     <p id="List"></p>
-      <table id="table" style="width:50%">
-        <tr>
-          <th>Station</th>
-          <th>Price</th>
-          <th>Minimum/Remaining Volume</th>
-        </tr>
-      </table>
-    
+
+    <table id="table" style="width:50%; position: relative;">
+        <div class=scrollable>
+            <tr>
+                <th>Station</th>
+                <th>Price Per Unit</th>
+                <th>Minimum/Remaining Volume</th>
+            </tr>
+        </div>
+    </table>
     <script>
-    let autoCompleteCache = {}
-    const autoComplete = require('js-autocomplete'); let fs = require('fs')
-    const getItem = require('./Functions/getItem.js')
-    
-    try {
-      autoCompleteCache = require(`./Functions/itemCache/itemNames.json`)
-      autoCompleteCache.sort((a,b) => {
-          return a.name.length - b.name.length;
-      })
-    }
-    catch(e) {
-      console.error('CAUGHT:\n',e)
-    }
+        let autoCompleteCache = {}
+        const autoComplete = require('js-autocomplete');
+        let fs = require('fs')
+        const getItem = require('./Functions/getItem.js')
 
-    function get() {
-      getItem(document.getElementById('Item').value
-                    , document.getElementsByName('bOs'))
-      const info = document.getElementById('Info')
-    }
-     
-    function clearCache() {
-      let cache = fs.readFileSync(`./Electron/Functions/itemCache/itemNames.json`,'Utf8')
-      
-      if (cache == '{}') {
-        alertUser(`The cache was already cleared!`)
-        return
-      }
-      // delete cache
-      fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, '{}',
-        function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
-          if (err) { //if there is a error
-            console.error(err)
-            return // chuck it into consle and exit
-          }
-        })
-        autoCompleteCache = { }
-        alertUser('Cache cleared!')
-    }
+        try {
+            autoCompleteCache = require(`./Functions/itemCache/itemNames.json`)
+            autoCompleteCache.sort((a, b) => {
+                return a.name.length - b.name.length;
+            })
+        } catch (e) {
+            console.error('CAUGHT:\n', e)
+        }
 
-    document.getElementById('form').addEventListener("submit", function(e) {
-        e.preventDefault()
-        get()
-    }, false)
-	
-    let autoComp = new autoComplete({
-        selector: 'input[id=Item]',
-        minChars: 3,
-        delay: 1000,
-          source: async function(term, suggest){
-              term = term.toLowerCase()
-              console.log(term)
-            
-              // If this search has been done, reload the saved info.
-              if (autoCompleteCache[term]) {
-                  suggest(autoCompleteCache[term]);
-              } else {
-                  suggest([{id:0,name:"Loading..."}]);
-              }
-            
-              let choiceIDs = []
-              let suggestions = []
-              
-              // Call the ESI endpoint for searching the EVE datatables. 
-              // We set the 'category' to 'inventory_type' to filter out non-market items,
-              // and 'strict' to 'false' because we want to be able to search partials.
+        function get() {
+            getItem(document.getElementById('Item').value, document.getElementsByName('bOs'))
+            const info = document.getElementById('Info')
+        }
 
-             let response = await esiJS.search.search(`${term}`, 'inventory_type', false)
-                              .catch(function(e) {
-                                console.error(e)
-                                return false
-                              })
-             // 'response' is an array of item ids
-             choiceIDs = response.inventory_type
-             // Next we call the endpoint that converts ids into names
-             // 'response' in this instance is an array full of JSON objects. 
-             // Each object has 3 variables: 'name', 'id', and 'category'. 
-             // We are going to keep all three so you can play with things at a later date if you want.
-             suggestions = await esiJS.universe.bulk.idsToNames(choiceIDs)
+        function clearCache() {
+            let cache = fs.readFileSync(`./Electron/Functions/itemCache/itemNames.json`, 'Utf8')
 
-             if (!autoCompleteCache[term] || (autoCompleteCache[term] && suggestions.length > autoCompleteCache[term].length)) {
-
-                suggestions.sort((a, b) => {
-                  return a.name.length - b.name.length
-                })
-
-                // Save this search into an array.
-                autoCompleteCache[term] = suggestions
-                suggest(suggestions)
-                fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2),
-                  function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
+            if (cache == '{}') {
+                alertUser(`The cache was already cleared!`)
+                return
+            }
+            // delete cache
+            fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, '{}',
+                function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
                     if (err) { //if there is a error
-                      console.error(err)
-                      return // chuck it into consle and exit
+                        console.error(err)
+                        return // chuck it into consle and exit
                     }
-                    console.log(`Saved!`) // logs the save data
-                  })
-              }
+                })
+            autoCompleteCache = {}
+            alertUser('Cache cleared!')
+        }
+
+        document.getElementById('form').addEventListener("submit", function(e) {
+            e.preventDefault()
+            get()
+        }, false)
+
+        let autoComp = new autoComplete({
+            selector: 'input[id=Item]',
+            minChars: 3,
+            delay: 1000,
+            source: async function(term, suggest) {
+                term = term.toLowerCase()
+
+                // If this search has been done, reload the saved info.
+                if (autoCompleteCache[term]) {
+                    suggest(autoCompleteCache[term])
+                } else {
+                    suggest([{
+                        id: 0,
+                        name: "Loading..."
+                    }])
+                }
+
+                let choiceIDs = []
+                let suggestions = []
+
+                // Call the ESI endpoint for searching the EVE datatables. 
+                // We set the 'category' to 'inventory_type' to filter out non-market items,
+                // and 'strict' to 'false' because we want to be able to search partials.
+
+                let response = await esiClient.search.search(`${term}`, 'inventory_type', false)
+
+                response = response.data
+                // 'response' is an array of item ids
+                choiceIDs = response.inventory_type
+                // Next we call the endpoint that converts ids into names
+                // 'response' in this instance is an array full of JSON objects. 
+                // Each object has 3 variables: 'name', 'id', and 'category'. 
+                // We are going to keep all three so you can play with things at a later date if you want.
+                suggestions = await esiClient.universe.bulk.idsToNames(choiceIDs)
+                suggestions = suggestions.data
+
+                if (!autoCompleteCache[term] || (autoCompleteCache[term] && suggestions.length > autoCompleteCache[term].length)) {
+
+                    suggestions.sort((a, b) => {
+                        return a.name.length - b.name.length
+                    })
+
+                    // Save this search into an array.
+                    autoCompleteCache[term] = suggestions
+                    suggest(suggestions)
+                    fs.writeFile(`./Electron/Functions/itemCache/itemNames.json`, JSON.stringify(autoCompleteCache, null, 2),
+                        function(err) { // fs.writeFile(fileToWriteTo, dataToPutInFile, function(error) {})
+                            if (err) { //if there is a error
+                                console.error(err)
+                                return // chuck it into consle and exit
+                            }
+                            console.log(`Saved!`) // logs the save data
+                        })
+                }
             },
             // In the function below, "item" is the object from the "suggestions" array in the above function 
             // and "search" is the term the client was searching for.
-          renderItem: function(item, search) {
-            search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-            let re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-            // Because "item" is the object directly from the API, 
-            // we need to tweak the render function to use "item.name". 
-            // Later, you could add a small image to each search if you wanted by using "item.id".
-            return `<div class="autocomplete-suggestion" data-val="${item.name}">${item.name.replace(re, "<b style='color:yellow'>$1</b>")}</div>`;
-          }
-    })
-
+            renderItem: function(item, search) {
+                search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                let re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+                // Because "item" is the object directly from the API, 
+                // we need to tweak the render function to use "item.name". 
+                // Later, you could add a small image to each search if you wanted by using "item.id".
+                return `<div class="autocomplete-suggestion" data-val="${item.name}">${item.name.replace(re, "<b style='color:yellow'>$1</b>")}</div>`;
+            }
+        })
     </script>
 
-  </body>
+</body>
 
 </html>

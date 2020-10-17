@@ -5,6 +5,7 @@ module.exports = getItem
  */
 
 const esiJS = require('esijs')
+const esiClient = new esiJS({logging: false})
 const getOrders = require('./getOrders')
 const err = require('./err')
 
@@ -45,7 +46,9 @@ async function getItem(iSearch, bOs) {
         {id: 10000030, name: 'Heimatar'}, // Heimatar
         {id: 10000028, name: 'Molden Heath'} // Molden Heath
     ]
-    const triglavianRegions = [] // Empty, maybe forever
+    const triglavianRegions = [
+        {id: 10000000, name: 'Pochven'} // Pochven
+    ] // Empty, maybe forever
     let array;
 
     // Checking for valid item
@@ -81,17 +84,14 @@ async function getItem(iSearch, bOs) {
     }
 
     // getting the item ID
-    let data = await esiJS.search.search(`${iSearch}`, 'inventory_type', true)
-                        .catch(function(e) {
-                            console.error(e)
-                            return false
-                        })
+    let data;
     try {
-        item = data.inventory_type[0]
-    } catch { // if `data.inventory_type[0]` doesnt exist, this block is run
+        data = await esiClient.search.search(`${iSearch}`, 'inventory_type', true)
+        item = data.data.inventory_type[0]
+    } catch { // if `data.data.inventory_type[0]` doesnt exist, this block is run
         alertUser(`That's not a valid item!`)
         err('Invalid Item')
-        return
+        return false
     }
 
     // checking which radio button was selected
@@ -104,6 +104,6 @@ async function getItem(iSearch, bOs) {
         }
     }
 
-    // call getOrders and pass the region ID, the radio button that was clicked, and the item ID
-    getOrders(buySell, item, array, fedName)
+    // call getOrders and pass the client, region ID, the radio button that was clicked, and the item ID
+    getOrders(esiClient, buySell, item, array, fedName)
 }
