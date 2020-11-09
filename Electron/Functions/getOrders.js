@@ -95,42 +95,43 @@ async function getOrders(esiClient, buySell, itemID, array, fedName) {
                     mOr = 'Minimum Volume'
                     minVol = currentData.min_volume
                     info = `<tr>
-                  <td>${station}</td>
-                  <td>${price}</td> 
-                  <td>${minVol}</td>
-                  </tr>`
+                    <td>${station}</td>
+                    <td>${price}</td> 
+                    <td>${minVol}</td>
+                    </tr>`
                     // `info` is HTML, and generates a table to display the data
                     break;
                 case 'sell':
                     mOr = 'Remaining Volume'
                     remVol = currentData.volume_remain
-                    info = `<tr><td>${station}</td>
-                  <td>${price}</td>
-                  <td>${remVol}</td>
-                  </tr>`
+                    info = `<tr>
+                    <td>${station}</td>
+                    <td>${price}</td>
+                    <td>${remVol}</td>
+                    </tr>`
                     break;
             }
 
             switch (mOr) {
                 case undefined:
                     Table.innerHTML = `<tr>
-          <th>Station</th>
-          <th>Price</th> 
-          <th>Remaining/Minimum Volume</th>`
+                    <th>Station</th>
+                    <th>Price</th> 
+                    <th>Remaining/Minimum Volume</th>`
                     break;
                 case 'Remaining Volume':
                     Table.innerHTML = `<tr>
-            <th>Station</th>
-            <th>Price</th> 
-            <th>${mOr}</th>
-            </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/><hr />`
+                    <th>Station</th>
+                    <th>Price</th> 
+                    <th>${mOr}</th>
+                    </tr><input type="button" value="Add To List" id="Add" onClick="addToList(${data[0].type_id})"/><hr />`
                     break;
                 default:
                     Table.innerHTML = `<tr>
-            <th>Station</th>
-            <th>Price</th> 
-            <th>${mOr}</th>
-            </tr>`
+                    <th>Station</th>
+                    <th>Price</th> 
+                    <th>${mOr}</th>
+                    </tr>`
             }
 
             switch (j) {

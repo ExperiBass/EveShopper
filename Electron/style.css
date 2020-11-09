@@ -76,14 +76,14 @@ table {
     overflow-y:scroll
 }
 
-td, th {
+td, th, tr {
     border: none;
     border-right: 1px solid #2A3138;
 
     white-space: nowrap;
     padding: 3px 4px 3px 4px;
-    
-    text-align: right;
+
+    text-align: center;
 
     overflow-x: hidden;
     text-overflow: ellipsis;

@@ -143,18 +143,19 @@
     </p>
     <p id="List"></p>
 
-    <table id="table" style="width:50%; position: relative;">
-        <div class=scrollable>
-            <tr>
-                <th>Station</th>
-                <th>Price Per Unit</th>
-                <th>Minimum/Remaining Volume</th>
-            </tr>
-        </div>
-    </table>
+            <table id="table" style="width:50%; position: relative;">
+                <thead>
+                    <th>Station</th>
+                    <th>Price Per Unit</th>
+                    <th>Minimum/Remaining Volume</th>
+                </thead>
+            </table>
+
+
+
     <script>
         let autoCompleteCache = {}
-        const autoComplete = require('js-autocomplete');
+        const autoComplete = require('js-autocomplete')
         let fs = require('fs')
         const getItem = require('./Functions/getItem.js')
 
