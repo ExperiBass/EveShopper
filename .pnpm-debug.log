@@ -1,0 +1,529 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "eveshopper",
+      "version": "2.0.0",
+      "description": "A shopping cart app for EVE!",
+      "main": "./Electron/main.js",
+      "build": {
+        "directories": {
+          "output": "./release/dist",
+          "buildResources": "./buildResources"
+        },
+        "productName": "EveShopper",
+        "appId": "com.gingkathfox.EveShopper",
+        "win": {
+          "icon": "Images/EveShopper.ico",
+          "target": [
+            "portable"
+          ]
+        },
+        "mac": {
+          "category": "public.app-category.utilities",
+          "icon": "Images/EveShopper.icns",
+          "target": [
+            "zip",
+            "dmg"
+          ],
+          "darkModeSupport": true
+        },
+        "linux": {
+          "target": [
+            "deb",
+            "rpm",
+            "appimage"
+          ]
+        },
+        "portable": {
+          "artifactName": "EveShopper.exe"
+        }
+      },
+      "scripts": {
+        "start": "electron ./Electron/main.js",
+        "buildWin": "electron-builder --win",
+        "buildMac": "electron-builder --mac",
+        "buildLinux": "electron-builder --linux"
+      },
+      "author": "GingkathFox <thisIsNotARealEmail@gmail.com>",
+      "license": "GPL-3.0",
+      "devDependencies": {
+        "electron": ">10.1.3",
+        "electron-builder": ">22.9.1"
+      },
+      "dependencies": {
+        "electron-localshortcut": ">3.2.1",
+        "electron-prompt": ">1.6.0",
+        "esijs": ">4.0.0-rc5-4",
+        "js-autocomplete": ">1.0.4",
+        "numeral": ">2.0.6"
+      },
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GingkathFox/EveShopper.git"
+      },
+      "bugs": {
+        "url": "https://github.com/GingkathFox/EveShopper/issues"
+      },
+      "homepage": "https://github.com/GingkathFox/EveShopper#readme"
+    },
+    "prefix": "/home/gingka/Documents/GitHub/EveShopper"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/home/gingka/.pnpm-store/v3",
+    "virtualStoreDir": "/home/gingka/Documents/GitHub/EveShopper/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/home/gingka/Documents/GitHub/EveShopper",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_NO_MATCHING_VERSION",
+    "packageMeta": {
+      "name": "electron-localshortcut",
+      "dist-tags": {
+        "latest": "3.2.1",
+        "next": "3.0.2"
+      },
+      "versions": {
+        "0.0.1": {
+          "name": "electron-localshortcut",
+          "version": "0.0.1",
+          "devDependencies": {
+            "tape-async": ">1.0.0"
+          },
+          "dist": {
+            "shasum": "1a317f3a3bddd060a56ab9e98c682f552f86e197",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.0.1.tgz"
+          },
+          "engines": {
+            "node": ">=4.1"
+          }
+        },
+        "0.2.0": {
+          "name": "electron-localshortcut",
+          "version": "0.2.0",
+          "devDependencies": {
+            "electron-debug": "^0.3.0"
+          },
+          "dist": {
+            "shasum": "d1557e122a007246e80d20ac0f2f16d1d89db7c3",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.2.0.tgz"
+          },
+          "engines": {
+            "node": ">=4.1"
+          }
+        },
+        "0.2.1": {
+          "name": "electron-localshortcut",
+          "version": "0.2.1",
+          "devDependencies": {
+            "electron-debug": "^0.3.0"
+          },
+          "dist": {
+            "shasum": "6b36ee436adc06c2c083456c2c9d845f22f4b435",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.2.1.tgz"
+          },
+          "engines": {
+            "node": ">=4.1"
+          }
+        },
+        "0.2.2": {
+          "name": "electron-localshortcut",
+          "version": "0.2.2",
+          "devDependencies": {
+            "electron-debug": "^0.3.0"
+          },
+          "dist": {
+            "shasum": "ad2a3d350496f217096be85008d0e8cada507d66",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.2.2.tgz"
+          },
+          "engines": {
+            "node": ">=4.1"
+          }
+        },
+        "0.3.0": {
+          "name": "electron-localshortcut",
+          "version": "0.3.0",
+          "devDependencies": {
+            "electron-debug": "^0.3.0"
+          },
+          "dist": {
+            "shasum": "d8a2e7b4643eb533be00da648b1a97525972593d",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.3.0.tgz"
+          },
+          "engines": {
+            "node": ">=4.1"
+          }
+        },
+        "0.3.1": {
+          "name": "electron-localshortcut",
+          "version": "0.3.1",
+          "devDependencies": {
+            "electron-debug": "^0.3.0"
+          },
+          "dist": {
+            "shasum": "50b42453089d31bfac633497ff9d9de29e76e49e",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.3.1.tgz"
+          },
+          "engines": {
+            "node": ">=4.1"
+          }
+        },
+        "0.3.2": {
+          "name": "electron-localshortcut",
+          "version": "0.3.2",
+          "devDependencies": {
+            "electron-debug": "^0.3.0"
+          },
+          "dist": {
+            "shasum": "131b441c6cb519be94e693d538e139380f84e7b9",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.3.2.tgz"
+          }
+        },
+        "0.4.0": {
+          "name": "electron-localshortcut",
+          "version": "0.4.0",
+          "devDependencies": {
+            "electron-debug": "^0.3.0"
+          },
+          "dist": {
+            "shasum": "6aba998df8daa6bb29faaa405ca4c02ff0499d06",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.4.0.tgz"
+          }
+        },
+        "0.5.0": {
+          "name": "electron-localshortcut",
+          "version": "0.5.0",
+          "devDependencies": {
+            "electron-debug": "^0.5.0"
+          },
+          "dist": {
+            "shasum": "53628edb624acab841b0e5ffd0b88b1c3eb07e5a",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.5.0.tgz"
+          }
+        },
+        "0.6.0": {
+          "name": "electron-localshortcut",
+          "version": "0.6.0",
+          "dist": {
+            "shasum": "3d1c81833dfaa658c009c79bf74ddb56692554e6",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.6.0.tgz"
+          }
+        },
+        "0.6.1": {
+          "name": "electron-localshortcut",
+          "version": "0.6.1",
+          "devDependencies": {
+            "electron-prebuilt": "^1.2.5",
+            "xo": "^0.16.0"
+          },
+          "dist": {
+            "shasum": "c4e268c38a6e42f40de5618fc906d1ed608f11aa",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-0.6.1.tgz"
+          }
+        },
+        "1.0.0": {
+          "name": "electron-localshortcut",
+          "version": "1.0.0",
+          "devDependencies": {
+            "electron": "^1.4.4",
+            "xo": "^0.17.0"
+          },
+          "dist": {
+            "shasum": "e9c1ba267c75376e1b254af206b9ff856360a67a",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-1.0.0.tgz"
+          }
+        },
+        "1.1.0": {
+          "name": "electron-localshortcut",
+          "version": "1.1.0",
+          "dependencies": {
+            "electron-is-accelerator": "^0.1.0"
+          },
+          "devDependencies": {
+            "electron": "^1.4.4",
+            "xo": "^0.17.0"
+          },
+          "dist": {
+            "shasum": "5a66508a5a219d68b2cb351e4a81505025e5f3e2",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-1.1.0.tgz"
+          }
+        },
+        "1.1.1": {
+          "name": "electron-localshortcut",
+          "version": "1.1.1",
+          "dependencies": {
+            "electron-is-accelerator": "^0.1.0"
+          },
+          "devDependencies": {
+            "electron": "^1.4.4",
+            "xo": "^0.18.0"
+          },
+          "dist": {
+            "shasum": "2b7fbad4a279d1678011254bc4d3578f195e00d4",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-1.1.1.tgz"
+          }
+        },
+        "2.0.0": {
+          "name": "electron-localshortcut",
+          "version": "2.0.0",
+          "dependencies": {
+            "electron-is-accelerator": "^0.1.0"
+          },
+          "devDependencies": {
+            "debug": "^2.6.6",
+            "delay": "^2.0.0",
+            "documentation": "^4.0.0-rc.1",
+            "electron": "^1.6.7",
+            "faucet": "^0.0.1",
+            "p-electron": "^0.7.0",
+            "p-event": "^1.1.0",
+            "p-timeout": "^1.0.0",
+            "tape-async": "^2.3.0",
+            "xo": "^0.19.0"
+          },
+          "dist": {
+            "shasum": "bf088d42812d764c06ae0c9f179cf204d9c90103",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-2.0.0.tgz"
+          }
+        },
+        "2.0.2": {
+          "name": "electron-localshortcut",
+          "version": "2.0.2",
+          "dependencies": {
+            "debug": "^2.6.8",
+            "electron-is-accelerator": "^0.1.0"
+          },
+          "devDependencies": {
+            "delay": "^2.0.0",
+            "documentation": "^4.0.0-rc.1",
+            "electron": "^1.6.7",
+            "faucet": "^0.0.1",
+            "p-electron": "^0.7.0",
+            "p-event": "^1.1.0",
+            "p-timeout": "^1.0.0",
+            "tape-async": "^2.3.0",
+            "xo": "^0.19.0"
+          },
+          "dist": {
+            "integrity": "sha512-PVPhNwQ7hOPRqGZuK0YTzjAu2gzPOPCDPDU7kzXuuFtNNNAdOdpaXe8XTJW7LOw9JdmT/akrzdGitZ+6xOSnIw==",
+            "shasum": "6a1adcd6514c957328ec7912f5ccb5e1c10706db",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-2.0.2.tgz"
+          }
+        },
+        "3.0.0": {
+          "name": "electron-localshortcut",
+          "version": "3.0.0",
+          "dependencies": {
+            "debug": "^2.6.8",
+            "electron-is-accelerator": "^0.1.0",
+            "insp": "^0.1.0",
+            "keyboardevent-from-electron-accelerator": "^0.7.0",
+            "keyboardevents-areequal": "^0.2.1"
+          },
+          "devDependencies": {
+            "delay": "^2.0.0",
+            "documentation": "^4.0.0-rc.1",
+            "electron": "^1.6.7",
+            "faucet": "^0.0.1",
+            "p-electron": "^0.8.0",
+            "p-event": "^1.1.0",
+            "p-timeout": "^1.0.0",
+            "robotjs": "^0.4.7",
+            "tape-async": "^2.3.0",
+            "xo": "^0.19.0"
+          },
+          "dist": {
+            "integrity": "sha512-8J0bklTSI9XG3hb6YohDY013RnUnSmav4vijRlDHC12NYbUPA+7wrnUmqQEhVZ8YGo+wev5MEjxC7b8tE9dAyw==",
+            "shasum": "3ae8968f8c367b93cc7a07a9fa0498990bce6810",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.0.0.tgz"
+          }
+        },
+        "3.0.1": {
+          "name": "electron-localshortcut",
+          "version": "3.0.1",
+          "dependencies": {
+            "debug": "^2.6.8",
+            "electron-is-accelerator": "^0.1.0",
+            "insp": "^0.1.0",
+            "keyboardevent-from-electron-accelerator": "^0.7.0",
+            "keyboardevents-areequal": "^0.2.1"
+          },
+          "devDependencies": {
+            "delay": "^2.0.0",
+            "documentation": "^4.0.0-rc.1",
+            "electron": "^1.6.7",
+            "faucet": "^0.0.1",
+            "p-electron": "^0.8.0",
+            "p-event": "^1.1.0",
+            "p-timeout": "^1.0.0",
+            "robotjs": "^0.4.7",
+            "tape-async": "^2.3.0",
+            "xo": "^0.19.0"
+          },
+          "dist": {
+            "integrity": "sha512-hrZekhRfdvMgVhPUXC+tPoLfwxF1iENbUS7TjfXcOLEffBBQrlJ3WuIg7Z/MEX6u7M9TN8N9JlGSNNhrCPO+GQ==",
+            "shasum": "cefc1bdbe897defc2e6d9c62c657353cfaefcb91",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.0.1.tgz"
+          }
+        },
+        "3.0.2": {
+          "name": "electron-localshortcut",
+          "version": "3.0.2",
+          "dependencies": {
+            "debug": "^2.6.8",
+            "electron-is-accelerator": "^0.1.0",
+            "keyboardevent-from-electron-accelerator": "^0.7.0",
+            "keyboardevents-areequal": "^0.2.1"
+          },
+          "devDependencies": {
+            "delay": "^2.0.0",
+            "documentation": "^4.0.0-rc.1",
+            "electron": "^1.6.7",
+            "faucet": "^0.0.1",
+            "p-electron": "^0.8.0",
+            "p-event": "^1.1.0",
+            "p-timeout": "^1.0.0",
+            "robotjs": "^0.4.7",
+            "tape-async": "^2.3.0",
+            "xo": "^0.19.0"
+          },
+          "dist": {
+            "integrity": "sha512-s/T06qIlsHeRR3sgJiomKzHlJnJkoRJb5Kj3+HzTKiWXREpWcBObi8LilLRW7GeJCT8cp3h8z4O1WzCRY+TZcQ==",
+            "shasum": "df9cebe64140f4e58b680aacb2bd6278ae38ee61",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.0.2.tgz"
+          }
+        },
+        "3.0.4": {
+          "name": "electron-localshortcut",
+          "version": "3.0.4",
+          "dependencies": {
+            "debug": "^2.6.8",
+            "electron-is-accelerator": "^0.1.0",
+            "keyboardevent-from-electron-accelerator": "^1.1.0",
+            "keyboardevents-areequal": "^0.2.1"
+          },
+          "devDependencies": {
+            "delay": "^2.0.0",
+            "documentation": "^4.0.0-rc.1",
+            "electron": "~1.6.7",
+            "faucet": "^0.0.1",
+            "p-electron": "^0.8.0",
+            "p-event": "^1.1.0",
+            "p-timeout": "^1.0.0",
+            "robotjs": "^0.4.7",
+            "tape-async": "^2.3.0",
+            "xo": "^0.19.0"
+          },
+          "dist": {
+            "integrity": "sha512-VhRXioisB1Rp2b6KPJ0jh5cGS7MAZP3jsoi99xcmCETXkVcVJJSJBE9iS/BjkBP8tt/5gp1r3nkHwfc1niuhCg==",
+            "shasum": "fbca732fe62714b5c1d6ec352530c6ca96dc8250",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.0.4.tgz"
+          }
+        },
+        "3.1.0": {
+          "name": "electron-localshortcut",
+          "version": "3.1.0",
+          "dependencies": {
+            "debug": "^2.6.8",
+            "electron-is-accelerator": "^0.1.0",
+            "keyboardevent-from-electron-accelerator": "^1.1.0",
+            "keyboardevents-areequal": "^0.2.1"
+          },
+          "devDependencies": {
+            "delay": "^2.0.0",
+            "documentation": "^4.0.0-rc.1",
+            "electron": "~1.6.7",
+            "faucet": "^0.0.1",
+            "p-electron": "^0.8.0",
+            "p-event": "^1.1.0",
+            "p-timeout": "^1.0.0",
+            "robotjs": "^0.4.7",
+            "tape-async": "^2.3.0",
+            "xo": "^0.19.0"
+          },
+          "dist": {
+            "integrity": "sha512-MgL/j5jdjW7iA0R6cI7S045B0GlKXWM1FjjujVPjlrmyXRa6yH0bGSaIAfxXAF9tpJm3pLEiQzerYHkRh9JG/A==",
+            "shasum": "10c1ffd537b8d39170aaf6e1551341f7780dd2ce",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.1.0.tgz"
+          }
+        },
+        "3.2.0": {
+          "name": "electron-localshortcut",
+          "version": "3.2.0",
+          "dependencies": {
+            "debug": "^4.0.1",
+            "electron-is-accelerator": "^0.1.0",
+            "keyboardevent-from-electron-accelerator": "^2.0.0",
+            "keyboardevents-areequal": "^0.2.1"
+          },
+          "devDependencies": {
+            "ava": "^2.4.0",
+            "delay": "^4.0.1",
+            "documentation": "^12.1.3",
+            "electron": "^4.2.12",
+            "faucet": "0.0.1",
+            "p-electron": "^0.8.0",
+            "p-event": "^4.1.0",
+            "p-timeout": "^3.2.0",
+            "robotjs": "^0.5.1",
+            "tape-async": "^2.3.0",
+            "xo": "^0.25.3"
+          },
+          "dist": {
+            "integrity": "sha512-pm72c467BgWEFE+1Cgim2EqhoQe60UlirrobwN24TA+hd+x/2hVgZlwfqzvNEmYfuuegZlzQL8tILjomofbzdg==",
+            "shasum": "c3251bac86d88bf5eee5e3f05a629db372b327db",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.2.0.tgz",
+            "fileCount": 4,
+            "unpackedSize": 17409,
+            "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdxYxNCRA9TVsSAnZWagAATCEP/1W7KkF3peY8Un2YmNC/\nj2RZwkPOyNcKQC4m/SL62unZfNL9r/gGSlVcusH2bGuG9bDvndaIyCVn5JO3\nZEHARy2qMD+MTJtOzLEyc00CiBQQcs8hdHi/tIFdU53Iu93baRpHOCYm2Z4Q\nsPmUZU8mh3RICauLR3f7+JUmT8hrjijzzBfb+5iP20PMT9h18+jNu5mYoBhs\nXXVnJRaOiRDQmvhv4Wg6zcXp9A4FTVsTFauVgv+bqqXKAq4KFDOU0sVQVfuY\n8zP7Dpzie4Z2eYdFw4yI8MUprx9XwYZ8aA/5x8vAut7BqsW1H1t3PXB3j8eo\nWNU2D79gKLe/7DASLSnWmZ07PRHC1y4x7UOQbzW7g4sNglvPYv4imsLScYDm\ny6KCNV3a/GSRFEYmynogP42CPl+6EqEzoNOMlSwCsMnKRudWQWYZRW1I6aBg\nhR6g+ZegAKd+hZr9U4npxOxYqkOnAG6tFKmch7hb8IKzuLKXuo2JOP3Z5ebo\nkcI0DAoQaNRcO2SNi2tiX2zt7eWuPm879/xi37BKubUvzFIdI+rtp1ilZMs9\nInN/oToRdFacFpPBgZbAPvr6ZqtvIBvznsMKQkAypuauwVfB401Alpe1AZRL\nSts6OOuHATbN4q+HvPks0s2zWuA2wTvRLR2gwKwAMzS5WZq5QN11UvpbDIZA\nJ3dB\r\n=MXR3\r\n-----END PGP SIGNATURE-----\r\n"
+          }
+        },
+        "3.2.1": {
+          "name": "electron-localshortcut",
+          "version": "3.2.1",
+          "dependencies": {
+            "debug": "^4.0.1",
+            "electron-is-accelerator": "^0.1.0",
+            "keyboardevent-from-electron-accelerator": "^2.0.0",
+            "keyboardevents-areequal": "^0.2.1"
+          },
+          "devDependencies": {
+            "ava": "^2.4.0",
+            "delay": "^4.0.1",
+            "documentation": "^12.1.3",
+            "electron": "^4.2.12",
+            "faucet": "0.0.1",
+            "p-electron": "^0.8.0",
+            "p-event": "^4.1.0",
+            "p-timeout": "^3.2.0",
+            "robotjs": "^0.5.1",
+            "tape-async": "^2.3.0",
+            "xo": "^0.25.3"
+          },
+          "dist": {
+            "integrity": "sha512-DWvhKv36GsdXKnaFFhEiK8kZZA+24/yFLgtTwJJHc7AFgDjNRIBJZ/jq62Y/dWv9E4ypYwrVWN2bVrCYw1uv7Q==",
+            "shasum": "cfc83a3eff5e28faf98ddcc87f80a2ce4f623cd3",
+            "tarball": "https://registry.npmjs.org/electron-localshortcut/-/electron-localshortcut-3.2.1.tgz",
+            "fileCount": 4,
+            "unpackedSize": 17462,
+            "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdylfmCRA9TVsSAnZWagAAGnAP/ApNVLKInvlMYx17HtnN\nWBJ9OB2P9thd6Xj68ugWIfvPk9Gkhq16013hOsuKqTUX7JQ7tciSOsfrdWXF\n5cYzBf1p5zH6t5MQcddl0IItyiC0AtTjhusDWdG5GQIF31HhC7RTf3uEumDp\nEyKSF4/QJXatn8Sgh5r7p/gEXa5po0mTvFAz/J77Ai9Ln1mx7/3mIdyzWtz5\ns1dzYAQT+54W0ez/tjHvzALHPe4bsHfn4GzGNvVhuZFCqRXgwpReljyAqwqd\nuQmByX1sFNeS2EV4WxZ7pVWbi8/BpL3tJPqPHCJSFR8PLPw9F1hXWCMf9pYx\nu5fKRX0Q/lNb/oDoo9apG8jzSz1okXsn4dHpBB0vPFQbkCjpJi6JTP7e5a5g\nbH+m/Cdff1h0MvcL1FnR1vu3NAU98xdAYiVAp1qq2NFeMqr7Uhg1iqshmcPN\nKDyLp4W/Fb97ZwPAiZQtH9l04CDwKe6/Fwp4Z8RY3jtcvzrMLu94Je382CbI\nfrtwnYZmDfgyN0Mu+8e8DWPMQrbkRlzjvAnw7ETQeeI3ahPfysaRFXTDATVj\nmKoZByDlw9gZEYeeihI/YoAWqFrLNylVHuXYmW2R14I1yi8ORIt0ead+zxjX\n5vJoK7F8ShT+MsL9ExBGH2P1hRZj6AA1C2HQg7ioMHTkV2qw7g9vgrpC4ZqQ\nR70h\r\n=7fBx\r\n-----END PGP SIGNATURE-----\r\n"
+          }
+        }
+      },
+      "modified": "2019-11-12T06:57:44.068Z",
+      "cachedAt": 1628782134196
+    },
+    "pkgsStack": [],
+    "err": {
+      "name": "Error",
+      "message": "No matching version found for electron-localshortcut@>3.2.1",
+      "code": "ERR_PNPM_NO_MATCHING_VERSION",
+      "stack": "Error: No matching version found for electron-localshortcut@>3.2.1\n    at resolveNpm (/home/gingka/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.12.1/node_modules/pnpm/dist/pnpm.cjs:85320:15)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async Object.resolve (/home/gingka/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.12.1/node_modules/pnpm/dist/pnpm.cjs:85486:34)\n    at async run (/home/gingka/.npm-global/pnpm-global/5/node_modules/.pnpm/pnpm@6.12.1/node_modules/pnpm/dist/pnpm.cjs:71491:23)"
+    }
+  }
+}
