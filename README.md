@@ -23,7 +23,3 @@ It's also useful for miners too, since you can see which stations are buying you
 6. In EVE, open the Multibuy window and click the button in the top left and import from the clipboard. ![Multibuy.png](./Images/Multibuy.png)
 
 Example screenshot: ![Screenshot.PNG](./Images/image.png)
-
-Modules are not included, please use `npm install` to install them.
-
-This currently uses [Electron](https://electronjs.org) `v4.1.4`, [esiJS](https://github.com/gingkathfox/esijs) `v2.1.2`, [Numeral](http://numeraljs.com) `v2.0.6`, [electron-localshortcut](https://github.com/parro-it/electron-localshortcut) `v3.1.0`, [electron-prompt](https://github.com/p-sam/electron-prompt) `v1.3.0`, [js-autocomplete](https://github.com/Pixabay/JavaScript-autoComplete) `v1.0.4`, and NodeJS `v10.15.3`.
